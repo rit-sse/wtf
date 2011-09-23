@@ -1,6 +1,4 @@
 Wtf::Application.routes.draw do
-  get "root/index"
-
   devise_for :users
 
   # You can have the root of your site routed with "root"
