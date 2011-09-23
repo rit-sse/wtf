@@ -43,7 +43,7 @@ test: &test
   encoding: unicode
   database: wtf_test
   pool: 5
-  username: wtf
+  username: postgres
   password:
 
 production:
