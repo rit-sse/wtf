@@ -7,8 +7,8 @@ require File.expand_path('../config/application', __FILE__)
 Wtf::Application.load_tasks
 
 task :test do
-  Rake::Task['db:drop'].execute
-  Rake::Task['db:create'].execute
+  # Rake::Task['db:drop'].execute
+  # Rake::Task['db:create'].execute
   Rake::Task['db:migrate'].execute
   Rake::Task['spec'].execute
   # Rake::Task['cucumber:all'].execute
