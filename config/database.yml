@@ -72,12 +72,8 @@ production:
 cucumber:
   <<: *test
 
-travis: &travis
+travis:
   adapter: postgresql
-  encoding: unicode
   database: wtf_test
-  pool: 5
-  min_messages: warning #magic sauce
   username: postgres
-  password: 
 
