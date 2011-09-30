@@ -1,0 +1,179 @@
+// site vars
+
+$width: 940px;
+$std-margin: 25px;
+
+
+// mixins
+
+@mixin horiz-center {
+  width: $width;
+  margin: 0 auto;
+}
+
+
+// reset
+
+*, html, body, div, p, table, img {
+  margin: 0;
+  padding: 0;
+}
+
+a img {
+  border: none;
+}
+
+
+// tag styles
+
+body {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
+  font-size: 10pt;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  color: #000;
+  text-shadow: none;
+}
+
+h1 { font-size: 30pt; }
+h2 { font-size: 26pt; }
+h3 { font-size: 20pt; }
+h4 { font-size: 15pt; }
+
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
+  margin-top: 5px;
+}
+
+p {
+  line-height: 18px;
+  margin-bottom: $std-margin;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+// page element styles
+
+#top_nav_wrapper {
+  height: 102px;
+  background: url(image-path("nav-bg.png")) repeat-x;
+  border-bottom: 1px solid #333;
+
+  #top_nav {
+    @include horiz-center;
+
+    #logo {
+      float: left;
+      margin: 22px 0 0 0;
+    }
+
+    #nav_links {
+      float: right;
+      margin: 42px 0 0 0;
+
+      a {
+        display: inline-block;
+        color: #9ab7c7;
+        font-size: 12px;
+
+        &:hover, &.active {
+          color: #fff;
+          text-shadow: 1px 1px 0 #333;
+        }
+
+        & + a {
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+}
+
+#header_wrapper {
+  background: url(image-path("header-bg.png")) repeat-x;
+
+  #header {
+    @include horiz-center;
+    height: 246px; // 300px - (2 * $std-margin);
+    padding-top: $std-margin;
+    padding-bottom: $std-margin;
+
+    background: url(image-path("header-bg-center.png")) center center;
+
+    & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 {
+      color: #fff;
+      text-shadow: 1px 1px 2px #333;
+    }
+
+    img.big_image {
+      float: left;
+      margin-right: $std-margin;
+    }
+
+    .orbit-wrapper {
+      margin: 0 auto;
+
+      .content {
+        background: #fff;
+
+        &.dark {
+          background: #555;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+          text-align: center;
+          margin-top: 4 * $std-margin;
+        }
+      }
+    }
+  }
+}
+
+#content_wrapper {
+  @include horiz-center;
+  margin-top: $std-margin;
+  margin-bottom: $std-margin;
+
+  background: #fff;
+  color: #555;
+
+  div, p {
+    // text-shadow: 0px 1px 1px #999;
+  }
+
+  #content_left {
+    float: left;
+    width: 680px;
+    padding-right: 25px;
+    border-right: 1px solid #ccc;
+  }
+
+  #content_right {
+    float: right;
+    width: 200px;
+    font-size: 9pt;
+  }
+}
+
+#footer {
+  @include horiz-center;
+  color: #aaa;
+}
+
+
+// classes
+
+.clear {
+  clear: both;
+}
+

@@ -1,3 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$(window).load ->
+  $("#featured").orbit(
+    timer: true,
+    advanceSpeed: 6000,
+    pauseOnHover: true,
+    startClockOnMouseOut: true,
+    # startClockOnMouseOutAfter: 500,
+    # directionalNav: false,
+    bullets: true
+  )
+

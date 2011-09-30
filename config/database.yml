@@ -12,11 +12,24 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
+#
+#
+# Guide to setting up some local development love with pg:
+#
+#   $ psql template1
+#   => create user wtf with password '';
+#   => alter user wtf createdb;
+#   $ rake db:create
+#   $ RAILS_ENV=production rake db:create   # if you want to run with production settings
+#
+#
+#
 development:
   adapter: postgresql
   encoding: unicode
   database: wtf_development
   pool: 5
+  min_messages: warning #magic sauce
   username: wtf
   password:
 
@@ -43,7 +56,8 @@ test: &test
   encoding: unicode
   database: wtf_test
   pool: 5
-  username: postgres
+  min_messages: warning #magic sauce
+  username: wtf
   password:
 
 production:
@@ -51,6 +65,7 @@ production:
   encoding: unicode
   database: wtf_production
   pool: 5
+  min_messages: warning #magic sauce
   username: wtf
   password:
 

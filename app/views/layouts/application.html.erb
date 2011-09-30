@@ -1,14 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Wtf</title>
+  <title>Society of Software Engineers @ RIT</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%# <link rel="stylesheet" href="stylesheets/main.css" media="screen" />%>
+  <%# <link rel="stylesheet" href="stylesheets/orbit-1.2.3.css" media="screen" />%>
+  <%# <script src="javascripts/jquery-1.6.4.min.js" type="text/javascript"></script>%>
+  <%# <script src="javascripts/jquery.orbit-1.2.3.min.js" type="text/javascript"></script>%>
+  <%# <script type="text/javascript">%>
+  <%#   $(window).load(function() {%>
+  <%#       $("#featured").orbit({%>
+  <%#           timer: true,%>
+  <%#           advanceSpeed: 6000,%>
+  <%#           pauseOnHover: true,%>
+  <%#           startClockOnMouseOut: true,%>
+  <%#           // startClockOnMouseOutAfter: 500,%>
+  <%#           // directionalNav: false,%>
+  <%#           bullets: true%>
+  <%#       });%>
+  <%#   });%>
+  <%# </script>%>
 </head>
 <body>
+  <div id="outer_container">
+    <div id="top_nav_wrapper">
+      <div id="top_nav">
+        <%= link_to "./index.html" do %>
+          <%= image_tag "logo-white.png", 
+            alt: "Society of Software Engineers", id: "logo" %>
+        <% end %>
 
-<%= yield %>
+        <div id="nav_links">
+          <%= link_to "HOME", "#", class: "active" %>
+          <%= link_to "MENTORING", "#" %>
+          <%= link_to "PROJECTS", "#" %>
+          <%= link_to "EVENTS", "#" %>
+          <%= link_to "NETWORKING", "#" %>
+        </div>
 
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div id="header_wrapper">
+      <div id="header">
+
+        <div id="featured">
+          <div class="content">
+            <h1>Hello, students.</h1>
+          </div>
+          <div class="content">
+            <h1>We have bacon.</h1>
+          </div>
+          <%= image_tag "bacon.png", alt: "", data: { caption: "#bacon_caption" } %>
+          <div class="content dark">
+            <h1><%= image_tag "logo-white.png", alt: "" %>
+          </div>
+        </div>
+        <span class="orbit-caption" id="bacon_caption">Bacon image &copy; 2011 Kevin Kuchta</span>
+
+        <div class="clear"></div>
+
+      </div>
+    </div>
+    <div id="content_wrapper">
+
+      <div id="content_left">
+
+        <%= yield %>
+
+      </div>
+
+      <div id="content_right">
+
+        <h4>Upcoming Events</h4>
+        <p>
+          Lorem ipsum dolor sit amet...
+        </p>
+
+        <h4>SSE News</h4>
+        <p>
+          Lorem ipsum dolor sit amet...
+        </p>
+
+        <%= yield :sidebar %>
+
+      </div>
+
+      <div class="clear"></div>
+
+    </div>
+    <div id="footer">
+
+      All content is Copyright &copy; 2011 RIT Society of Software Engineers.
+
+    </div>
+  </div>
 </body>
 </html>
+
