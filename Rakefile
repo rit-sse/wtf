@@ -11,6 +11,6 @@ task :test do
   Rake::Task['db:create'].execute
   Rake::Task['db:migrate'].execute
   Rake::Task['spec'].execute
-  Rake::Task['cucumber:all'].execute
+  # Rake::Task['cucumber:all'].execute
 end
 
