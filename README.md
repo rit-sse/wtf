@@ -1,5 +1,7 @@
 # WTF
 
+[![Build Status](https://secure.travis-ci.org/rit-sse/wtf.png)](http://travis-ci.org/rit-sse/wtf)
+
 Epic SSE site refresh! This document + the GitHub wiki will serve as WTF 
 documentation.
 
