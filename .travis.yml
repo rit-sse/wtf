@@ -3,6 +3,5 @@ rvm:
 before_script:
   - "psql -c 'create database wtf_test;' -U postgres"
 env:
-  - DB=travis
-  - RAILS_ENV=travis
+  - DB=travis RAILS_ENV=travis
 
