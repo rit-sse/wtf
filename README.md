@@ -25,5 +25,4 @@ documentation.
 
 - RSpec ([link](https://www.relishapp.com/rspec))
 - Cucumber ([link](http://cukes.info/))
-- Travis CI ([link](http://travis-ci.org/))
 
