@@ -72,8 +72,3 @@ production:
 cucumber:
   <<: *test
 
-travis:
-  adapter: postgresql
-  database: wtf_test
-  username: postgres
-

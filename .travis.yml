@@ -1,7 +1,0 @@
-rvm:
-  - 1.9.2
-before_script:
-  - "psql -c 'create database wtf_test;' -U postgres"
-env: RAILS_ENV=travis
-script: "bundle exec rake --trace"
-
