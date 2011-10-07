@@ -9,8 +9,7 @@ Before you start development, you need to follow the guide [at our postgres wiki
 
 ## Auth
 
-- Devise ([link](/plataformatec/devise))
-- OmniAuth ([link](/intridea/omniauth))
+- SSEDAP ([link](/codykrieger/ssedap))
 - CanCan ([link](/ryanb/cancan))
 
 ## DB
