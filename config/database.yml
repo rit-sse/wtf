@@ -31,7 +31,7 @@ development:
   pool: 5
   min_messages: warning #magic sauce
   username: wtf
-  password:
+  password: password
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -58,7 +58,7 @@ test: &test
   pool: 5
   min_messages: warning #magic sauce
   username: wtf
-  password:
+  password: password
 
 production:
   adapter: postgresql
