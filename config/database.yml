@@ -49,7 +49,7 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   adapter: sqlite3
-  database: db/development.sqlite3
+  database: db/test.sqlite3
   timeout: 5000
 
 production:
