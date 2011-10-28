@@ -45,10 +45,10 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: none;
 }
 
-h1 { font-size: 30pt; }
-h2 { font-size: 26pt; }
-h3 { font-size: 20pt; }
-h4 { font-size: 15pt; }
+h1 { font-size: 40px; }
+h2 { font-size: 35px; }
+h3 { font-size: 30px; }
+h4 { font-size: 22px; }
 
 h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
   margin-top: 5px;
@@ -175,7 +175,7 @@ p {
   #content_right {
     float: right;
     width: 200px;
-    font-size: 10pt;
+    font-size: 12px;
   }
 }
 
