@@ -84,12 +84,14 @@ p {
       margin: 35px 0 0 0;
 
       a {
+        @include transition(300ms all);
         display: inline-block;
         color: #9ab7c7;
         padding: 7px;
         @include border-radius(5px);
 
         &:hover, &.active {
+          @include transition(300ms all);
           color: #fff;
           text-shadow: 1px 1px 0 #333;
         }
@@ -101,6 +103,10 @@ p {
         &.login {
           color: #fff;
           background: rgba(0, 0, 0, .25);
+
+          &:hover {
+            background: rgba(0, 0, 0, .45);
+          }
         }
       }
     }
