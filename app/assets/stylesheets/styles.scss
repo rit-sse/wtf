@@ -11,6 +11,8 @@ $std-margin: 25px;
   margin: 0 auto;
 }
 
+@import "mixins";
+
 
 // reset
 
@@ -28,7 +30,7 @@ a img {
 
 body {
   font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
-  font-size: 10pt;
+  font-size: 14px;
 }
 
 a {
@@ -53,7 +55,7 @@ h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
 }
 
 p {
-  line-height: 18px;
+  line-height: 20px;
   margin-bottom: $std-margin;
 
   &:last-child {
@@ -79,12 +81,13 @@ p {
 
     #nav_links {
       float: right;
-      margin: 42px 0 0 0;
+      margin: 35px 0 0 0;
 
       a {
         display: inline-block;
         color: #9ab7c7;
-        font-size: 12px;
+        padding: 7px;
+        @include border-radius(5px);
 
         &:hover, &.active {
           color: #fff;
@@ -92,7 +95,12 @@ p {
         }
 
         & + a {
-          margin-left: 30px;
+          margin-left: 20px;
+        }
+
+        &.login {
+          color: #fff;
+          background: rgba(0, 0, 0, .25);
         }
       }
     }
@@ -161,7 +169,7 @@ p {
   #content_right {
     float: right;
     width: 200px;
-    font-size: 9pt;
+    font-size: 10pt;
   }
 }
 
