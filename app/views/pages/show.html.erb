@@ -1,8 +1,14 @@
-<p id="notice"><%= notice %></p>
+<% if @page.has_children? %>
+  <% content_for :sidebar do %>
+    <h4><%= @page.name %></h4>
+    <ul>
+      <% @page.children.each do |subpage| %>
+        <li><%= link_to subpage.name, subpage %></li>
+      <% end %>
+  <% end %>
+<% end %>
 
-<h1><%= @page.name %></h1>
-<p>Writen by: <%= @page.author_id %></p>
-<p>Published: <%= @page.published_at %></p>
+<p id="notice"><%= notice %></p>
 
 <%= format_markdown @page.content %>
 

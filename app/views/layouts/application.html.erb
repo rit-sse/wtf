@@ -31,28 +31,16 @@
     <%= yield :header %>    
 
     <div id="content_wrapper">
-
-      <div id="content_left">
-
+      <% if content_for? :sidebar %>
+        <div id="content_left">
+          <%= yield %>
+        </div>
+        <div id="content_right">
+          <%= yield :sidebar %>
+        </div>
+      <% else %>
         <%= yield %>
-
-      </div>
-
-      <div id="content_right">
-
-        <h4>Upcoming Events</h4>
-        <p>
-          Lorem ipsum dolor sit amet...
-        </p>
-
-        <h4>SSE News</h4>
-        <p>
-          Lorem ipsum dolor sit amet...
-        </p>
-
-        <%= yield :sidebar %>
-
-      </div>
+      <% end %>
 
       <div class="clear"></div>
 
