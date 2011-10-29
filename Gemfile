@@ -16,6 +16,9 @@ gem 'cancan'
 # Helper for nested pages
 gem 'ancestry'
 
+# Markdown translator for page content
+gem 'redcarpet'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
