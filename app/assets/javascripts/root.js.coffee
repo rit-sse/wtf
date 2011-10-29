@@ -6,6 +6,8 @@ $(window).load ->
     startClockOnMouseOut: true,
     # startClockOnMouseOutAfter: 500,
     # directionalNav: false,
+    captionAnimation: 'slideOpen',
+    captionAnimationSpeed: 100,
     bullets: true
   )
 

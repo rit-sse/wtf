@@ -118,9 +118,7 @@ p {
 
   #header {
     @include horiz-center;
-    height: 246px; // 300px - (2 * $std-margin);
-    padding-top: $std-margin;
-    padding-bottom: $std-margin;
+    height: 300px;
 
     background: url(image-path("header-bg-center.png")) center center;
 
@@ -138,11 +136,8 @@ p {
       margin: 0 auto;
 
       .content {
-        background: #fff;
-
-        &.dark {
-          background: #555;
-        }
+        width: 940px;
+        height: 300px;
 
         h1, h2, h3, h4, h5, h6 {
           text-align: center;

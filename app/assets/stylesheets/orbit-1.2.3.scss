@@ -10,12 +10,13 @@
    ================================================== */
 #featured { 
 	width: 940px;
-	height: 450px;
-	background: #000 url(image-path("orbit/loading.gif")) no-repeat center center;
+	height: 300px;
 	overflow: hidden; }
 #featured>img,  
 #featured>div,
-#featured>a { display: none; }
+#featured>a {
+	left: -940px;
+	display: none; }
 
 
 
@@ -24,13 +25,13 @@
    ================================================== */
 
 div.orbit-wrapper {
-    width: 1px;
-    height: 1px;
+    width: 940px;
+    height: 300px;
     position: relative; }
 
 div.orbit {
-    width: 1px;
-    height: 1px;
+    width: 900px;
+    height: 300px;
     position: relative;
     overflow: hidden }
 
@@ -62,15 +63,7 @@ div.orbit>a {
    ================================================== */
 
 div.timer {
-    width: 40px;
-    height: 40px;
-    overflow: hidden;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    opacity: .6;
-    cursor: pointer;
-    z-index: 1001; }
+    display: none; }
 
 span.rotator {
     display: block;
@@ -190,7 +183,7 @@ div.slider-nav span.left {
 /* BULLET NAV
    ================================================== */
 
-.orbit-bullets { position: absolute; z-index: 1000; list-style: none; top: 10px; left: 7px; margin: 0; padding: 0; }
+.orbit-bullets { position: absolute; z-index: 1000; list-style: none; bottom: 10px; right: 7px; margin: 0; padding: 0; }
 .orbit-bullets li { float: left; margin-left: 5px; cursor: pointer; color: #999; text-indent: -9999px; background: url(image-path("orbit/bullets.png")) no-repeat 0 0; width: 7px; height: 7px; overflow: hidden; }
 .orbit-bullets li.active { color: #222; background-position: -7px 0; }
 
