@@ -12,14 +12,13 @@
 	width: 940px;
 	height: 300px;
 	overflow: hidden; }
-#featured>img,  
-#featured>div,
-#featured>a {
+
+#featured > * {
 	left: -940px;
 	display: none; }
 
-
-
+#featured :first-child {
+	left: 0px; }
 
 /* CONTAINER
    ================================================== */
