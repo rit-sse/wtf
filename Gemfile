@@ -9,7 +9,6 @@ gem 'sqlite3'
 gem 'pg', :group => [:production]
 
 # Auth
-gem 'devise'
 gem 'omniauth'
 gem 'cancan'
 
