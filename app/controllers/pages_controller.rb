@@ -8,7 +8,7 @@ class PagesController < AdminController
 
     @page = nil
     components.each do |c|
-      pages = @page.nil? ? Page.where(slug: c).to_a.find_all { |p| p.parent_id.nil? } : @page.children.where(slug: c)
+      pages = @page.nil? ? Page.where(slug: c).to_a.select { |p| p.parent_id.nil? } : @page.children.where(slug: c)
       @page = pages.first
       break if @page.nil?
     end
