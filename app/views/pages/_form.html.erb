@@ -29,6 +29,7 @@
     <div class="ace"><%= @page.content %></div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= link_to "Cancel", pages_path, class: "medium red super button" %>
+    <%= f.submit nil, class: "medium super button" %>
   </div>
 <% end %>
