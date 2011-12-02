@@ -1,4 +1,34 @@
-class PagesController < ApplicationController
+class PagesController < AdminController
+
+  def dynamic_page
+    # lowercase because mongo finds are case-sensitive, and we store slugs
+    # in lowercase
+    path = params[:path].downcase
+    components = path.split '/'
+
+    @page = nil
+    components.each do |c|
+      pages = @page.nil? ? Page.where(slug: c).to_a.find_all { |p| p.parent_id.nil? } : @page.children.where(slug: c)
+      @page = pages.first
+      break if @page.nil?
+    end
+
+    if @page.nil?
+      # 404!
+      render template: "/pages/404", status: 404
+    else
+      # @small_title = @page.small_title
+
+      # if @page.list_subpages == Page::SUBPAGES_LIST_SIDEBAR or 
+      #   (!@page.parent.nil? and @page.parent.list_subpages == Page::SUBPAGES_LIST_SIDEBAR)
+
+      #   @display_sidebar = true
+      #   @sidebar_page = @page.list_subpages == Page::SUBPAGES_LIST_SIDEBAR ? @page : @page.parent
+      #   @small_title ||= @sidebar_page.small_title
+      # end
+    end
+  end
+
   # GET /pages
   # GET /pages.json
   def index
@@ -44,7 +74,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+        format.html { redirect_to pages_path, notice: 'Page was successfully created.' }
         format.json { render json: @page, status: :created, location: @page }
       else
         format.html { render action: "new" }
@@ -60,7 +90,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to pages_path, notice: 'Page was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -76,8 +106,17 @@ class PagesController < ApplicationController
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to pages_url }
+      format.html { redirect_to pages_path }
       format.json { head :ok }
     end
   end
+
+protected
+
+  def authenticate
+    unless action_name == "dynamic_page"
+      super
+    end
+  end
+
 end

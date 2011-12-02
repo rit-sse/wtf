@@ -1,10 +1,21 @@
 Wtf::Application.routes.draw do
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
+
+  scope "/admin" do
+    resources :pages
+
+    match '/diagnostics(/:action)', controller: 'diagnostics' if Rails.env.development?
+
+    root to: 'admin#index'
+  end
+
+  # static routes and redirects
+  # ...
+
+  # root
   root :to => 'root#index'
 
-  # Temporary routes for testing pages
-  resources :pages
+  # for dynamic pages
+  match '/*path', to: 'pages#dynamic_page'
 
   # See how all your routes lay out with "rake routes"
 
