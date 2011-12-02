@@ -1,0 +1,12 @@
+defaults: &defaults
+  some_setting: "asdf"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
