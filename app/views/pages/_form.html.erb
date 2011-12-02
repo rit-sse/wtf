@@ -12,24 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :slug %><br />
     <%= f.text_field :slug %>
   </div>
   <div class="field">
-    <%= f.label :author_id %><br />
-    <%= f.number_field :author_id %>
-  </div>
-  <div class="field">
     <%= f.label :published_at %><br />
-    <%= f.datetime_select :published_at %>
+    <%= f.date_select :published_at %>
   </div>
   <div class="field">
     <%= f.label :content %><br />
-    <%= f.text_area :content %>
+    <%= f.text_area :content, class: "none" %>
+    <div class="ace"><%= @page.content %></div>
   </div>
   <div class="actions">
     <%= f.submit %>

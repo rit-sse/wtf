@@ -6,4 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ace
+//= require theme-textmate
+//= require mode-markdown
 //= require_tree .

@@ -11,12 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111103170032) do
+ActiveRecord::Schema.define(:version => 20111202165150) do
 
   create_table "pages", :force => true do |t|
-    t.string   "name"
+    t.string   "title"
     t.string   "slug"
-    t.integer  "author_id"
     t.datetime "published_at"
     t.text     "content"
     t.datetime "created_at"
