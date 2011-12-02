@@ -16,7 +16,7 @@
         <% end %>
 
         <div id="nav_links">
-          <%= link_to "HOME", "#", class: "active" %>
+          <%= link_to "HOME", "/", class: "active" %>
           <%= link_to "NEWS", "#" %>
           <%= link_to "EVENTS", "#" %>
           <%= link_to "PROJECTS", "#" %>
@@ -27,8 +27,8 @@
         <div class="clear"></div>
       </div>
     </div>
-    
-    <%= yield :header %>    
+
+    <%= yield :header %>
 
     <div id="content_wrapper">
       <% if content_for? :sidebar %>
