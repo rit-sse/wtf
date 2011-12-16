@@ -9,8 +9,9 @@ gem 'sqlite3'
 gem 'pg', :group => [:production]
 
 # Auth
-gem 'omniauth'
+# gem 'omniauth'
 gem 'cancan'
+gem "ssedap-client"
 
 # Helper for nested pages
 gem 'ancestry'

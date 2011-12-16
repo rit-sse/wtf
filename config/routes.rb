@@ -7,6 +7,10 @@ Wtf::Application.routes.draw do
 
     root to: 'admin#index'
   end
+  
+  match '/auth', to: 'auth#index'
+  match '/auth/logout', to: 'auth#logout'
+  post '/auth(/:action)', controller: 'auth'
 
   # static routes and redirects
   # ...

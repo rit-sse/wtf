@@ -190,8 +190,20 @@ p {
 // forms
 
 form {
+  &.centered {
+    display: inline-block;
+    text-align: left;
+    padding: 10px;
+    margin: 15px 0 0;
+    background: #eee;
+    @include border-radius(4px);
+  }
+  
   input, select, textarea {
     margin: 5px 0 15px;
+    &.button {
+      margin: 5px 0 0;
+    }
   }
 
   input[type=text], input[type=email], input[type=password], input[type=number], textarea {
@@ -288,6 +300,7 @@ form {
 
 .clear { clear: both; }
 .none { display: none; }
+.centered { text-align: center; }
 
 .ace {
   @include box-sizing(border-box);

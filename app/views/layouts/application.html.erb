@@ -16,12 +16,16 @@
         <% end %>
 
         <div id="nav_links">
-          <%= link_to "HOME", "/", class: "active" %>
+          <%= link_to "HOME", root_path, class: "active" %>
           <%= link_to "NEWS", "#" %>
           <%= link_to "EVENTS", "#" %>
           <%= link_to "PROJECTS", "#" %>
           <%= link_to "ABOUT", "#" %>
-          <%= link_to "LOGIN", "#", class: "login" %>
+          <% unless signed_in? %>
+            <%= link_to "LOGIN", auth_path, class: "login" %>
+          <% else %>
+            <%= link_to "LOGOUT", auth_logout_path, class: "login" %>
+          <% end %>
         </div>
 
         <div class="clear"></div>
@@ -33,12 +37,14 @@
     <div id="content_wrapper">
       <% if content_for? :sidebar %>
         <div id="content_left">
+          <%= render partial: "shared/flash", locals: { flash: flash } %>
           <%= yield %>
         </div>
         <div id="content_right">
           <%= yield :sidebar %>
         </div>
       <% else %>
+        <%= render partial: "shared/flash", locals: { flash: flash } %>
         <%= yield %>
       <% end %>
 
@@ -47,7 +53,7 @@
     </div>
     <div id="footer">
 
-      All content is Copyright &copy; 2011 RIT Society of Software Engineers.
+      All content is Copyright &copy; <%= Time.now.year %> RIT Society of Software Engineers.
 
     </div>
   </div>
