@@ -113,7 +113,7 @@ class PagesController < AdminController
 
 protected
 
-  def authenticate
+  def authenticate!
     unless action_name == "dynamic_page"
       super
     end
