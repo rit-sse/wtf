@@ -2,6 +2,7 @@ Wtf::Application.routes.draw do
 
   scope "/admin" do
     resources :pages
+    resources :events
 
     match '/diagnostics(/:action)', controller: 'diagnostics' if Rails.env.development?
 
@@ -11,6 +12,8 @@ Wtf::Application.routes.draw do
   match '/auth', to: 'auth#index'
   match '/auth/logout', to: 'auth#logout'
   post '/auth(/:action)', controller: 'auth'
+
+  match '/events', to: 'events#public_index', as: "events"
 
   # static routes and redirects
   # ...

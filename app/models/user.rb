@@ -1,9 +1,13 @@
 class User
-  attr_accessible :username, :role
+  attr_accessor :username, :role
 
   def initialize(options = {})
     options.each_key do |k|
       self.send "#{k}=", options[k]
     end
+  end
+
+  def admin?
+    @role == "admin" || @role == "officer"
   end
 end
