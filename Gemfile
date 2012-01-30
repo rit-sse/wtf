@@ -38,7 +38,7 @@ gem 'ace-rails-ap'
 gem 'redcarpet', "~> 2.0.0b5"
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Testing
 gem 'cucumber-rails', :group => [:test]
@@ -46,8 +46,8 @@ gem 'capybara', :group => [:development, :test]
 gem 'rspec-rails', :group => [:development, :test]
 gem 'factory_girl_rails', :group => [:development, :test]
 
-# Deploy with Capistrano
-gem 'capistrano', :group => [:development]
+# Deployment
+gem 'whiskey_disk', :group => [:development]
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
