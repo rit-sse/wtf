@@ -3,6 +3,8 @@
 Epic SSE site refresh! This document + the GitHub wiki will serve as WTF 
 documentation.
 
+See also [Momentum](https://github.com/dorreneb/wtf) for the event tracking fork of this project.
+
 Before you start development, you need to follow the guide [at our postgres wiki page](https://github.com/rit-sse/wtf/wiki/Setting-up-PostgreSQL-for-development)
 
 # Technology stack
