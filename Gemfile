@@ -35,7 +35,7 @@ gem 'jquery-rails'
 gem 'ace-rails-ap'
 
 # Presentation
-gem 'redcarpet', "~> 2.0.0b5"
+gem 'redcarpet'
 
 # Use unicorn as the web server
 gem 'unicorn'
