@@ -1,5 +1,5 @@
 class User
-  attr_accessible :username, :role
+  attr_accessor :username, :role
 
   def initialize(options = {})
     options.each_key do |k|
