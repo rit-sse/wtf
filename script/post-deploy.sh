@@ -7,6 +7,10 @@
 bundle install --quiet --binstubs --shebang ruby-local-exec
 bundle exec rake assets:precompile --trace
 
+cp ~/wtf-shared/config/database.yml config/database.yml
+
+RAILS_ENV=production rake db:migrate
+
 # gracefully reload app with unicorn magic
 pid=/home/deploy/wtf/tmp/pids/unicorn.pid
 test -s $pid && kill -s USR2 "$(cat $pid)"

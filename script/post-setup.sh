@@ -6,12 +6,17 @@
 # deploying, oddly enough...
 bundle install --quiet --binstubs --shebang ruby-local-exec
 
+cp ~/wtf-shared/config/database.yml config/database.yml
+
+RAILS_ENV=production rake db:create
+
 # make our directories and symlinks
 rm -rf "$APP_DIR/tmp/pids" "$APP_DIR/log"
 mkdir -p "$APP_SHARED/sockets"
 mkdir -p "$APP_SHARED/pids"
 mkdir -p "$APP_SHARED/log"
 mkdir -p "$APP_SHARED/files"
+mkdir -p "$APP_SHARED/config"
 ln -s "$APP_SHARED/sockets" "$APP_DIR/tmp/sockets"
 ln -s "$APP_SHARED/pids" "$APP_DIR/tmp/pids"
 ln -s "$APP_SHARED/files" "$APP_DIR/files"
