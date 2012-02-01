@@ -1,4 +1,5 @@
 class PagesController < AdminController
+  ssl_exceptions :dynamic_page
 
   def dynamic_page
     # lowercase because mongo finds are case-sensitive, and we store slugs
