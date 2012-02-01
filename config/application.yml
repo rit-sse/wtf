@@ -1,5 +1,6 @@
 defaults: &defaults
   some_setting: "asdf"
+  ssedap_location: "http://ssedap.dev"
 
 development:
   <<: *defaults
@@ -9,4 +10,5 @@ test:
 
 production:
   <<: *defaults
+  ssedap_location: "https://ssedap"
 
