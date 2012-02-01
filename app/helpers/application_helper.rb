@@ -1,6 +1,12 @@
 module ApplicationHelper
   require 'redcarpet'
 
+  def title(title_str)
+    content_for :title do
+      title_str
+    end
+  end
+
   def markdown(text)
     options = {
       autolink: true,

@@ -106,7 +106,7 @@ class PagesController < AdminController
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to pages_path }
+      format.html { redirect_to pages_path, notice: "Page successfully destroyed." }
       format.json { head :ok }
     end
   end

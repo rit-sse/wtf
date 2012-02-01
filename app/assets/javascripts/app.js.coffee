@@ -1,8 +1,8 @@
-$(document).ready ->
+$ ->
   $("form.autofocus").each ->
     firstInput = $(this).children("div.field").children("input[type=text]").first()
     firstInput.focus() unless firstInput.val().length > 0
-  
+
   $(".ace").each ->
     # set up ace - currently we can only handle one editor at a time
     editor = ace.edit(this)

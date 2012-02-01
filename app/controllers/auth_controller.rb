@@ -13,7 +13,7 @@ class AuthController < ApplicationController
       role = auth_hash["data"]["user_info"]["role"]
       set_current_user username, role
 
-      redirect_to root_path, notice: "Logged in successfully."
+      redirect_to admin_path, notice: "Logged in successfully."
     else
       flash[:notice] = "Error: #{auth_hash["data"]["error"]}"
       render :index

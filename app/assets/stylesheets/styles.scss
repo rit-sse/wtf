@@ -46,7 +46,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Myriad Set", "Myriad Pro", Helvetica, Arial, sans-serif;
+  font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
   font-weight: 600;
   color: #000;
   text-shadow: none;
@@ -148,7 +148,7 @@ p {
 
         h1, h2, h3, h4, h5, h6 {
           text-align: center;
-          margin-top: 4 * $std-margin;
+          margin-top: 5 * $std-margin;
         }
       }
     }
@@ -312,5 +312,12 @@ form {
   &, & > div {
     @include border-radius(5px);
   }
+}
+
+.flash {
+  margin: 0 0 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  background: #eee;
 }
 
