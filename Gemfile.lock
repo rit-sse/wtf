@@ -32,6 +32,7 @@ GEM
     ancestry (1.2.4)
       activerecord (>= 2.2.2)
     arel (3.0.0)
+    bartt-ssl_requirement (1.4.1)
     builder (3.0.0)
     cancan (1.6.7)
     capybara (1.1.2)
@@ -178,6 +179,7 @@ PLATFORMS
 DEPENDENCIES
   ace-rails-ap
   ancestry
+  bartt-ssl_requirement
   cancan
   capybara
   coffee-rails (~> 3.2.1)

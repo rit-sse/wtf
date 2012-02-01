@@ -9,9 +9,9 @@ gem 'sqlite3'
 gem 'pg', :group => [:production]
 
 # Auth
-# gem 'omniauth'
 gem 'cancan'
 gem "ssedap-client"
+gem "bartt-ssl_requirement", require: "ssl_requirement"
 
 # Helper for nested pages
 gem 'ancestry'
