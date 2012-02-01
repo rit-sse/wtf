@@ -18,8 +18,6 @@ Wtf::Application.routes.draw do
   # root
   root :to => 'root#index'
 
-  match '/utilities/color(/:color)', to: 'utilities#color'
-
   # for dynamic pages
   match '/*path', to: 'pages#dynamic_page'
 
