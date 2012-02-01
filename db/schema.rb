@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120130182548) do
+ActiveRecord::Schema.define(:version => 20120201195939) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20120130182548) do
     t.datetime "updated_at"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.text     "description"
   end
 
   create_table "pages", :force => true do |t|

@@ -27,7 +27,12 @@
     <%= f.label :price %><br />
     <%= f.text_field :price %>
   </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= link_to "Cancel", events_path, class: "medium red super button" %>
+    <%= f.submit nil, class: "medium super button" %>
   </div>
 <% end %>
