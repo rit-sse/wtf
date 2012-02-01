@@ -5,3 +5,4 @@ tmp/*.pid
 tmp/*.txt
 tmp/cache
 .sass-cache/
+*.swp
