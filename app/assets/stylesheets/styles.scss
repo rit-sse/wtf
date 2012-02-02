@@ -323,3 +323,37 @@ form {
   background: #eee;
 }
 
+.fat_list {
+  border-top: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+
+  .list_item {
+    padding: 7px;
+
+    &:nth-child(odd) {
+      background: #eee;
+    }
+
+    &:hover {
+      background: #ddd;
+    }
+
+    .list_title {
+      font-size: 19px;
+      float: left;
+    }
+
+    .edit_links {
+      font-size: 12px;
+      float: right;
+
+      a {
+        display: inline-block;
+        margin-left: 10px;
+
+        &:first-child { margin-left: 0; }
+      }
+    }
+  }
+}
+

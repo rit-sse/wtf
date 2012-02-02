@@ -33,7 +33,7 @@ class PagesController < AdminController
   # GET /pages
   # GET /pages.json
   def index
-    @pages = Page.all
+    @pages = Page.roots.order("title")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -56,6 +56,7 @@ class PagesController < AdminController
   # GET /pages/new.json
   def new
     @page = Page.new
+    @page.parent = Page.find(params[:parent_id]) unless params[:parent_id].nil?
 
     respond_to do |format|
       format.html # new.html.erb
