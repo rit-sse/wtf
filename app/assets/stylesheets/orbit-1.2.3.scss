@@ -62,7 +62,15 @@ div.orbit>a {
    ================================================== */
 
 div.timer {
-    display: none; }
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: .6;
+    cursor: pointer;
+    z-index: 800; }
 
 span.rotator {
     display: block;
@@ -146,7 +154,7 @@ div.slider-nav span {
     height: 33px;
     text-indent: -9999px;
     position: absolute;
-    z-index: 1000;
+    z-index: 800;
     top: 43%;
     cursor: pointer; }
 
