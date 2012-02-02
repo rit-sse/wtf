@@ -223,6 +223,8 @@ form {
 
   input, select, textarea {
     // margin: 5px 0 15px;
+    width: auto;
+
     &.button &.btn {
       margin: 5px 0 0 !important;
     }
