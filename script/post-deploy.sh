@@ -6,6 +6,9 @@
 # deploying, oddly enough...
 bundle install --quiet --binstubs --shebang ruby-local-exec
 
+APP_DIR=/home/deploy/wtf
+APP_SHARED=/home/deploy/wtf-shared
+
 # re-symlink log dir
 rm -rf "$APP_DIR/log"
 ln -s "$APP_SHARED/log" "$APP_DIR/log"
@@ -18,7 +21,7 @@ RAILS_ENV=production rake db:migrate
 git submodule update --init
 
 # gracefully reload app with unicorn magic
-pid=/home/deploy/wtf/tmp/pids/unicorn.pid
+pid=$APP_DIR/tmp/pids/unicorn.pid
 test -s $pid && sudo kill -s USR2 "$(cat $pid)"
 
 if [[ "$?" -ne "0" ]] ; then
