@@ -11,6 +11,9 @@ cp ~/wtf-shared/config/database.yml config/database.yml
 RAILS_ENV=production bundle exec rake assets:precompile --trace
 RAILS_ENV=production rake db:migrate
 
+git submodule update --init
+cd pinocchio && git pull
+
 # gracefully reload app with unicorn magic
 pid=/home/deploy/wtf/tmp/pids/unicorn.pid
 test -s $pid && kill -s USR2 "$(cat $pid)"
