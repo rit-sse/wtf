@@ -20,7 +20,24 @@
           <%= active_link_to "NEWS", "/news" %>
           <%= active_link_to "EVENTS", "/events" %>
           <%= active_link_to "PROJECTS", "/projects" %>
-          <%= active_link_to "ABOUT", "/about" %>
+          <ul>
+            <li class="dropdown" id="committees-menu">
+              <%= link_to "THE SSE <b class='caret'></b>".html_safe, "#", data: { toggle: "dropdown" }, class: "dropdown-toggle" %>
+              <ul class="dropdown-menu">
+                <li><%= link_to "About", "/about" %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Mentoring", "/mentoring" %></li>
+                <li><%= link_to "Projects", "/projects" %></li>
+                <li><%= link_to "Fundraising", "/fundraising" %></li>
+                <li><%= link_to "Intramurals", "/intramurals" %></li>
+                <li><%= link_to "PR", "/pr" %></li>
+                <li class="divider"></li>
+                <li><%= link_to "ViSE", "/vise" %></li>
+                <li><%= link_to "Tech Talks", "/tech-talks" %></li>
+                <li><%= link_to "Crash Courses", "/crash-courses" %></li>
+              </ul>
+            </li>
+          </ul>
           <% unless signed_in? %>
             <%= link_to "LOGIN", auth_path, class: "login" %>
           <% else %>

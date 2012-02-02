@@ -91,7 +91,22 @@ p, ul {
       float: right;
       margin: 35px 0 0 0;
 
-      a {
+      & > ul {
+        display: inline-block;
+        list-style-type: none;
+
+        & + a {
+          margin-left: 6px;
+        }
+      }
+
+      & > a {
+        & + ul {
+          margin-left: 20px;
+        }
+      }
+
+      & > a, & .dropdown > a {
         @include transition(300ms all);
         display: inline-block;
         color: #9ab7c7;
