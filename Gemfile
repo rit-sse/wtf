@@ -9,9 +9,9 @@ gem 'sqlite3'
 gem 'pg', :group => [:production]
 
 # Auth
-# gem 'omniauth'
 gem 'cancan'
 gem "ssedap-client"
+gem "bartt-ssl_requirement", require: "ssl_requirement"
 
 # Helper for nested pages
 gem 'ancestry'
@@ -35,7 +35,7 @@ gem 'jquery-rails'
 gem 'ace-rails-ap'
 
 # Presentation
-gem 'redcarpet', "~> 2.0.0b5"
+gem 'redcarpet'
 
 # Use unicorn as the web server
 gem 'unicorn'
@@ -48,6 +48,11 @@ gem 'factory_girl_rails', :group => [:development, :test]
 
 # Deployment
 gem 'whiskey_disk', :group => [:development]
+
+# Pinocchio
+gem 'sinatra', require: false
+gem 'redis', require: false
+gem 'sinatra-flash', require: false
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'

@@ -1,3 +1,6 @@
+<% title @page.name %>
+<h1><%= @page.name %></h1>
+
 <% if @page.has_children? %>
   <% content_for :sidebar do %>
     <h4><%= @page.name %></h4>

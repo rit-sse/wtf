@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Society of Software Engineers @ RIT</title>
+  <title><%= content_for?(:title) ? "#{yield(:title)} &mdash; Society of Software Engineers @ RIT".html_safe : "Society of Software Engineers @ RIT" %></title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -16,11 +16,28 @@
         <% end %>
 
         <div id="nav_links">
-          <%= link_to "HOME", root_path, class: "active" %>
-          <%= link_to "NEWS", "#" %>
-          <%= link_to "EVENTS", pub_events_path %>
-          <%= link_to "PROJECTS", "#" %>
-          <%= link_to "ABOUT", "#" %>
+          <%= active_link_to "HOME", root_path %>
+          <%= active_link_to "NEWS", "/news" %>
+          <%= active_link_to "EVENTS", pub_events_path %>
+          <%= active_link_to "PROJECTS", "/projects" %>
+          <ul>
+            <li class="dropdown" id="committees-menu">
+              <%= link_to "ABOUT THE SSE <b class='caret'></b>".html_safe, "#", data: { toggle: "dropdown" }, class: "dropdown-toggle" %>
+              <ul class="dropdown-menu">
+                <li><%= link_to "About", "/about" %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Mentoring Committee", "/mentoring" %></li>
+                <li><%= link_to "Projects Committee", "/projects" %></li>
+                <li><%= link_to "Fundraising Committee", "/fundraising" %></li>
+                <li><%= link_to "Intramurals Committee", "/intramurals" %></li>
+                <li><%= link_to "PR Committee", "/pr" %></li>
+                <li><%= link_to "ViSE Committee", "/vise" %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Tech Talks", "/tech-talks" %></li>
+                <li><%= link_to "Crash Courses", "/crash-courses" %></li>
+              </ul>
+            </li>
+          </ul>
           <% unless signed_in? %>
             <%= link_to "LOGIN", auth_path, class: "login" %>
           <% else %>

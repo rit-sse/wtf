@@ -1,0 +1,14 @@
+.slideshow {
+	text-align: center;
+}
+
+/*Sets all slides to be not shown... for NOW!*/
+.slide {
+	display: none;
+}
+
+/*Sets just the first slide to show*/
+#slide0 {
+	display: block;
+}
+

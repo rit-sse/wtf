@@ -1,0 +1,203 @@
+* 
+{
+	margin: 0px;
+	padding: 0px;
+	border-style: none;
+}
+
+body
+{
+	background-color: #f1f1f1;
+}
+
+header, thead
+{
+	background-color: #146b9d;
+}
+
+table
+{
+	-webkit-border-horizontal-spacing: 0px;
+	-webkit-border-vertical-spacing: 0px;
+	width: 100%;
+}
+
+h1, h2, h3, th, .gtv-calendar-number
+{
+	font-family: Arial, Helvetica, sans-serif;
+	color: #f1f1f1;
+}
+
+h1
+{
+	font-size: 48pt;
+}
+
+h2
+{
+	font-size: 48pt;
+}
+
+h3
+{
+	font-size: 28pt;
+	text-align: center;
+}
+
+h4
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24pt;
+	font-weight: bold;
+	text-align: center;
+}
+
+p
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24pt;
+}
+
+th
+{
+	width: 141px;
+	height: 70px;
+
+	font-size: 24pt;
+	text-align: center;
+
+	border-bottom: 4px solid #f1f1f1;
+}
+
+td
+{
+	height: 158px;
+	padding: 10px;
+	border: 2px solid #f1f1f1;
+}
+
+li
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.clear
+{
+	clear: both;
+}
+
+.gtv-header-main
+{
+	height: 160px;
+	padding-top: 54px;
+	padding-left: 96px;
+	padding-right: 96px;
+
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#226497), color-stop(100%,#1b5083)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #226497 0%,#1b5083 100%); /* Chrome10+,Safari5.1+ */
+}
+
+.gtv-header-logo
+{
+	float: left;
+}
+	.gtv-header-logo h1
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+.gtv-header-mod
+{
+	float: right;
+}
+	.gtv-header-mod h2
+	{
+		margin-right: 50px;
+	}
+
+	.gtv-header-mod h2, .gtv-header-mod img
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+.gtv-content-container
+{
+	margin-top: 25px;
+	padding: 0 96px 96px 96px;
+}
+
+.gtv-calendar-container
+{
+	display: inline;
+	float: left;
+
+	width: 1135px;
+	height: 800px;
+
+	background-color: #c9dae5;
+}
+
+.gtv-calendar-weekcol
+{
+	width: 100px;
+}
+
+	.gtv-calendar-weekcol h3
+	{
+		color: #9ab7c7;
+	}
+
+.gtv-calendar-eventlist
+{
+	list-style-type: none;
+	overflow: hidden;
+	height: 158px;
+}
+
+.today
+{
+	background-color: #96b6d6;
+}
+
+.time-n-place
+{
+	font-size: 22pt;
+	color: #636363;
+}
+
+.gtv-event-container
+{
+	display: inline;
+	float: right;
+
+	width: 546px;
+	height: 800px;
+
+	background-color: #c9dae5;
+}
+
+	.gtv-event-container header
+	{
+		height: 70px;
+		border-bottom: 6px solid #f1f1f1;
+	}
+
+	.gtv-event-container header h3
+	{
+		padding-top: 15px;
+	}
+
+	.gtv-event-container section
+	{
+		padding: 20px 40px 40px 40px;
+	}
+
+		.gtv-event-container section img
+		{
+			margin-bottom: 20px;
+		}
