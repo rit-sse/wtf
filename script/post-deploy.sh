@@ -8,7 +8,7 @@ bundle install --quiet --binstubs --shebang ruby-local-exec
 
 cp ~/wtf-shared/config/database.yml config/database.yml
 
-RAILS_ENV=production bundle exec rake assets:precompile --trace
+RAILS_ENV=production bundle exec rake assets:precompile # --trace
 RAILS_ENV=production rake db:migrate
 
 git submodule update --init
