@@ -214,31 +214,36 @@ form {
     margin: 15px 0 0;
     background: #eee;
     @include border-radius(4px);
+
+    input[type=text], input[type=email], input[type=password], input[type=number], textarea {
+      @include box-sizing(border-box);
+      height: 40px;
+    }
   }
-  
+
   input, select, textarea {
-    margin: 5px 0 15px;
-    &.button {
-      margin: 5px 0 0;
+    // margin: 5px 0 15px;
+    &.button &.btn {
+      margin: 5px 0 0 !important;
     }
   }
 
-  input[type=text], input[type=email], input[type=password], input[type=number], textarea {
-    @include border-radius(4px);
-    @include box-sizing(border-box);
-    padding: 3px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    background: #f6f6f6;
-    color: #777;
-    outline: none;
+  // input[type=text], input[type=email], input[type=password], input[type=number], textarea {
+//     @include border-radius(4px);
+    // @include box-sizing(border-box);
+//     padding: 3px;
+//     border: 1px solid #ccc;
+//     font-size: 16px;
+//     background: #f6f6f6;
+//     color: #777;
+//     outline: none;
 
-    &:focus {
-      border: 1px solid #999;
-      background: #fff;
-      // color: $color;
-    }
-  }
+//     &:focus {
+//       border: 1px solid #999;
+//       background: #fff;
+//       // color: $color;
+//     }
+  // }
 
   textarea {
     width: 100%;
@@ -277,9 +282,9 @@ form {
     padding-top: 25px;
   }
 
-  label + input, label + select {
-    margin-left: 5px;
-  }
+//   label + input, label + select {
+//     margin-left: 5px;
+//   }
 
   #error_explanation {
     margin-bottom: 15px;
@@ -306,7 +311,6 @@ form {
     }
   }
 }
-
 
 // buttons
 

@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :slug %><br />
+    <%= f.label :slug %>
     <%= f.text_field :slug %>
   </div>
   <div class="field">
-    <%= f.label :parent_page %><br />
+    <%= f.label :parent_page %>
     <%= f.select :parent_id, Page.get_pages_tree, include_blank: "No parent" %>
   </div>
   <div class="field">
-    <%= f.label :published_at %><br />
+    <%= f.label :published_at %>
     <%= f.date_select :published_at %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
+    <%= f.label :content %>
     <%= f.text_area :content, class: "none" %>
     <div class="ace"><%= @page.content %></div>
   </div>
