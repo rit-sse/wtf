@@ -20,6 +20,24 @@ class Page < ActiveRecord::Base
   # callbacks
   before_validation :generate_slug
 
+  def path
+    '/' + (self.ancestors + [self]).collect(&:slug).join('/').to_s
+  end
+
+  def self.get_pages_tree(parent_id=nil, level=0)
+    pages_tree = []
+
+    pages = (parent_id.nil? ? Page.roots : Page.children_of(parent_id)).order("title")
+
+    pages.each do |page|
+      spacer = (("-" * level) + " " || "")
+      pages_tree << [spacer + page.title, page.id]
+      pages_tree += Page.get_pages_tree(page.id, level+1)
+    end
+
+    pages_tree
+  end
+
 protected
 
   def generate_slug

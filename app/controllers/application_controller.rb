@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  include ::SslRequirement
+
   helper_method :current_user
   helper_method :signed_in?
 

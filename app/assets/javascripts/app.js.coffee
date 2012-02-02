@@ -1,8 +1,11 @@
-$(document).ready ->
-  $("form.autofocus").each ->
-    firstInput = $(this).children("div.field").children("input[type=text]").first()
-    firstInput.focus() unless firstInput.val().length > 0
-  
+$ ->
+  autofocus = ->
+    $("form.autofocus").each ->
+      firstInput = $(this).children("div.field").children("input[type=text]").first()
+      firstInput.focus() unless firstInput.val().length > 0
+
+  autofocus()
+
   $(".ace").each ->
     # set up ace - currently we can only handle one editor at a time
     editor = ace.edit(this)
@@ -18,6 +21,7 @@ $(document).ready ->
     # intentionally un-focus the ace editor...it seems to want to grab focus 
     # when it's created
     editor.blur()
+    autofocus()
 
     # resize parent container
     h = $(this).outerHeight(true)

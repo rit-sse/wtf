@@ -7,9 +7,9 @@ Wtf::Application.routes.draw do
 
     match '/diagnostics(/:action)', controller: 'diagnostics' if Rails.env.development?
 
-    root to: 'admin#index'
+    root to: 'admin#index', as: "admin"
   end
-  
+
   match '/auth', to: 'auth#index'
   match '/auth/logout', to: 'auth#logout'
   post '/auth(/:action)', controller: 'auth'
