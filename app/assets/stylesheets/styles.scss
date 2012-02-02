@@ -106,6 +106,10 @@ p, ul {
         }
       }
 
+      .dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
+        background: #0473b2;
+      }
+
       & > a, & .dropdown > a {
         @include transition(300ms all);
         display: inline-block;
