@@ -336,6 +336,9 @@ form {
 .none { display: none; }
 .centered { text-align: center; }
 
+.float-left { float: left; }
+.float-right { float: right; }
+
 .ace {
   @include box-sizing(border-box);
   width: 100%;
