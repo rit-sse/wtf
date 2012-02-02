@@ -16,11 +16,11 @@
         <% end %>
 
         <div id="nav_links">
-          <%= link_to "HOME", root_path, class: "active" %>
-          <%= link_to "NEWS", "/news" %>
-          <%= link_to "EVENTS", "/events" %>
-          <%= link_to "PROJECTS", "/projects" %>
-          <%= link_to "ABOUT", "/about" %>
+          <%= active_link_to "HOME", root_path %>
+          <%= active_link_to "NEWS", "/news" %>
+          <%= active_link_to "EVENTS", "/events" %>
+          <%= active_link_to "PROJECTS", "/projects" %>
+          <%= active_link_to "ABOUT", "/about" %>
           <% unless signed_in? %>
             <%= link_to "LOGIN", auth_path, class: "login" %>
           <% else %>
