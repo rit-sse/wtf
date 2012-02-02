@@ -49,6 +49,11 @@ gem 'factory_girl_rails', :group => [:development, :test]
 # Deployment
 gem 'whiskey_disk', :group => [:development]
 
+# Pinocchio
+gem 'sinatra', require: false
+gem 'redis', require: false
+gem 'sinatra-flash', require: false
+
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
