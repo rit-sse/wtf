@@ -98,7 +98,7 @@ ul, ol {
         display: inline-block;
         list-style-type: none;
 
-        & + a {
+        & + a, & + ul {
           margin-left: 12px;
         }
       }
@@ -138,6 +138,10 @@ ul, ol {
             background: rgba(0, 0, 0, .45);
           }
         }
+      }
+
+      & .dropdown > a {
+        padding: 7px 5px 7px 7px;
       }
     }
   }
