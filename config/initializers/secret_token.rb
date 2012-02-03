@@ -4,7 +4,7 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-secret_file_path = "#{Rails.root}/../session_key"
+secret_file_path = "#{Rails.root}/session_key"
 if File.exist? secret_file_path
   secret_key = File.read secret_file_path
 else
