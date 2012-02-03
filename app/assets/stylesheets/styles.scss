@@ -46,7 +46,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Myriad Set", "Myriad Pro", Helvetica, Arial, sans-serif;
+  font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
   font-weight: 600;
   color: #000;
   text-shadow: none;
@@ -54,14 +54,15 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 { font-size: 40px; }
 h2 { font-size: 35px; }
-h3 { font-size: 30px; }
-h4 { font-size: 22px; }
+h3 { font-size: 24px; }
+h4 { font-size: 18px; }
 
+h1 + h2 { margin-top: $std-margin; }
 h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
   margin-top: 5px;
 }
 
-p {
+p, ul {
   line-height: 20px;
   margin-bottom: $std-margin;
 
@@ -90,7 +91,22 @@ p {
       float: right;
       margin: 35px 0 0 0;
 
-      a {
+      & > ul {
+        display: inline-block;
+        list-style-type: none;
+
+        & + a {
+          margin-left: 12px;
+        }
+      }
+
+      & > a {
+        & + ul {
+          margin-left: 20px;
+        }
+      }
+
+      & > a, & .dropdown > a {
         @include transition(300ms all);
         display: inline-block;
         color: #9ab7c7;
@@ -148,7 +164,7 @@ p {
 
         h1, h2, h3, h4, h5, h6 {
           text-align: center;
-          margin-top: 4 * $std-margin;
+          margin-top: 5 * $std-margin;
         }
       }
     }
@@ -183,6 +199,7 @@ p {
 
 #footer {
   @include horiz-center;
+  margin-bottom: 40px;
   color: #aaa;
 }
 
@@ -197,31 +214,36 @@ form {
     margin: 15px 0 0;
     background: #eee;
     @include border-radius(4px);
+
+    input[type=text], input[type=email], input[type=password], input[type=number], textarea {
+      @include box-sizing(border-box);
+      height: 40px;
+    }
   }
-  
+
   input, select, textarea {
-    margin: 5px 0 15px;
-    &.button {
-      margin: 5px 0 0;
+    // margin: 5px 0 15px;
+    &.button &.btn {
+      margin: 5px 0 0 !important;
     }
   }
 
-  input[type=text], input[type=email], input[type=password], input[type=number], textarea {
-    @include border-radius(4px);
-    @include box-sizing(border-box);
-    padding: 3px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    background: #f6f6f6;
-    color: #777;
-    outline: none;
+  // input[type=text], input[type=email], input[type=password], input[type=number], textarea {
+//     @include border-radius(4px);
+    // @include box-sizing(border-box);
+//     padding: 3px;
+//     border: 1px solid #ccc;
+//     font-size: 16px;
+//     background: #f6f6f6;
+//     color: #777;
+//     outline: none;
 
-    &:focus {
-      border: 1px solid #999;
-      background: #fff;
-      // color: $color;
-    }
-  }
+//     &:focus {
+//       border: 1px solid #999;
+//       background: #fff;
+//       // color: $color;
+//     }
+  // }
 
   textarea {
     width: 100%;
@@ -260,9 +282,9 @@ form {
     padding-top: 25px;
   }
 
-  label + input, label + select {
-    margin-left: 5px;
-  }
+//   label + input, label + select {
+//     margin-left: 5px;
+//   }
 
   #error_explanation {
     margin-bottom: 15px;
@@ -290,7 +312,6 @@ form {
   }
 }
 
-
 // buttons
 
 @import "buttons";
@@ -311,6 +332,47 @@ form {
 
   &, & > div {
     @include border-radius(5px);
+  }
+}
+
+.flash {
+  margin: 0 0 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  background: #eee;
+}
+
+.fat_list {
+  border-top: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+
+  .list_item {
+    padding: 7px;
+
+    &:nth-child(odd) {
+      background: #eee;
+    }
+
+    &:hover {
+      background: #ddd;
+    }
+
+    .list_title {
+      font-size: 19px;
+      float: left;
+    }
+
+    .edit_links {
+      font-size: 12px;
+      float: right;
+
+      a {
+        display: inline-block;
+        margin-left: 10px;
+
+        &:first-child { margin-left: 0; }
+      }
+    }
   }
 }
 

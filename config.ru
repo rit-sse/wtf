@@ -1,4 +1,10 @@
 # This file is used by Rack-based servers to start the application.
 
 require ::File.expand_path('../config/environment',  __FILE__)
-run Wtf::Application
+require ::File.expand_path('../pinocchio/app', __FILE__)
+
+run Rack::URLMap.new(
+  "/" => Wtf::Application,
+  "/go" => Pinocchio
+)
+

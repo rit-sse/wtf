@@ -1,7 +1,7 @@
-$(window).load ->
+$ ->
   $("#featured").orbit(
     timer: true,
-    advanceSpeed: 6000,
+    advanceSpeed: 3000,
     pauseOnHover: true,
     startClockOnMouseOut: true,
     # startClockOnMouseOutAfter: 500,
