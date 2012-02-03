@@ -8,7 +8,7 @@ map "/" do
 end
 
 map "/go" do
-  secret_file_path = "#{Rails.root}/session_key"
+  secret_file_path = ::File.expand_path('../session_key', __FILE__)
   secret_key = "Ouppvx4UKRIJ7zHCDuFEYh7IOwaJ3dIClmROlIzj5Y5RkSVeN2CIZMOar6FxwYL"
   if File.exist? secret_file_path
     secret_key = File.read secret_file_path
