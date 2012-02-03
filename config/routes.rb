@@ -3,6 +3,8 @@ Wtf::Application.routes.draw do
   scope "/admin" do
     resources :pages
 
+    match '/uploads(/:action)', controller: 'uploads'
+
     match '/diagnostics(/:action)', controller: 'diagnostics' if Rails.env.development?
 
     root to: 'admin#index', as: "admin"
