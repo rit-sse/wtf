@@ -13,7 +13,6 @@
     <%= event.name %> - <%=event.start_date.strftime("%m/%d/%Y")%>
     </div>
     <div class="event_details">
-      Price: <%= event.price == 0 ? "Free" : "$%.2f"  % event.price %>
       Time: <%= "#{event.start_date.strftime("%I:%M%p")} - #{event.end_date.strftime("%I:%M%p")}" %>
     </div>
     <div class="event_description">
