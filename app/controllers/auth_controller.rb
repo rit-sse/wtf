@@ -14,7 +14,6 @@ class AuthController < ApplicationController
       username = auth_hash["data"]["user"]
       role = auth_hash["data"]["user_info"]["role"]
       set_current_user username, role
-      cookies[:_wtf_authenticated] = true
 
       redirect_to admin_path, notice: "Logged in successfully."
     else
@@ -25,7 +24,6 @@ class AuthController < ApplicationController
 
   def logout
     reset_session
-    cookies.delete :_wtf_authenticated
     redirect_to root_path, notice: "Signed out successfully."
   end
 end
