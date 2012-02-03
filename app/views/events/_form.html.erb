@@ -23,13 +23,21 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+   <div class="field">
+    <%= f.label :short_name %>
+    <%= f.text_field :short_name %>
+  </div>
+ <div class="field">
     <%= f.label :start_date %>
     <%= f.datetime_select :start_date %>
   </div>
   <div class="field">
     <%= f.label :end_date %>
     <%= f.datetime_select :end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
   </div>
   <div class="field">
     <%= f.label :prices %>
@@ -39,6 +47,11 @@
       <a id="add_event_price_button" class="small super button" href="#">Add Price</a>
     </div>
   </div>
+  <div class="field">
+    <%= f.label :short_description %>
+    <%= f.text_field :short_description, class: "span5" %>
+  </div>
+
   <div class="field">
     <%= f.label :description %>
     <%= f.text_area :description %>
