@@ -10,7 +10,6 @@ h2
 
 h3
 {
-	text-decoration: underline;
 }
 
 article.event-preview ul
@@ -53,6 +52,21 @@ li .nav-list-start
 li .nav-list-end
 {
 	margin-right: 20px;
+}
+
+
+/*Used to format filter information at the top of the screen*/
+.filter-info
+{
+	font-size: 11px;
+	vertical-align: top;
+}
+
+/*Formats date-time-place information for each event.*/
+.event-info
+{
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .page-header
