@@ -17,7 +17,7 @@ class AuthController < ApplicationController
 
       redirect_to admin_path, notice: "Logged in successfully."
     else
-      flash[:notice] = "Error: #{auth_hash["data"]["error"]}"
+      flash.now[:notice] = "Error: #{auth_hash["data"]["error"]}"
       render :index
     end
   end
