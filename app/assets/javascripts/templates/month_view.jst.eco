@@ -1,0 +1,3 @@
+
+<div>Hello, <span><%= @name %></span>!</div>
+

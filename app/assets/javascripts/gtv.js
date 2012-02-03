@@ -3,4 +3,5 @@
 //
 //= require jquery
 //= require backbone-min
-//= require dust-core-0.3.0
+//= require templates/month_view
+//= require gtv_runner
