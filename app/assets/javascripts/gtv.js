@@ -2,6 +2,8 @@
 // This manifest is used to load JS as necessary for the GTV view.
 //
 //= require jquery
-//= require backbone-min
+//= require underscore
+//= require json2
+//= require backbone
 //= require templates/month_view
 //= require gtv_runner
