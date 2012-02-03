@@ -3,7 +3,7 @@
 Epic SSE site refresh! This document + the GitHub wiki will serve as WTF
 documentation.
 
-See also [Momentum](https://github.com/dorreneb/momentum) for the event tracking fork of this project.
+See also [Momentum](/dorreneb/momentum) for the event tracking fork of this project.
 
 # Technology stack
 
