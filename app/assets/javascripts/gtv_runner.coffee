@@ -35,5 +35,5 @@ class SSEController extends Backbone.Router
 app = new SSEController
 Backbone.history.start()
 
-app.navigate "month", trigger: true
+# app.navigate "month", trigger: true
 app.month()
