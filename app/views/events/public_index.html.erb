@@ -1,0 +1,22 @@
+<div class="event_header">
+  <span class="event_title">
+    Events
+  </span>
+  <span class="event_alt_view">
+    <%= link_to "Calendar View", "/events?view=calendar" %>
+  </span>
+</div>
+
+<% @events.each do |event| %>
+  <div class="event">
+    <div class="event_name">
+    <%= event.name %> - <%=event.start_date.strftime("%m/%d/%Y")%>
+    </div>
+    <div class="event_details">
+      Start Time: <%= event.start_date.strftime("%I:%M%p") %>
+    </div>
+    <div class="event_description">
+      Some sort of description
+    </div>
+  </div>
+<% end %>

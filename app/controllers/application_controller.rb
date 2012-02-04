@@ -10,13 +10,16 @@ class ApplicationController < ActionController::Base
 
   def current_user
     unless session[:user].nil?
-      @current_user ||= User.new username: session[:username], role: session[:role]
+      @current_user ||= session[:user]
     end
+
+    @current_user
   end
 
   def set_current_user(username, role)
     user = User.new username: username, role: role
     session[:user] = user
+    Rails.logger.debug "#{role}: #{user.role}"
     @current_user = user
   end
 
