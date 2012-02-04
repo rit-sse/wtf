@@ -46,9 +46,9 @@
 					<td></td>
 					<td class="today">
 						<ul class="gtv-calendar-eventlist">
-							<li>SE361 Review Session</li>
-							<li>SSE Plays with cats</li>
-							<li>Derp Derp Derp Derp</li>
+              <% for event in @events: %>
+                <li><%= event.get("name") %></li>
+              <% end %>
 						</ul>
 					</td>
 					<td>
