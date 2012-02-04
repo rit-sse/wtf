@@ -1,5 +1,7 @@
 Wtf::Application.routes.draw do
 
+  resources :committees
+
   scope "/admin" do
     resources :pages
     resources :events
