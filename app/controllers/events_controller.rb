@@ -55,6 +55,7 @@ class EventsController < ApplicationController
   # POST /admin/events
   # POST /admin/events.json
   def create
+    puts params[:event]
     @event = Event.new(params[:event])
 
     respond_to do |format|
