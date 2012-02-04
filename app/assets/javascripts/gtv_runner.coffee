@@ -23,7 +23,6 @@ class SSEController extends Backbone.Router
         startingDate = Date.today()
         if not startingDate.is().monday()
           startingDate = startingDate.last().monday()
-        alert(startingDate)
         new SSEMonthView 
           events: allEvents 
           date: startingDate
