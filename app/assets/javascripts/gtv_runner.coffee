@@ -10,7 +10,7 @@ class SSEEvent extends Backbone.Model
 class SSEMonthView extends Backbone.View
   initialize: ->
     # alert("Name: " + @options.events[0].get("name"))
-    $("body").html(JST["templates/month_view"]( events: @options.events ))
+    $("body").html(JST["templates/month_view"]( events: @options.events, date: @options.date ))
 
 class SSEController extends Backbone.Router
   routes:
@@ -20,7 +20,13 @@ class SSEController extends Backbone.Router
       if data
         allEvents = _(data).map (event) ->
           new SSEEvent(event)
-        new SSEMonthView events: allEvents
+        startingDate = Date.today()
+        if not startingDate.is().monday()
+          startingDate = startingDate.last().monday()
+        alert(startingDate)
+        new SSEMonthView 
+          events: allEvents 
+          date: startingDate
       else
         alert("Warning: no events to load!")
 

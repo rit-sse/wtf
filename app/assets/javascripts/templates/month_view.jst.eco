@@ -29,68 +29,24 @@
 			</thead>
 
 			<tbody>
-				<tr>
-					<td class="gtv-calendar-weekcol"><h3>6</h3></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-
-				<tr>
-					<td class="gtv-calendar-weekcol"><h3>7</h3></td>
-					<td></td>
-					<td></td>
-					<td class="today">
-						<ul class="gtv-calendar-eventlist">
-              <% for event in @events: %>
-                <li><%= event.get("name") %></li>
-              <% end %>
-						</ul>
-					</td>
-					<td>
-						<ul class="gtv-calendar-eventlist">
-							<li>OpenGL Tech Talk</li>
-						</ul>
-					</td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				
-				<tr>
-					<td class="gtv-calendar-weekcol"><h3>8</h3></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-
-				<tr>
-					<td class="gtv-calendar-weekcol"><h3>9<h3></td>
-					<td></td>
-					<td>
-						<ul class="gtv-calendar-eventlist">
-							<li>SSE buys a tank</li>
-						</ul>
-					</td>
-					<td></td>
-					<td></td>
-					<td>
-						<ul class="gtv-calendar-eventlist">
-							<li>SSE hijacks a cruise ship</li>
-						</ul>
-					</td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
+        <% for week in [0..3]: %>
+          <tr>
+            <td class="gtv-calendar-weekcol"><h3>0</h3></td>
+            <% for day in [0..6]: %>
+              <td>
+                <ul class="gtv-calendar-eventlist">
+                <% for event in @events: %>
+                  <% if window.SSEDateCheck(event.get("start_date"), @date): %>
+                    <li><%= event.get("name") %>
+                  <% end %>
+                <% end %>
+                </ul>
+              </td>
+              <% @date = @date.add(1).days() %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
 		</table>
 	</section>
 
