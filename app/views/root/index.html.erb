@@ -7,17 +7,15 @@
           <h1>Hello, visitors.</h1>
         </div>
         <div class="content">
-          <h1>We are the SSE.</h1>
+          <h1>Thanks for visiting our fantastic new website.</h1>
         </div>
         <div class="content">
-          <h1>...and we have bacon.</h1>
+          <h1>Stay tuned &mdash; there's lots of great stuff in the works.</h1>
         </div>
-        <%= image_tag "bacon.png", alt: "", data: { caption: "#bacon_caption" } %>
         <div class="content dark">
           <h1><%= image_tag "logo-white.png", alt: "" %>
         </div>
       </div>
-      <span class="orbit-caption" id="bacon_caption">Bacon image &copy; 2011 Kevin Kuchta</span>
 
       <div class="clear"></div>
 
@@ -39,8 +37,5 @@
 <% end %>
 
 
-<h1>Bacony, bacony goodness.</h1>
-<p>
-  We hope you enjoy the far more informative, useful, and far less resource-intensive SSE site. More to come soon.
-</p>
+<%= markdown @page.content if @page %>
 
