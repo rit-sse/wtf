@@ -1,5 +1,6 @@
 class PagesController < AdminController
   ssl_exceptions :dynamic_page
+  skip_before_filter :authenticate!, only: [:dynamic_page]
 
   def dynamic_page
     # lowercase because mongo finds are case-sensitive, and we store slugs
@@ -110,14 +111,6 @@ class PagesController < AdminController
     respond_to do |format|
       format.html { redirect_to pages_path, notice: "Page successfully destroyed." }
       format.json { head :ok }
-    end
-  end
-
-protected
-
-  def authenticate!
-    unless action_name == "dynamic_page"
-      super
     end
   end
 
