@@ -59,7 +59,7 @@
 
   <div class="field">
     <%= f.label :committee %>
-	<%=f.collection_select :name, Committee.find(:all), :id, :name, {:include_blank => false}  %>
+	<%= f.collection_select :committee_id, Committee.find(:all), :id, :name, {:include_blank => false}  %>
   </div>
 
   <div class="actions">
