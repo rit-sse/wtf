@@ -1,5 +1,5 @@
-class EventsController < ApplicationController
-  before_filter :authenticate!, :except => [:public_index, :public_show]
+class EventsController < AdminController
+  skip_before_filter :authenticate!, :only => [:public_index, :public_show]
 
   load_and_authorize_resource
   skip_authorize_resource :only => [:public_index, :public_show ]
@@ -17,7 +17,12 @@ class EventsController < ApplicationController
     if params[:start_date] == nil or params[:start_date] == 'now'
       params[:start_date] = DateTime.now
     end
-    @events = Event.find(:all, :conditions => ['start_date >= ?', params[:start_date].to_date])
+
+    if params[:end_date] != nil
+      @events = Event.where(:start_date => params[:start_date].to_date..params[:end_date].to_date.next_day)
+    else
+      @events = Event.where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_month)
+    end
 
     respond_to do |format|
       format.html do # index.html.erb
