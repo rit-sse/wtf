@@ -14,7 +14,10 @@ class EventsController < ApplicationController
   end
 
   def public_index
-    @events = Event.all
+    if params[:start_date] == nil or params[:start_date] == 'now'
+      params[:start_date] = DateTime.now
+    end
+    @events = Event.find(:all, :conditions => ['start_date >= ?', params[:start_date].to_date])
 
     respond_to do |format|
       format.html do # index.html.erb
