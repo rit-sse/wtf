@@ -16,7 +16,8 @@ Wtf::Application.routes.draw do
 
   match '/events' => 'events#public_index', as: "pub_events"
   match '/events(/:id)' => 'events#public_show', as: "pub_show"
-
+  match '/events/gtv', to: 'events#gtv'
+  
   # static routes and redirects
   # ...
 

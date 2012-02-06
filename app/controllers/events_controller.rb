@@ -108,4 +108,12 @@ class EventsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  # No JSON
+  def gtv
+
+    render :layout => false
+
+  end
+
 end
