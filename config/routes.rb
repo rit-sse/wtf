@@ -14,7 +14,9 @@ Wtf::Application.routes.draw do
   match '/auth/logout', to: 'auth#logout'
   post '/auth(/:action)', controller: 'auth'
 
-  match '/events', to: 'events#public_index', as: "pub_events"
+  match '/events' => 'events#public_index', as: "pub_events"
+  match '/events(/:id)' => 'events#public_show', as: "pub_show"
+
   # static routes and redirects
   # ...
 

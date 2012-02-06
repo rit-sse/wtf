@@ -1,6 +1,9 @@
 class EventsController < ApplicationController
+  before_filter :authenticate!, :except => [:public_index, :public_show]
+
   load_and_authorize_resource
-  
+  skip_authorize_resource :only => [:public_index, :public_show ]
+
   # GET /admin/events
   # GET /admin/events.json
   def index
@@ -29,7 +32,16 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     #@event = Event.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @event }
+    end
+  end
 
+  # GET /events/1
+  # GET /events/1.json
+  def public_show
+    #@event = Event.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }

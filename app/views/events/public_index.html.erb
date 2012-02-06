@@ -6,7 +6,7 @@
   <div class="event-preview-wrapper">
     <div class="gradient-test">
       <div class="event-preview">
-        <h3><%= link_to event.name, pub_events_path(event) %></h3>
+        <h3><%= link_to event.name, pub_show_path(event) %></h3>
         <div class="event-info">
           <%= "#{event.start_date.strftime("%A %m/%d")}, #{event.start_date.strftime("%I:%M%p")} - #{event.end_date.strftime("%I:%M%p")}" %>
         </div>
