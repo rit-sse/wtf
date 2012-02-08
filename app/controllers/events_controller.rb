@@ -1,6 +1,9 @@
-class EventsController < ApplicationController
+class EventsController < AdminController
+  skip_before_filter :authenticate!, :only => [:public_index, :public_show]
+
   load_and_authorize_resource
-  
+  skip_authorize_resource :only => [:public_index, :public_show ]
+
   # GET /admin/events
   # GET /admin/events.json
   def index
@@ -11,7 +14,15 @@ class EventsController < ApplicationController
   end
 
   def public_index
-    @events = Event.all
+    if params[:start_date] == nil or params[:start_date] == 'now'
+      params[:start_date] = DateTime.now
+    end
+
+    if params[:end_date] != nil
+      @events = Event.where(:start_date => params[:start_date].to_date..params[:end_date].to_date.next_day)
+    else
+      @events = Event.where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_month)
+    end
 
     respond_to do |format|
       format.html do # index.html.erb
@@ -29,7 +40,16 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     #@event = Event.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @event }
+    end
+  end
 
+  # GET /events/1
+  # GET /events/1.json
+  def public_show
+    #@event = Event.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
@@ -96,4 +116,12 @@ class EventsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  # No JSON
+  def gtv
+
+    render :layout => false
+
+  end
+
 end
