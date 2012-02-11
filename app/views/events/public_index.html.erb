@@ -1,18 +1,28 @@
 <div class="display_wrapper">
+
   <div class="filter">
     <span class="inactive-entry">Filter by:</span> 
-    <span class="active-entry">All</span>
-	<% Committee.all.each do |tag| %>
-		<%= link_to tag.name, :filter => tag.name %>
+    <span class="inactive-entry"><%= link_to 'All' %></span>
+	
+	<% Committee.all.each do |tag| %> 
+	  <%if params[:filter].eql?(tag.name)%>
+        <span class="active-entry">
+	  <%else%>
+	    <span class="inactive-entry">
+	  <%end%>
+	  <%= link_to tag.name, :filter => tag.name %>
+	  </span>
 	<% end %>
   </div>
+
   <div class="view">
     <span class="inactive-entry">View:</span> 
-    <span class="inactive-entry">Calendar View</span>
-    <span class="active-entry">List View</span>
+    <span class="inactive-entry"><%= link_to 'Calendar View', :view => 'calendar'%></span>
+    <span class="active-entry"><%= link_to 'List View' %></span>
   </div>
 </div>
 <br/>
+
 <div class="title">
   <h1>Events</h1>
 </div>
