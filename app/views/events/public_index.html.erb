@@ -1,3 +1,18 @@
+<div class="display_wrapper">
+  <div class="filter">
+    <span class="inactive-entry">Filter by:</span> 
+    <span class="active-entry">All</span>
+	<% Committee.all.each do |tag| %>
+		<%= link_to tag.name, :filter => tag.name %>
+	<% end %>
+  </div>
+  <div class="view">
+    <span class="inactive-entry">View:</span> 
+    <span class="inactive-entry">Calendar View</span>
+    <span class="active-entry">List View</span>
+  </div>
+</div>
+<br/>
 <div class="title">
   <h1>Events</h1>
 </div>
