@@ -26,28 +26,34 @@ class SSEBlankView extends Backbone.View
     $("body").html("")
 
 class SSEController extends Backbone.Router
+  pageSettings =
+    "month":
+      "timeAlive": 15
+      "nextPage": "blank"
+    "blank":
+      "timeAlive": 5
+      "nextPage": "month"
   routes:
     "../events/:id": "month"
+
   start: =>
     this.month()
-    @countdown = 10
+    @countdown = pageSettings.month.timeAlive
     @page = "month"
     @timerId = setInterval(this.flipPage, 1000)
+
   flipPage: =>
-    # console.log("flipPage()")
     if @countdown == 0
-      console.log("Done counting down.")
-      if @page == "month"
-        this.pause()
-        @page = "blank"
-      else
-        this.month()
-        @page = "month"
-      @countdown = 10
-    else
-      # console.log("Countdown before: " + @countdown)
-      @countdown = @countdown - 1
-      # console.log("Countdown after: " + @countdown)
+      @page = pageSettings[@page].nextPage
+      @gotoPage(@page)
+      @countdown = pageSettings[@page].timeAlive
+    @countdown = @countdown - 1
+
+  gotoPage: (page) =>
+    switch page
+      when "month" then @month()
+      else @pause()
+
   month: =>
     $.getJSON '../events', (data) ->
       if data
@@ -61,6 +67,7 @@ class SSEController extends Backbone.Router
           date: startingDate
       else
         alert("Warning: no events to load!")
+
   pause: ->
     # alert("Pausing")
     new SSEBlankView
