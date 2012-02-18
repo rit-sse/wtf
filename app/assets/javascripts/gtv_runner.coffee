@@ -31,7 +31,10 @@ class SSEController extends Backbone.Router
       "timeAlive": 15
       "nextPage": "blank"
     "blank":
-      "timeAlive": 5
+      "timeAlive": 3
+      "nextPage": "upcoming"
+    "upcoming":
+      "timeAlive": 2
       "nextPage": "month"
   routes:
     "../events/:id": "month"
@@ -52,6 +55,7 @@ class SSEController extends Backbone.Router
   gotoPage: (page) =>
     switch page
       when "month" then @month()
+      when "upcoming" then @upcoming()
       else @pause()
 
   month: =>
@@ -67,6 +71,12 @@ class SSEController extends Backbone.Router
           date: startingDate
       else
         alert("Warning: no events to load!")
+
+  upcoming: ->
+    req =
+      limit: 2
+    $.getJSON '../events', req, (data) ->
+      new SSEBlankView
 
   pause: ->
     # alert("Pausing")
