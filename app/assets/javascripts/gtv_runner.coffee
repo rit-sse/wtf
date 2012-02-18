@@ -4,6 +4,14 @@ class SSEEvent extends Backbone.Model
     base = 'events'
     base + @id
 
+  startDate: ->
+    this.get("start_date")
+
+  matchesStartDate: (datetime) ->
+    otherDate = datetime.clearTime()
+    thisDate = Date.parseExact(this.startDate(), "yyyy-MM-ddTHH:mm:ss-05:00").clearTime();
+    return thisDate.equals(otherDate);
+
 # Make new events right in the browser with:
 # newEvent = new SSEEvent
 

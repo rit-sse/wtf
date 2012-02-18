@@ -36,7 +36,7 @@
               <td <%= "class='today'" if Date.today().equals(@date) %>>
                 <ul class="gtv-calendar-eventlist <%= %>">
                 <% for event in @events: %>
-                  <% if window.SSEDateCheck(event.get("start_date"), @date): %>
+                  <% if event.matchesStartDate(@date): %>
                     <li><%= event.get("name") %>
                   <% end %>
                 <% end %>
