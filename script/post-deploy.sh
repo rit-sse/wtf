@@ -13,11 +13,16 @@ APP_SHARED=/home/deploy/wtf-shared
 rm -rf "$APP_DIR/log"
 ln -s "$APP_SHARED/log" "$APP_DIR/log"
 
-cp ~/wtf-shared/config/database.yml config/database.yml
+# bring in external db config for password security
+cp $APP_SHARED/config/database.yml config/database.yml
+
+# better session key security
+cp $APP_SHARED/session_key $APP_DIR
 
 RAILS_ENV=production bundle exec rake assets:precompile # --trace
 RAILS_ENV=production rake db:migrate
 
+# bring in git submodules
 git submodule update --init
 
 # gracefully reload app with unicorn magic

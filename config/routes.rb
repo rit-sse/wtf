@@ -5,6 +5,8 @@ Wtf::Application.routes.draw do
     resources :events
     match '/events' => 'events#index', as: "admin_events"
 
+    match '/uploads(/:action)', controller: 'uploads'
+
     match '/diagnostics(/:action)', controller: 'diagnostics' if Rails.env.development?
 
     root to: 'admin#index', as: "admin"
