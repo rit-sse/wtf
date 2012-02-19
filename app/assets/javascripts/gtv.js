@@ -7,4 +7,5 @@
 //= require backbone
 //= require date
 //= require templates/month_view
+//= require templates/two_week_view
 //= require gtv_runner

@@ -4,6 +4,9 @@ class SSEEvent extends Backbone.Model
     base = 'events'
     base + @id
 
+  shortName: ->
+    this.get("short_name")
+
   startDate: ->
     this.get("start_date")
 
@@ -14,6 +17,11 @@ class SSEEvent extends Backbone.Model
 
 # Make new events right in the browser with:
 # newEvent = new SSEEvent
+
+class SSETwoWeekView extends Backbone.View
+  initialize: ->
+    # alert("Name: " + @options.events[0].get("name"))
+    $("body").html(JST["templates/two_week_view"]( events: @options.events, date: @options.date ))
 
 class SSEMonthView extends Backbone.View
   initialize: ->
@@ -28,13 +36,16 @@ class SSEBlankView extends Backbone.View
 class SSEController extends Backbone.Router
   pageSettings =
     "month":
-      "timeAlive": 15
-      "nextPage": "blank"
+      "timeAlive": 5
+      "nextPage": "two_week"
+    "two_week":
+      "timeAlive": 5
+      "nextPage": "month"
     "blank":
-      "timeAlive": 3
+      "timeAlive": 1
       "nextPage": "upcoming"
     "upcoming":
-      "timeAlive": 2
+      "timeAlive": 1
       "nextPage": "month"
   routes:
     "../events/:id": "month"
@@ -56,6 +67,7 @@ class SSEController extends Backbone.Router
     switch page
       when "month" then @month()
       when "upcoming" then @upcoming()
+      when "two_week" then @two_week()
       else @pause()
 
   month: =>
@@ -64,9 +76,23 @@ class SSEController extends Backbone.Router
         allEvents = _(data).map (event) ->
           new SSEEvent(event)
         startingDate = Date.today()
-        if not startingDate.is().monday()
-          startingDate = startingDate.last().monday()
+        if not startingDate.is().sunday()
+          startingDate = startingDate.last().sunday()
         new SSEMonthView 
+          events: allEvents 
+          date: startingDate
+      else
+        alert("Warning: no events to load!")
+
+  two_week: =>
+    $.getJSON '../events', (data) ->
+      if data
+        allEvents = _(data).map (event) ->
+          new SSEEvent(event)
+        startingDate = Date.today()
+        if not startingDate.is().sunday()
+          startingDate = startingDate.last().sunday()
+        new SSETwoWeekView 
           events: allEvents 
           date: startingDate
       else
