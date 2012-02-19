@@ -3,7 +3,7 @@ class User
 
   def initialize(options = {})
     options.each_key do |k|
-      self.send "#{k}=", options[k]
+      self.send "#{k}=", options[k] if self.respond_to?("#{k}=")
     end
   end
 

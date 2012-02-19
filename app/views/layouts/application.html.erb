@@ -39,9 +39,19 @@
             </li>
           </ul>
           <% unless signed_in? %>
-            <%= link_to "LOGIN", auth_path, class: "login" %>
+            <%= link_to "LOG IN", auth_path, class: "login" %>
           <% else %>
-            <%= link_to "LOGOUT", auth_logout_path, class: "login" %>
+            <ul>
+              <li class="dropdown" id="committees-menu">
+                <%= link_to "ADMIN <b class='caret'></b>".html_safe, "#", data: { toggle: "dropdown" }, class: "dropdown-toggle login" %>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Dashboard", admin_path %></li>
+                  <li><%= link_to "Pages", pages_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Logout", auth_logout_path %></li>
+                </ul>
+              </li>
+            </ul>
           <% end %>
         </div>
 
@@ -74,6 +84,7 @@
 
     </div>
   </div>
+  <%= render partial: "shared/stats" %>
 </body>
 </html>
 
