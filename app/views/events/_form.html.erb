@@ -11,23 +11,55 @@
     </div>
   <% end %>
 
+  <div class="none price_prototype">
+    <div class="input-prepend">
+      <span class="add-on">$</span>
+      <%= text_field_tag :price, nil, class: "span1" %>
+      <a class="small super red button destroy" href="#">Remove</a>
+    </div>
+  </div>
+
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :start_date %><br />
+   <div class="field">
+    <%= f.label :short_name %>
+    <%= f.text_field :short_name %>
+  </div>
+ <div class="field">
+    <%= f.label :start_date %>
     <%= f.datetime_select :start_date %>
   </div>
   <div class="field">
-    <%= f.label :end_date %><br />
+    <%= f.label :end_date %>
     <%= f.datetime_select :end_date %>
   </div>
   <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+  <!--
+  <div class="field">
+    <%= f.label :prices %>
+    <div class="input-prepend">
+      <span class="add-on">$</span>
+      <%= text_field_tag :price, nil, class: "span1" %>
+      <a id="add_event_price_button" class="small super button" href="#">Add Price</a>
+    </div>
+  </div>
+  -->
+  <div class="field">
+    <%= f.label :short_description %>
+    <%= f.text_field :short_description, class: "span5" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= link_to "Cancel", events_path, class: "medium red super button" %>
+    <%= f.submit nil, class: "medium super button" %>
   </div>
 <% end %>

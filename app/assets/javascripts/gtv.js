@@ -6,6 +6,6 @@
 //= require json2
 //= require backbone
 //= require date
-//= require gtv_util
 //= require templates/month_view
+//= require templates/two_week_view
 //= require gtv_runner

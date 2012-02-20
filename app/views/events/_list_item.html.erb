@@ -1,0 +1,9 @@
+<div class="list_item">
+  <div class="list_title"><%= link_to event.name, edit_event_path(event) %></div>
+  <div class="edit_links">
+    <%= link_to 'View', event_path(event) %>
+    <%= link_to 'Destroy', event, class: "red super button", confirm: 'Are you sure?', method: :delete %>
+  </div>
+  <div class="clear"></div>
+</div>
+
