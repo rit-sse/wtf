@@ -43,10 +43,10 @@ class SSEBlankView extends Backbone.View
 class SSEController extends Backbone.Router
   pageSettings =
     "month":
-      "timeAlive": 5
+      "timeAlive": 20
       "nextPage": "two_week"
     "two_week":
-      "timeAlive": 5
+      "timeAlive": 20
       "nextPage": "month"
     "blank":
       "timeAlive": 1
