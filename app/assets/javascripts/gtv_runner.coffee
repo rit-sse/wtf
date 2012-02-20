@@ -1,4 +1,11 @@
 
+SSEHelpers =
+  getLastSunday: ->
+    date = Date.today()
+    if not date.is().sunday()
+      date = date.last().sunday()
+    return date
+
 class SSEEvent extends Backbone.Model
   url: ->
     base = 'events'
@@ -57,7 +64,7 @@ class SSEController extends Backbone.Router
     @timerId = setInterval(this.flipPage, 1000)
 
   flipPage: =>
-    if @countdown == 0
+    if @countdown == -1
       @page = pageSettings[@page].nextPage
       @gotoPage(@page)
       @countdown = pageSettings[@page].timeAlive
@@ -71,30 +78,26 @@ class SSEController extends Backbone.Router
       else @pause()
 
   month: =>
-    $.getJSON '../events', (data) ->
+    sundayStart = SSEHelpers.getLastSunday()
+    $.getJSON '../events', start_date: sundayStart.toISOString(), (data) ->
       if data
         allEvents = _(data).map (event) ->
           new SSEEvent(event)
-        startingDate = Date.today()
-        if not startingDate.is().sunday()
-          startingDate = startingDate.last().sunday()
         new SSEMonthView 
           events: allEvents 
-          date: startingDate
+          date: sundayStart 
       else
         alert("Warning: no events to load!")
 
   two_week: =>
-    $.getJSON '../events', (data) ->
+    sundayStart = SSEHelpers.getLastSunday()
+    $.getJSON '../events', start_date: sundayStart.toISOString(), (data) ->
       if data
         allEvents = _(data).map (event) ->
           new SSEEvent(event)
-        startingDate = Date.today()
-        if not startingDate.is().sunday()
-          startingDate = startingDate.last().sunday()
         new SSETwoWeekView 
           events: allEvents 
-          date: startingDate
+          date: sundayStart
       else
         alert("Warning: no events to load!")
 
