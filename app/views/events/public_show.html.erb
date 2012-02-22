@@ -9,7 +9,8 @@
 
 <div class="public_show_entry">
   <h3>When?</h3>
-  <%= @event.start_date %> - <%= @event.end_date %>
+  <%= @event.start_date.strftime("%B %d, %Y") %> <br/>
+  <%= @event.start_date.strftime("%I:%M:%S") %> - <%= @event.end_date.strftime("%I:%M:%S %p") %>
 </div>
 
 <div class="public_show_entry">

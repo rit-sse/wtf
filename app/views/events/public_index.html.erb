@@ -15,7 +15,7 @@
 	<% end %>
   </div>
 
-  <% possible_views = Array.[]("Calendar", "List")%>
+  <% possible_views = Array.[]("List")%>
   <div class="view">
     <span class="inactive-entry">View:</span>
     
@@ -26,7 +26,7 @@
         <% span_class = "inactive-entry" %>
 	  <% end %>
       <span class= <%= span_class %>>
-	    <%= link_to "#{view} View", :view => 'calendar'%>
+	    <%= link_to "#{view} View" %>
 	  </span>
 	<% end %>
   </div>
