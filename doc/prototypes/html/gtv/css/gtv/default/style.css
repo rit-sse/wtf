@@ -244,4 +244,7 @@ li
 	.gtv-ad-middle h3 {
 		color: black;
 	}
+	.gtv-ad-middle img {
+		margin: 1px;
+	}
 
