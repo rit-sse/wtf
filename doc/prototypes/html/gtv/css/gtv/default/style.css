@@ -201,3 +201,47 @@ li
 		{
 			margin-bottom: 20px;
 		}
+
+.gtv-ad-left {
+	text-align: center;
+	float: left;
+}
+	.gtv-ad-left h3 {
+		color: black;
+	}
+	
+.gtv-ad-right {
+	float: right;
+	text-align: center;
+}
+	.gtv-ad-right h3 {
+		color: black;
+	}
+
+.gtv-ad-top {
+	height: 25%;
+	float: top;
+	text-align: center;
+}
+
+	.gtv-ad-top h3 {
+		color: black;
+	}
+
+.gtv-ad-bottom {
+	height: 25%;
+	text-align: center;
+	clear: all;
+}
+	.gtv-ad-bottom h3 {
+		color: black;
+	}
+
+.gtv-ad-middle {
+	text-align: center;
+	height: 50%;
+}
+	.gtv-ad-middle h3 {
+		color: black;
+	}
+
