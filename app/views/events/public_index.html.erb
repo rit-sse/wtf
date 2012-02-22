@@ -1,4 +1,4 @@
-<div class="display_wrapper">
+<div class="display-wrapper">
 
   <div class="filter">
     <span class="inactive-entry">Filter by:</span> 
@@ -15,10 +15,20 @@
 	<% end %>
   </div>
 
+  <% possible_views = Array.[]("Calendar", "List")%>
   <div class="view">
-    <span class="inactive-entry">View:</span> 
-    <span class="inactive-entry"><%= link_to 'Calendar View', :view => 'calendar'%></span>
-    <span class="active-entry"><%= link_to 'List View' %></span>
+    <span class="inactive-entry">View:</span>
+    
+	<% possible_views.each do |view| %>
+	  <% if params[:view].eql?(view) or (params[:view].nil? and view.eql?("List")) %>
+	    <% span_class = "active-entry" %>
+	  <% else %>
+        <% span_class = "inactive-entry" %>
+	  <% end %>
+      <span class= <%= span_class %>>
+	    <%= link_to "#{view} View", :view => 'calendar'%>
+	  </span>
+	<% end %>
   </div>
 </div>
 <br/>
