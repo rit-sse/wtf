@@ -49,7 +49,6 @@ h3 a
 
 .display-wrapper 
 {
-	background-image: url('/assets/filter-bg.png');
 	vertical-align: top;
 	font-size: 14px;
 }
@@ -59,7 +58,6 @@ h3 a
 {
 	padding-left: 10px;
 	float: left;
-	background-image: url('/assets/filter-bg.png');
 }
 
 /*Includes a list of different ways to view events*/
@@ -92,3 +90,13 @@ h3 a
   color: black;
 }
 
+.public_show_entry
+{
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.public_show_event_options
+{
+  padding-top: 20px;
+}
