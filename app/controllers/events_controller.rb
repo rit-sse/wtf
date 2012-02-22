@@ -27,6 +27,11 @@ class EventsController < AdminController
       @events = Event.limit(params[:limit]).where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_month)
     end
 
+	if params[:filter] != nil
+	  committee = Committee.where(:name => params[:filter]).first.id
+      @events = @events.where(:committee_id => committee)
+	end
+
     respond_to do |format|
       format.html do # index.html.erb
         if params[:view] == "calendar"

@@ -58,6 +58,12 @@
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
+
+  <div class="field">
+    <%= f.label :committee %>
+	<%= f.collection_select :committee_id, Committee.find(:all), :id, :name, {:include_blank => false}  %>
+  </div>
+
   <div class="actions">
     <%= link_to "Cancel", events_path, class: "medium red super button" %>
     <%= f.submit nil, class: "medium super button" %>

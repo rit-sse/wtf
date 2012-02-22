@@ -1,21 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
+<h1><%= @event.name %></h1>
 
-<p>
-  <b>Start date:</b>
-  <%= @event.start_date %>
-</p>
+<div class="public_show_entry">
+  <h3>What?</h3>
+  <%= (@event.description.empty? ? "There is no description at this time." : @event.description) %>
+</div>
 
-<p>
-  <b>End date:</b>
-  <%= @event.end_date %>
-</p>
+<div class="public_show_entry">
+  <h3>When?</h3>
+  <%= @event.start_date.strftime("%B %d, %Y") %> <br/>
+  <%= @event.start_date.strftime("%I:%M:%S") %> - <%= @event.end_date.strftime("%I:%M:%S %p") %>
+</div>
 
-<% if can? :update, @event %> 
-<%= link_to 'Edit', edit_event_path %> |
-<% end %>
-<%= link_to 'Back', pub_events_path %>
+<div class="public_show_entry">
+  <h3>Where?</h3>
+  <%= @event.location.empty? ? "The location for this event was not entered." : @event.location %>
+</div>
+
+<div class="public_show_event_options">
+  <% if can? :update, @event %> 
+    <%= link_to 'Edit', edit_event_path %> |
+  <% end %>
+  <%= link_to 'Back', pub_events_path %>
+</div>
