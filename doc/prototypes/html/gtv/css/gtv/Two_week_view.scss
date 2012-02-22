@@ -17,6 +17,7 @@ header, thead
 
 table
 {
+	table-layout: fixed;
 	-webkit-border-horizontal-spacing: 0px;
 	-webkit-border-vertical-spacing: 0px;
 	width: 100%;
@@ -69,11 +70,15 @@ th
 	border-bottom: 4px solid #f1f1f1;
 }
 
-td
+.td-tall
 {
-	height: 158px;
-	padding: 10px;
+	height: 365px;
+	width: 141px;
+	padding: 20px;
 	border: 2px solid #f1f1f1;
+	text-overflow: ellipsis;
+	overflow: hidden;
+
 }
 
 li
@@ -144,19 +149,34 @@ li
 
 .gtv-calendar-weekcol
 {
+	
 	width: 100px;
 }
-
 	.gtv-calendar-weekcol h3
 	{
 		color: #9ab7c7;
+
 	}
+.gtv-tall-wcol
+{
+	color: #9ab7c7;
+	height: 365px;
+	padding: 20px;
+	border: 2px solid #f1f1f1;
+}
+	.gtv-tall-wcol h3
+	{
+		color: #9ab7c7;
+	}
+
+	
 
 .gtv-calendar-eventlist
 {
 	list-style-type: none;
 	overflow: hidden;
 	height: 158px;
+	table-layout: fixed;
 }
 
 .today
@@ -201,50 +221,3 @@ li
 		{
 			margin-bottom: 20px;
 		}
-
-.gtv-ad-left {
-	text-align: center;
-	float: left;
-}
-	.gtv-ad-left h3 {
-		color: black;
-	}
-	
-.gtv-ad-right {
-	float: right;
-	text-align: center;
-}
-	.gtv-ad-right h3 {
-		color: black;
-	}
-
-.gtv-ad-top {
-	height: 25%;
-	float: top;
-	text-align: center;
-}
-
-	.gtv-ad-top h3 {
-		color: black;
-	}
-
-.gtv-ad-bottom {
-	height: 25%;
-	text-align: center;
-	clear: all;
-}
-	.gtv-ad-bottom h3 {
-		color: black;
-	}
-
-.gtv-ad-middle {
-	text-align: center;
-	height: 50%;
-}
-	.gtv-ad-middle h3 {
-		color: black;
-	}
-	.gtv-ad-middle img {
-		margin: 1px;
-	}
-

@@ -1,5 +1,6 @@
 
 <section class="gtv-content-container">
+
 	<!-- Calendar -->
 	<section class="gtv-calendar-container">
 		<table>
@@ -17,25 +18,26 @@
 			</thead>
 
 			<tbody>
-        <% for week in [0..3]: %>
+	      <% for week in [0..1]: %>
           <tr>
-            <td class="gtv-calendar-weekcol"><h3><%= @date.toString("M/d") %></h3></td>
-            <% for day in [0..6]: %>
-              <td <%= "class='today'" if Date.today().equals(@date) %>>
-                <ul class="gtv-calendar-eventlist <%= %>">
-                <% for event in @events: %>
+            <td class="gtv-tall-wcol"><h3><%= @date.toString("M/d") %></h3></td>
+	          <% for day in [0..6]: %>
+              <td class="td-tall <%='today' if Date.today().equals(@date) %>">
+                <ul class="gtv-calendar-eventlist">
+		            <% for event in @events: %>
                   <% if event.matchesStartDate(@date): %>
-                    <li><%= event.shortName() %>
-                  <% end %>
-                <% end %>
+		                <li><%= event.shortName() %>
+		              <% end %>
+		            <% end %>
                 </ul>
               </td>
-              <% @date = @date.add(1).days() %>
-            <% end %>
+ 	            <% @date = @date.add(1).days() %>
+	            <% end %>
+	          </td>
           </tr>
-        <% end %>
-      </tbody>
-		</table>
+	      <% end %>
+	    </tbody>
+	  </table>
 	</section>
 
 </section>

@@ -1,5 +1,7 @@
 Wtf::Application.routes.draw do
 
+  resources :committees
+
   scope "/admin" do
     resources :pages
     resources :events
@@ -16,8 +18,10 @@ Wtf::Application.routes.draw do
   match '/auth/logout', to: 'auth#logout'
   post '/auth(/:action)', controller: 'auth'
 
+  match '/events' => 'events#public_index', as: "pub_events"
   match '/events/gtv', to: 'events#gtv'
-  match '/events', to: 'events#public_index', as: "pub_events"
+  match '/events(/:id)' => 'events#public_show', as: "pub_show"
+
   # static routes and redirects
   # ...
 
