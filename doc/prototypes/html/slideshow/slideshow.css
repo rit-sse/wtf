@@ -23,36 +23,52 @@
     background: -moz-linear-gradient(top,  #000,  #3F3F3F); /* for firefox 3.6+ */ 
 }
 
+/* SSE logo */
 .logo {
     height: 25%;
     margin: 10;
     padding: 10;
 }
 
+/* 3 piece slides */
 .slideelement {
     height: 30%;
     marign: 10;
     padding: 10;
 }
 
-.startext {
+/* Text positioning */
+.bottomlefttext {
     position: absolute;
     left: 10px;
     bottom: 10px;
 }
 
-.fullimage {
-    height: 100%;
-    width: 100%;
-}
-
-.campingheader {
-    color: white;
+.bottomrighttext {
     position: absolute;
     right: 10px;
     bottom: 10px;
 }
 
+.toplefttext {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.toprighttext {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+/* Full image slide */
+.fullimage {
+    height: 100%;
+    width: 100%;
+}
+
+/* Camping slide */
 .campingtopimage{
     height: 50%;
     width: 50%;
@@ -63,6 +79,7 @@
     width: 100%;
 }
 
+/* Rapid Development Slide */
 .bottomleftrdw {
     position: absolute;
     z-index: 1;
@@ -108,6 +125,7 @@
     bottom: 0;
 }
 
+/* Sponsor slides */
 .imagetext {
     height: 12.5%
     margin: 10;
