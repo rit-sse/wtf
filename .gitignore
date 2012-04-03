@@ -1,3 +1,6 @@
+public/images/*
+config/s3_credentials.yml
+public/uploads/*
 .bundle
 db/*.sqlite3
 log/*.log
