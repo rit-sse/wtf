@@ -1,5 +1,5 @@
 public/images/*
-config/s3_credentials.yml
+config/s3_credentials.rb
 public/uploads/*
 .bundle
 db/*.sqlite3

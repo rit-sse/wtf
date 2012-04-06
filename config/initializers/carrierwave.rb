@@ -1,14 +1,11 @@
 
-if FileTest.exists?(Rails.root.join('config/s3_credentials.yml'))
+if FileTest.exists?(Rails.root.join('config/s3_credentials.rb'))
 
   puts "Using real credentials"
-  Fog.credentials_path = Rails.root.join('config/s3_credentials.yml')
 
-  CarrierWave.configure do |config|
-    config.storage = :fog
-    config.fog_credentials = {:provider => 'AWS'}
-    config.fog_directory = "images" # required
-  end
+  credentials_path = Rails.root.join('config/s3_credentials.rb')
+  require credentials_path
+
 elsif Rails.env.test? or 
   Rails.env.cucumber? or 
   Rails.env.development?
