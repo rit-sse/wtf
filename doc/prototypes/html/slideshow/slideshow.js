@@ -1,4 +1,4 @@
-var numSlides = 18;
+var numSlides = 20;
 var currentSlideIndex = 0;
 
 var slideTimerMillisCount = 5000;
