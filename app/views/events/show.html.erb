@@ -14,10 +14,5 @@
   <%= @event.end_date %>
 </p>
 
-<p>
-  <b>Associated image:</b>
-  <%= image_tag(@event.image_url) if @event.image? %>
-</p>
-
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

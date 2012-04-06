@@ -18,11 +18,6 @@
   <%= @event.location.empty? ? "The location for this event was not entered." : @event.location %>
 </div>
 
-<div class="public_show_entry">
-  <h3>Image?</h3>
-  <%= image_tag(@event.image_url) if @event.image? %>
-</div>
-
 <div class="public_show_event_options">
   <% if can? :update, @event %> 
     <%= link_to 'Edit', edit_event_path %> |
