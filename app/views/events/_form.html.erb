@@ -61,7 +61,15 @@
 
   <div class="field">
     <%= f.label :committee %>
-	<%= f.collection_select :committee_id, Committee.find(:all), :id, :name, {:include_blank => false}  %>
+    <%= f.collection_select :committee_id, Committee.find(:all), :id, :name, {:include_blank => false}  %>
+  </div>
+
+  <!-- Use this in order to display images -->
+  <div class="field">
+    <%= image_tag(@event.image_url) if @event.image? %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
   </div>
 
   <div class="actions">

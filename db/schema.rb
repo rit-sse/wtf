@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120206194006) do
+ActiveRecord::Schema.define(:version => 20120330144217) do
 
   create_table "committees", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20120206194006) do
     t.string   "short_name"
     t.string   "short_description"
     t.integer  "committee_id"
+    t.string   "image"
   end
 
   create_table "pages", :force => true do |t|
