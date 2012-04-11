@@ -40,7 +40,9 @@ h3
 th
 {
   width: 250px;
+  max-width: 250px;
   height: 171px;
+  max-height: 171px;
 
   border-bottom: 3px solid #f1f1f1;
 }
@@ -48,7 +50,9 @@ th
 td
 {
   width: 250px;
+  max-width: 250px;
   height: 296px;
+  max-height: 296px;
   overflow: hidden;
   border: 3px solid #f1f1f1;
 }
@@ -79,6 +83,7 @@ li
 .gtv-calendar-weekcol
 {
   width: 182px;
+  max-width: 182px;
 }
 
 .gtv-calendar-weekcol h3
