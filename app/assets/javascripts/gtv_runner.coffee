@@ -19,11 +19,25 @@ class SSEEvent extends Backbone.Model
 
   matchesStartDate: (datetime) ->
     otherDate = datetime.clearTime()
-    thisDate = Date.parseExact(this.startDate(), "yyyy-MM-ddTHH:mm:ss-05:00").clearTime()
+    thisDate = ""
+    try
+      thisDate = Date.parseExact(this.startDate(), "yyyy-MM-ddTHH:mm:ss-05:00").clearTime()
+    catch error
+      #console.log("Failed to parse date!")
+      try
+        thisDate = Date.parseExact(this.startDate(), "yyyy-MM-ddTHH:mm:ss-04:00").clearTime()
+      catch error2
+        console.log("ERROR: no known timezone for the server.")
+
     return thisDate.equals(otherDate)
 
 # Make new events right in the browser with:
 # newEvent = new SSEEvent
+
+class SSEThreeWeekView extends Backbone.View
+  initialize: ->
+    # alert("Name: " + @options.events[0].get("name"))
+    $("body").html(JST["templates/three_week_view"]( events: @options.events, date: @options.date ))
 
 class SSETwoWeekView extends Backbone.View
   initialize: ->
@@ -42,8 +56,12 @@ class SSEBlankView extends Backbone.View
 
 class SSEController extends Backbone.Router
   pageSettings =
+    "three_week":
+      # Refresh every three minutes
+      "timeAlive": 180
+      "nextPage": "three_week"
     "month":
-      "timeAlive": 20
+      "timeAlive": 0
       "nextPage": "two_week"
     "two_week":
       "timeAlive": 20
@@ -58,9 +76,9 @@ class SSEController extends Backbone.Router
     "../events/:id": "month"
 
   start: =>
-    this.month()
-    @countdown = pageSettings.month.timeAlive
-    @page = "month"
+    this.three_week()
+    @countdown = pageSettings.three_week.timeAlive
+    @page = "three_week"
     @timerId = setInterval(this.flipPage, 1000)
 
   flipPage: =>
@@ -75,6 +93,7 @@ class SSEController extends Backbone.Router
       when "month" then @month()
       when "upcoming" then @upcoming()
       when "two_week" then @two_week()
+      when "three_week" then @three_week()
       else @pause()
 
   month: =>
@@ -96,6 +115,18 @@ class SSEController extends Backbone.Router
         allEvents = _(data).map (event) ->
           new SSEEvent(event)
         new SSETwoWeekView 
+          events: allEvents 
+          date: sundayStart
+      else
+        alert("Warning: no events to load!")
+
+  three_week: =>
+    sundayStart = SSEHelpers.getLastSunday()
+    $.getJSON '../events', start_date: sundayStart.toISOString(), (data) ->
+      if data
+        allEvents = _(data).map (event) ->
+          new SSEEvent(event)
+        new SSEThreeWeekView 
           events: allEvents 
           date: sundayStart
       else
