@@ -39,19 +39,18 @@ h3
 
 th
 {
-  width: 12%;
-  height: 19%;
+  width: 250px;
+  height: 171px;
 
-  border-bottom: 2px solid #f1f1f1;
+  border-bottom: 3px solid #f1f1f1;
 }
 
 td
 {
-  height: 26%;
+  width: 250px;
+  height: 296px;
   overflow: hidden;
-  padding-top: 1%;
-  padding-left: 1%;
-  border: 2px solid #f1f1f1;
+  border: 3px solid #f1f1f1;
 }
 
 ul
@@ -69,20 +68,17 @@ li
 
 .container
 {
-  width: 100%;
-  // original:
-  //width: 1135px;
-  height: 100%;
-  // original:
-  //height: 800px;
+  //width: 100%;
+  width: 1920px;
+  //height: 100%;
+  height: 1080px;
 
   background-color: #c9dae5;
 }
 
 .gtv-calendar-weekcol
 {
-  width: 9%;
-  padding-left: 0%;
+  width: 182px;
 }
 
 .gtv-calendar-weekcol h3
