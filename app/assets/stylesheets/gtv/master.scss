@@ -1,0 +1,118 @@
+$white: #f1f1f1;
+$darkblue: #146b9d;
+$mediumblue: #c9dae5;
+$lightblue: #dae6ee;
+$faded: #9ab7c7;
+
+* 
+{
+  margin: 0px;
+  padding: 0px;
+  border-style: none;
+}
+
+html, body
+{
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100%;
+  background-color: $white;
+}
+
+h1, h2, h3, th
+{
+  color: $white;
+}
+
+h3
+{
+  font-size: 40pt;
+  text-align: center;
+}
+
+.container
+{
+  width: 1920px;
+  height: 1080px;
+}
+
+//
+// Specific to three week view
+//
+
+$cal_width: 250px;
+$cal_width_s: 182px;
+$cal_height: 311px;
+$cal_height_s: 126px;
+
+thead
+{
+  background-color: $darkblue;
+}
+
+table
+{
+  -webkit-border-horizontal-spacing: 0px;
+  -webkit-border-vertical-spacing: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+th
+{
+  width: $cal_width;
+  max-width: $cal_width;
+  height: $cal_height_s;
+  max-height: $cal_height_s;
+
+  border-bottom: 3px solid $white;
+}
+
+td
+{
+  width: $cal_width;
+  max-width: $cal_width;
+  height: $cal_height;
+  max-height: $cal_height;
+  overflow: hidden;
+  background-color: $lightblue;
+  border: 3px solid $white;
+}
+
+ul.gtv-calendar-eventlist
+{
+  overflow: hidden;
+}
+
+.gtv-calendar-eventlist li
+{
+  font-size: 34px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.gtv-calendar-weekcol
+{
+  width: $cal_width_s;
+  max-width: $cal_width_s;
+}
+
+.gtv-calendar-weekcol h3
+{
+  color: $faded;
+}
+
+.gtv-calendar-eventlist
+{
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.today
+{
+  background-color: $mediumblue;
+}
+
+//
+// End three week view
+//
