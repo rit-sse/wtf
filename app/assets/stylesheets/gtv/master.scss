@@ -6,6 +6,8 @@ $faded: #9ab7c7;
 $darkgray: #808080;
 $lightgray: #cccccc;
 
+$header_height: 126px;
+
 * 
 {
   margin: 0px;
@@ -92,9 +94,9 @@ $event_part_h: $four_event_part_h;
 .gtv-event-header {
   overflow: hidden;
 
-  height: 126px;
-  max-height: 126px;
-  line-height: 126px;
+  height: $header_height;
+  max-height: $header_height;
+  line-height: $header_height;
 
   background-color: $darkblue;
 }
@@ -112,6 +114,7 @@ $event_part_h: $four_event_part_h;
   border-bottom: 2px solid $lightgray;
 }
 
+// Kill borders on bottom of page
 #event-0-3 {
   border: none;
 }
@@ -155,7 +158,7 @@ $event_part_h: $four_event_part_h;
 $cal_width: 250px;
 $cal_width_s: 182px;
 $cal_height: 311px;
-$cal_height_s: 126px;
+$cal_height_s: $header_height;
 
 thead
 {
