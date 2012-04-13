@@ -27,10 +27,10 @@ class EventsController < AdminController
       @events = Event.limit(params[:limit]).where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_month)
     end
 
-	if params[:filter] != nil
-	  committee = Committee.where(:name => params[:filter]).first.id
+    if params[:filter] != nil
+      committee = Committee.where(:name => params[:filter]).first.id
       @events = @events.where(:committee_id => committee)
-	end
+    end
 
     respond_to do |format|
       format.html do # index.html.erb
@@ -47,7 +47,6 @@ class EventsController < AdminController
   # GET /events/1
   # GET /events/1.json
   def show
-    #@event = Event.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }

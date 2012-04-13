@@ -17,25 +17,33 @@ class SSEEvent extends Backbone.Model
   startDate: ->
     this.get("start_date")
 
+  startDay: ->
+    dt = this.parseDateTime(this.startDate())
+    dt.toString("MMMM d")
+
   startHour: ->
-    this.get("start_date")
+    dt = this.parseDateTime(this.startDate())
+    dt.toString("htt")
 
   location: ->
     this.get("location")
 
   matchesStartDate: (datetime) ->
     otherDate = datetime.clearTime()
-    thisDate = ""
-    try
-      thisDate = Date.parseExact(this.startDate(), "yyyy-MM-ddTHH:mm:ss-05:00").clearTime()
-    catch error
-      #console.log("Failed to parse date!")
-      try
-        thisDate = Date.parseExact(this.startDate(), "yyyy-MM-ddTHH:mm:ss-04:00").clearTime()
-      catch error2
-        console.log("ERROR: no known timezone for the server.")
+    thisDate = this.parseDateTime(this.startDate()).clearTime()
 
     return thisDate.equals(otherDate)
+
+  parseDateTime: (datetime) ->
+    retDate = Date.parseExact(datetime, "yyyy-MM-ddTHH:mm:ss-05:00")
+    if not retDate
+      retDate = Date.parseExact(datetime, "yyyy-MM-ddTHH:mm:ss-04:00")
+
+    if not retDate
+      console.log("ERROR: no known timezone for server.")
+
+    return retDate
+
 
 class SSEThreeWeekView extends Backbone.View
   initialize: ->
@@ -62,10 +70,10 @@ class SSEController extends Backbone.Router
   pageSettings =
     "three_week":
       # Refresh every three minutes
-      "timeAlive": 180
+      "timeAlive": 30
       "nextPage": "event_panels"
     "event_panels":
-      "timeAlive": 180
+      "timeAlive": 30
       "nextPage": "three_week"
     "month":
       "timeAlive": 0
@@ -141,7 +149,7 @@ class SSEController extends Backbone.Router
 
   event_panels: =>
     req = 
-      limit: 15
+      limit: 20
     $.getJSON '../events', req, (data) ->
       if data
         allEvents = _(data).map (event) ->

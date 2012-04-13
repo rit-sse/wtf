@@ -2,7 +2,7 @@
 <section class="container">
 
   <% eventIndex = 0 %>
-  <% for event_set in [0..2]: %>
+  <% for event_set in [0..3]: %>
     <div class="gtv-panel-wrapper">
       <div class="gtv-event-panel">
         <div class="gtv-event-header">
@@ -10,6 +10,7 @@
         </div>
         <% events = @events[eventIndex..eventIndex + 5] %>
         <% for event in events: %>
+          <% console.log(event) %>
           <div class="gtv-event">
             <!-- ShortName -->
             <div class="gtv-event-title">
@@ -21,7 +22,10 @@
             </div>
             <!-- When -->
             <div class="gtv-event-data">
-              When: <%= event.startHour() %>
+              When: <%= event.startDay() %>
+            </div>
+            <div class="gtv-event-data">
+              Time: <%= event.startHour() %>
             </div>
           </div>
           <% eventIndex++ %>
