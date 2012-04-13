@@ -45,11 +45,14 @@ $four_panel_w: 460px;
 
 $five_event_h: 184px;
 $four_event_h: 242px;
+$five_event_title_h: 70px;
+$four_event_title_h: 74px;
 $five_event_part_h: 46px;
 $four_event_part_h: 56px;
 
 $panel_w: $three_panel_w;
 $event_h: $four_event_h;
+$event_title_h: $four_event_title_h;
 $event_part_h: $four_event_part_h;
 
 .gtv-panel-wrapper {
@@ -61,6 +64,8 @@ $event_part_h: $four_event_part_h;
   padding: 8px;
   padding-top: 18px;
   padding-bottom: 18px;
+
+  background-color: $white;
 }
 
 #wrapper2 {
@@ -75,17 +80,18 @@ $event_part_h: $four_event_part_h;
   height: 1040px;
   max-height: 1040px;
 
-  //border: 2px solid $darkblue;
-  //border-radius: 5px;
+  background-color: $white;
 }
 
 .gtv-event-header {
   overflow: hidden;
 
-  background-color: $darkblue;
-
   height: 70px;
   max-height: 70px;
+
+  background-color: $darkblue;
+  border: 2px solid $darkblue;
+  border-radius: 8px;
 }
 
 .gtv-event {
@@ -94,16 +100,19 @@ $event_part_h: $four_event_part_h;
   height: $event_h;
   max-height: $event_h;
 
-  padding-left: 5px;
+  padding-left: 9px;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 4px;
+
+  border-bottom: 1px solid $darkblue;
 }
 
 .gtv-event-title {
   overflow: hidden;
 
-  height: $event_part_h;
-  max-height: $event_part_h;
+  height: $event_title_h;
+  max-height: $event_title_h;
+  line-height: $event_title_h;
 
   font-size: 46px;
 }
@@ -113,6 +122,7 @@ $event_part_h: $four_event_part_h;
 
   height: $event_part_h;
   max-height: $event_part_h;
+  line-height: $event_part_h;
 
   padding-left: 25px;
 
