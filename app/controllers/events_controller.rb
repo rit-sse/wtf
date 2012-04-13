@@ -22,18 +22,15 @@ class EventsController < AdminController
     end
 
     if params[:end_date] != nil
-      @events = Event.where(:start_date => params[:start_date].to_date..params[:end_date].to_date.next_day)
+      @events = Event.where(:start_date => params[:start_date].to_date..params[:end_date].to_date.next_day).order(:start_date).limit(params[:limit])
     else
-      @events = Event.where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_month)
+      @events = Event.where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_month).order(:start_date).limit(params[:limit])
     end
 
     if params[:filter] != nil
       committee = Committee.where(:name => params[:filter]).first.id
       @events = @events.where(:committee_id => committee)
     end
-
-    @events = @events.sort {|a,b| a.start_date <=> b.start_date}
-    @events = @events.limit(params[:limit])
 
     respond_to do |format|
       format.html do # index.html.erb
