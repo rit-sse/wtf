@@ -2,13 +2,13 @@
 <section class="container">
 
   <% eventIndex = 0 %>
-  <% for event_set in [0..3]: %>
+  <% for event_set in [0..2]: %>
     <div class="gtv-panel-wrapper">
       <div class="gtv-event-panel">
         <div class="gtv-event-header">
           <h3>Upcoming Events</h3>
         </div>
-        <% events = @events[eventIndex..eventIndex + 4] %>
+        <% events = @events[eventIndex..eventIndex + 3] %>
         <% for event in events: %>
           <% console.log(event) %>
           <div class="gtv-event">

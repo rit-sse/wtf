@@ -40,6 +40,18 @@ h3
 // Specific to 15 event view
 //
 
+$three_panel_w: 620px;
+$four_panel_w: 460px;
+
+$five_event_h: 184px;
+$four_event_h: 242px;
+$five_event_part_h: 46px;
+$four_event_part_h: 56px;
+
+$panel_w: $three_panel_w;
+$event_h: $four_event_h;
+$event_part_h: $four_event_part_h;
+
 .gtv-panel-wrapper {
   float: left;
   overflow: hidden;
@@ -52,12 +64,13 @@ h3
 .gtv-event-panel {
   overflow: hidden;
 
-  width: 460px;
-  max-width: 460px;
+  width: $panel_w;
+  max-width: $panel_w;
   height: 1040px;
   max-height: 1040px;
 
   border: 2px solid $darkblue;
+  border-radius: 5px;
 }
 
 .gtv-event-header {
@@ -72,8 +85,8 @@ h3
 .gtv-event {
   overflow: hidden;
 
-  height: 184px;
-  max-height: 184px;
+  height: $event_h;
+  max-height: $event_h;
 
   padding-left: 5px;
   padding-top: 5px;
@@ -83,15 +96,21 @@ h3
 .gtv-event-title {
   overflow: hidden;
 
-  font-size: 40px;
+  height: $event_part_h;
+  max-height: $event_part_h;
+
+  font-size: 46px;
 }
 
 .gtv-event-data {
   overflow: hidden;
 
+  height: $event_part_h;
+  max-height: $event_part_h;
+
   padding-left: 25px;
 
-  font-size: 36px;
+  font-size: 42px;
 }
 
 //
