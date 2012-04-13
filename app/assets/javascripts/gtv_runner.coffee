@@ -108,7 +108,7 @@ class SSEController extends Backbone.Router
       when "month" then @month()
       when "two_week" then @two_week()
       when "three_week" then @three_week()
-      when "event_panels" then @events_panel()
+      when "event_panels" then @event_panels()
       else @pause()
 
   month: =>
