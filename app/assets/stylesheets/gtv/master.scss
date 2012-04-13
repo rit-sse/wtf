@@ -47,15 +47,15 @@ h3
 // Specific to 15 event view
 //
 
-$three_panel_w: 610px;
-$four_panel_w: 450px;
+$three_panel_w: 590px;
+$four_panel_w: 430px;
 
 $five_event_h: 184px;
-$four_event_h: 232px;
+$four_event_h: 228px;
 $five_event_title_h: 70px;
-$four_event_title_h: 64px;
+$four_event_title_h: 66px;
 $five_event_part_h: 46px;
-$four_event_part_h: 56px;
+$four_event_part_h: 54px;
 
 $panel_w: $three_panel_w;
 $event_h: $four_event_h;
@@ -80,11 +80,11 @@ $event_part_h: $four_event_part_h;
 
   width: $panel_w;
   max-width: $panel_w;
-  height: 964px;
+  height: 954px;
   max-height: 954px;
 
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
 
   background-color: $white;
 }
@@ -110,6 +110,16 @@ $event_part_h: $four_event_part_h;
   padding-bottom: 4px;
 
   border-bottom: 2px solid $lightgray;
+}
+
+#event-0-3 {
+  border: none;
+}
+#event-1-3 {
+  border: none;
+}
+#event-2-3 {
+  border: none;
 }
 
 .gtv-event-title {

@@ -9,9 +9,10 @@
     <div id="wrapper<%= event_set %>" class="gtv-panel-wrapper">
       <div class="gtv-event-panel">
         <% events = @events[eventIndex..eventIndex + 3] %>
+        <% event_num = 0 %>
         <% for event in events: %>
           <% console.log(event) %>
-          <div class="gtv-event">
+          <div class="gtv-event" id="event-<%= event_set %>-<%= event_num %>">
             <!-- ShortName -->
             <div class="gtv-event-title">
               <%= event.shortName() %>
@@ -29,6 +30,7 @@
             </div>
           </div>
           <% eventIndex++ %>
+          <% event_num++ %>
         <% end %>
       </div>
     </div>
