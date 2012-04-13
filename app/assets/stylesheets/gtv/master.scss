@@ -197,6 +197,9 @@ td
 ul.gtv-calendar-eventlist
 {
   overflow: hidden;
+
+  height: $cal_height;
+  max-height: $cal_height;
 }
 
 .gtv-calendar-eventlist li
