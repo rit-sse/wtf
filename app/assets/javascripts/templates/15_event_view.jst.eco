@@ -3,7 +3,7 @@
 
   <% eventIndex = 0 %>
   <% for event_set in [0..2]: %>
-    <div class="gtv-panel-wrapper">
+    <div id="wrapper<%= event_set %>" class="gtv-panel-wrapper">
       <div class="gtv-event-panel">
         <div class="gtv-event-header">
           <h3>Upcoming Events</h3>

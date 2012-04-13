@@ -56,9 +56,15 @@ $event_part_h: $four_event_part_h;
   float: left;
   overflow: hidden;
 
+  border-right: 2px solid $darkblue;
+
   padding: 8px;
   padding-top: 18px;
   padding-bottom: 18px;
+}
+
+#wrapper2 {
+  border: none;
 }
 
 .gtv-event-panel {
@@ -69,8 +75,8 @@ $event_part_h: $four_event_part_h;
   height: 1040px;
   max-height: 1040px;
 
-  border: 2px solid $darkblue;
-  border-radius: 5px;
+  //border: 2px solid $darkblue;
+  //border-radius: 5px;
 }
 
 .gtv-event-header {
