@@ -3,6 +3,8 @@ $darkblue: #146b9d;
 $mediumblue: #c9dae5;
 $lightblue: #dae6ee;
 $faded: #9ab7c7;
+$darkgray: #808080;
+$lightgray: #cccccc;
 
 * 
 {
@@ -38,7 +40,7 @@ h3
 
 .faded
 {
-  color: $faded;
+  color: $darkgray;
 }
 
 //
@@ -64,13 +66,9 @@ $event_part_h: $four_event_part_h;
   float: left;
   overflow: hidden;
 
-  border-right: 2px solid $darkblue;
-
-  //padding: 8px;
-  //padding-top: 18px;
-  //padding-bottom: 18px;
-
   background-color: $white;
+
+  border-right: 2px solid $darkblue;
 }
 
 #wrapper2 {
@@ -91,16 +89,11 @@ $event_part_h: $four_event_part_h;
 .gtv-event-header {
   overflow: hidden;
 
-  height: 70px;
-  max-height: 70px;
-
-  //padding: 8px;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  height: 126px;
+  max-height: 126px;
+  line-height: 126px;
 
   background-color: $darkblue;
-  //border: 2px solid $darkblue;
-  //border-radius: 8px;
 }
 
 .gtv-event {
@@ -110,10 +103,10 @@ $event_part_h: $four_event_part_h;
   max-height: $event_h;
 
   padding-left: 9px;
-  padding-top: 5px;
+  padding-top: 4px;
   padding-bottom: 4px;
 
-  border-bottom: 1px solid $mediumblue;
+  border-bottom: 2px solid $lightgray;
 }
 
 .gtv-event-title {
