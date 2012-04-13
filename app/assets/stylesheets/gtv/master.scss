@@ -36,6 +36,11 @@ h3
   height: 1080px;
 }
 
+.faded
+{
+  color: $faded;
+}
+
 //
 // Specific to 15 event view
 //
@@ -61,9 +66,9 @@ $event_part_h: $four_event_part_h;
 
   border-right: 2px solid $darkblue;
 
-  padding: 8px;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  //padding: 8px;
+  //padding-top: 18px;
+  //padding-bottom: 18px;
 
   background-color: $white;
 }
@@ -89,9 +94,13 @@ $event_part_h: $four_event_part_h;
   height: 70px;
   max-height: 70px;
 
+  //padding: 8px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+
   background-color: $darkblue;
-  border: 2px solid $darkblue;
-  border-radius: 8px;
+  //border: 2px solid $darkblue;
+  //border-radius: 8px;
 }
 
 .gtv-event {
@@ -104,7 +113,7 @@ $event_part_h: $four_event_part_h;
   padding-top: 5px;
   padding-bottom: 4px;
 
-  border-bottom: 1px solid $darkblue;
+  border-bottom: 1px solid $mediumblue;
 }
 
 .gtv-event-title {

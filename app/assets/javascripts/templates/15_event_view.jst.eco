@@ -18,14 +18,14 @@
             </div>
             <!-- Where -->
             <div class="gtv-event-data">
-              Where: <%= event.location() %>
+              <span class="faded">Where:</span> <%= event.location() %>
             </div>
             <!-- When -->
             <div class="gtv-event-data">
-              When: <%= event.startDay() %>
+              <span class="faded">When:</span> <%= event.startDay() %>
             </div>
             <div class="gtv-event-data">
-              Time: <%= event.startHour() %>
+              <span class="faded">Time:</span> <%= event.startHour() %>
             </div>
           </div>
           <% eventIndex++ %>
