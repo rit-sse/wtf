@@ -8,7 +8,7 @@
         <div class="gtv-event-header">
           <h3>Upcoming Events</h3>
         </div>
-        <% events = @events[eventIndex..eventIndex + 5] %>
+        <% events = @events[eventIndex..eventIndex + 4] %>
         <% for event in events: %>
           <% console.log(event) %>
           <div class="gtv-event">

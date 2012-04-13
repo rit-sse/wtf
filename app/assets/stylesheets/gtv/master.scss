@@ -42,6 +42,7 @@ h3
 
 .gtv-panel-wrapper {
   float: left;
+  overflow: hidden;
 
   padding: 8px;
   padding-top: 18px;
@@ -49,20 +50,30 @@ h3
 }
 
 .gtv-event-panel {
+  overflow: hidden;
+
   width: 460px;
+  max-width: 460px;
   height: 1040px;
+  max-height: 1040px;
 
   border: 2px solid $darkblue;
 }
 
 .gtv-event-header {
+  overflow: hidden;
+
   background-color: $darkblue;
 
   height: 70px;
+  max-height: 70px;
 }
 
 .gtv-event {
+  overflow: hidden;
+
   height: 184px;
+  max-height: 184px;
 
   padding-left: 5px;
   padding-top: 5px;
@@ -70,10 +81,14 @@ h3
 }
 
 .gtv-event-title {
+  overflow: hidden;
+
   font-size: 40px;
 }
 
 .gtv-event-data {
+  overflow: hidden;
+
   padding-left: 25px;
 
   font-size: 36px;

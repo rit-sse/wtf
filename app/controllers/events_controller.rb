@@ -32,6 +32,8 @@ class EventsController < AdminController
       @events = @events.where(:committee_id => committee)
     end
 
+    @events = @events.sort {|a,b| a.start_date <=> b.start_date}
+
     respond_to do |format|
       format.html do # index.html.erb
         if params[:view] == "calendar"
