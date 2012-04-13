@@ -149,7 +149,7 @@ class SSEController extends Backbone.Router
 
   event_panels: =>
     req = 
-      limit: 20
+      limit: 12 
     $.getJSON '../events', req, (data) ->
       if data
         allEvents = _(data).map (event) ->
