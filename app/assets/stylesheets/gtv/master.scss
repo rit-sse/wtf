@@ -37,6 +37,53 @@ h3
 }
 
 //
+// Specific to 15 event view
+//
+
+.gtv-panel-wrapper {
+  float: left;
+
+  padding: 8px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.gtv-event-panel {
+  width: 620px;
+  height: 1040px;
+
+  border: 2px solid $darkblue;
+}
+
+.gtv-event-header {
+  background-color: $darkblue;
+
+  height: 70px;
+}
+
+.gtv-event {
+  height: 184px;
+
+  padding-left: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.gtv-event-title {
+  font-size: 40px;
+}
+
+.gtv-event-data {
+  padding-left: 25px;
+
+  font-size: 36px;
+}
+
+//
+// End 15 event view
+//
+
+//
 // Specific to three week view
 //
 

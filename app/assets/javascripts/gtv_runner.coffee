@@ -17,6 +17,12 @@ class SSEEvent extends Backbone.Model
   startDate: ->
     this.get("start_date")
 
+  startHour: ->
+    this.get("start_date")
+
+  location: ->
+    this.get("location")
+
   matchesStartDate: (datetime) ->
     otherDate = datetime.clearTime()
     thisDate = ""
@@ -31,23 +37,21 @@ class SSEEvent extends Backbone.Model
 
     return thisDate.equals(otherDate)
 
-# Make new events right in the browser with:
-# newEvent = new SSEEvent
-
 class SSEThreeWeekView extends Backbone.View
   initialize: ->
-    # alert("Name: " + @options.events[0].get("name"))
     $("body").html(JST["templates/three_week_view"]( events: @options.events, date: @options.date ))
 
 class SSETwoWeekView extends Backbone.View
   initialize: ->
-    # alert("Name: " + @options.events[0].get("name"))
     $("body").html(JST["templates/two_week_view"]( events: @options.events, date: @options.date ))
 
 class SSEMonthView extends Backbone.View
   initialize: ->
-    # alert("Name: " + @options.events[0].get("name"))
     $("body").html(JST["templates/month_view"]( events: @options.events, date: @options.date ))
+
+class SSEEventPanelsView extends Backbone.View
+  initialize: ->
+    $("body").html(JST["templates/15_event_view"]( events: @options.events ))
 
 class SSEBlankView extends Backbone.View
   initialize: ->
@@ -59,6 +63,9 @@ class SSEController extends Backbone.Router
     "three_week":
       # Refresh every three minutes
       "timeAlive": 180
+      "nextPage": "event_panels"
+    "event_panels":
+      "timeAlive": 180
       "nextPage": "three_week"
     "month":
       "timeAlive": 0
@@ -68,17 +75,17 @@ class SSEController extends Backbone.Router
       "nextPage": "month"
     "blank":
       "timeAlive": 1
-      "nextPage": "upcoming"
-    "upcoming":
-      "timeAlive": 1
-      "nextPage": "month"
+      "nextPage": "blank"
   routes:
     "../events/:id": "month"
 
   start: =>
-    this.three_week()
-    @countdown = pageSettings.three_week.timeAlive
-    @page = "three_week"
+    #this.three_week()
+    #@countdown = pageSettings.three_week.timeAlive
+    #@page = "three_week"
+    this.event_panels()
+    @countdown = pageSettings.event_panels.timeAlive
+    @page = "event_panels"
     @timerId = setInterval(this.flipPage, 1000)
 
   flipPage: =>
@@ -91,9 +98,9 @@ class SSEController extends Backbone.Router
   gotoPage: (page) =>
     switch page
       when "month" then @month()
-      when "upcoming" then @upcoming()
       when "two_week" then @two_week()
       when "three_week" then @three_week()
+      when "events_panel" then @events_panel()
       else @pause()
 
   month: =>
@@ -132,14 +139,19 @@ class SSEController extends Backbone.Router
       else
         alert("Warning: no events to load!")
 
-  upcoming: ->
-    req =
-      limit: 2
+  event_panels: =>
+    req = 
+      limit: 15
     $.getJSON '../events', req, (data) ->
-      new SSEBlankView
+      if data
+        allEvents = _(data).map (event) ->
+          new SSEEvent(event)
+        new SSEEventPanelsView
+          events: allEvents
+      else
+        console.log("No events to load.");
 
   pause: ->
-    # alert("Pausing")
     new SSEBlankView
 
 # Make new controller with:
