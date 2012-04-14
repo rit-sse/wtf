@@ -1,0 +1,236 @@
+$white: #f1f1f1;
+$darkblue: #146b9d;
+$mediumblue: #c9dae5;
+$lightblue: #dae6ee;
+$faded: #9ab7c7;
+$darkgray: #808080;
+$lightgray: #cccccc;
+
+$header_height: 126px;
+
+* 
+{
+  margin: 0px;
+  padding: 0px;
+  border-style: none;
+}
+
+html, body
+{
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100%;
+  background-color: $white;
+}
+
+h1, h2, h3, th
+{
+  color: $white;
+}
+
+h3
+{
+  font-size: 40pt;
+  text-align: center;
+}
+
+.container
+{
+  width: 1920px;
+  height: 1080px;
+}
+
+.faded
+{
+  color: $darkgray;
+}
+
+//
+// Specific to 15 event view
+//
+
+$three_panel_w: 590px;
+$four_panel_w: 430px;
+
+$five_event_h: 184px;
+$four_event_h: 228px;
+$five_event_title_h: 70px;
+$four_event_title_h: 66px;
+$five_event_part_h: 46px;
+$four_event_part_h: 54px;
+
+$panel_w: $three_panel_w;
+$event_h: $four_event_h;
+$event_title_h: $four_event_title_h;
+$event_part_h: $four_event_part_h;
+
+.gtv-panel-wrapper {
+  float: left;
+  overflow: hidden;
+
+  background-color: $white;
+
+  border-right: 1px solid $darkblue;
+}
+
+#wrapper2 {
+  border: none;
+}
+
+.gtv-event-panel {
+  overflow: hidden;
+
+  width: $panel_w;
+  max-width: $panel_w;
+  height: 954px;
+  max-height: 954px;
+
+  padding-left: 15px;
+  padding-right: 15px;
+
+  background-color: $white;
+}
+
+.gtv-event-header {
+  overflow: hidden;
+
+  height: $header_height;
+  max-height: $header_height;
+  line-height: $header_height;
+
+  background-color: $darkblue;
+}
+
+.gtv-event {
+  overflow: hidden;
+
+  height: $event_h;
+  max-height: $event_h;
+
+  padding-left: 20px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+
+  border-bottom: 2px solid $lightgray;
+}
+
+// Kill borders on bottom of page
+#event-0-3 {
+  border: none;
+}
+#event-1-3 {
+  border: none;
+}
+#event-2-3 {
+  border: none;
+}
+
+.gtv-event-title {
+  overflow: hidden;
+
+  height: $event_title_h;
+  max-height: $event_title_h;
+  line-height: $event_title_h;
+
+  font-size: 46px;
+}
+
+.gtv-event-data {
+  overflow: hidden;
+
+  height: $event_part_h;
+  max-height: $event_part_h;
+  line-height: $event_part_h;
+
+  padding-left: 25px;
+
+  font-size: 42px;
+}
+
+//
+// End 15 event view
+//
+
+//
+// Specific to three week view
+//
+
+$cal_width: 250px;
+$cal_width_s: 182px;
+$cal_height: 311px;
+$cal_height_s: $header_height;
+
+thead
+{
+  background-color: $darkblue;
+}
+
+table
+{
+  -webkit-border-horizontal-spacing: 0px;
+  -webkit-border-vertical-spacing: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+th
+{
+  width: $cal_width;
+  max-width: $cal_width;
+  height: $cal_height_s;
+  max-height: $cal_height_s;
+
+  border-bottom: 3px solid $white;
+}
+
+td
+{
+  width: $cal_width;
+  max-width: $cal_width;
+  height: $cal_height;
+  max-height: $cal_height;
+  overflow: hidden;
+  background-color: $lightblue;
+  border: 3px solid $white;
+}
+
+ul.gtv-calendar-eventlist
+{
+  overflow: hidden;
+
+  height: $cal_height;
+  max-height: $cal_height;
+}
+
+.gtv-calendar-eventlist li
+{
+  font-size: 34px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.gtv-calendar-weekcol
+{
+  width: $cal_width_s;
+  max-width: $cal_width_s;
+}
+
+.gtv-calendar-weekcol h3
+{
+  color: $faded;
+}
+
+.gtv-calendar-eventlist
+{
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.today
+{
+  background-color: $mediumblue;
+}
+
+//
+// End three week view
+//
