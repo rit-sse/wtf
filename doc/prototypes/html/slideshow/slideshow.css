@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.slideshow {
+    text-align: center;
+}
+
+/* Only the first slide is shown */
+#slide0 {
+    display: block;
+}
+
+.slide {
+    display: none;
+    color: white;
+    height: 100%;
+
+    background: #000000; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#3F3F3F'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#3F3F3F)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #000,  #3F3F3F); /* for firefox 3.6+ */ 
+}
+
+/* SSE logo */
+.logo {
+    height: 25%;
+    margin: 10;
+    padding: 10;
+}
+
+/* 3 piece slides */
+.slideelement {
+    height: 30%;
+    marign: 10;
+    padding: 10;
+}
+
+/* Text positioning */
+.bottomlefttext {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+.bottomrighttext {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.toplefttext {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.toprighttext {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+/* Full image slide */
+.fullimage {
+    height: 100%;
+    width: 100%;
+}
+
+/* Camping slide */
+.campingtopimage{
+    height: 50%;
+    width: 50%;
+}
+
+.campingbottomimage {
+    height: 50%;
+    width: 100%;
+}
+
+/* Rapid Development Slide */
+.bottomleftrdw {
+    position: absolute;
+    z-index: 1;
+    height: 60%;
+    width: 30%;
+    left: 0;
+    bottom: 0;
+}
+
+.innerleftrdw {
+    position: absolute;
+    z-index: 2;
+    height: 60%;
+    width: 30%;
+    left: 12.5%;
+    bottom: 25%;
+}
+
+.bottomrightrdw {
+    position: absolute;
+    z-index: 1;
+    height: 60%;
+    width: 30%;
+    right: 0;
+    bottom: 0;
+}
+
+.innerrightrdw {
+    position: absolute;
+    z-index: 2;
+    height: 60%;
+    width: 30%;
+    right: 12.5%;
+    bottom: 25%;
+}
+
+.centerrdw {
+    position: absolute;
+    z-index: 3;
+    height: 75%;
+    width: 60%;
+    left: 20%;
+    bottom: 0;
+}
+
+/* Sponsor slides */
+.imagetext {
+    height: 12.5%
+    margin: 10;
+    padding: 10;
+}
+
+.centerimage {
+    width: 100%;
+    height: 75%;
+}
+
+.smallheightcenterimage {
+    width: 100%;
+    height: 50%;
+    margin-top: 7%;
+    margin-bottom: 7%;
+}

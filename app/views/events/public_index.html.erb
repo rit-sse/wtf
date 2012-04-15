@@ -1,0 +1,54 @@
+<div class="display-wrapper">
+
+  <div class="filter">
+    <span class="inactive-entry">Filter by:</span> 
+    <span class="inactive-entry"><%= link_to 'All' %></span>
+	
+	<% Committee.all.each do |tag| %> 
+	  <%if params[:filter].eql?(tag.name)%>
+        <span class="active-entry">
+	  <%else%>
+	    <span class="inactive-entry">
+	  <%end%>
+	  <%= link_to tag.name, :filter => tag.name %>
+	  </span>
+	<% end %>
+  </div>
+
+  <% possible_views = Array.[]("List")%>
+  <div class="view">
+    <span class="inactive-entry">View:</span>
+    
+	<% possible_views.each do |view| %>
+	  <% if params[:view].eql?(view) or (params[:view].nil? and view.eql?("List")) %>
+	    <% span_class = "active-entry" %>
+	  <% else %>
+        <% span_class = "inactive-entry" %>
+	  <% end %>
+      <span class= <%= span_class %>>
+	    <%= link_to "#{view} View" %>
+	  </span>
+	<% end %>
+  </div>
+</div>
+<br/>
+
+<div class="title">
+  <h1>Events</h1>
+</div>
+
+<% @events.each do |event| %>
+  <div class="event-preview-wrapper">
+    <div class="gradient-test">
+      <div class="event-preview">
+        <h3><%= link_to event.name, pub_show_path(event) %></h3>
+        <div class="event-info">
+          <%= "#{event.start_date.strftime("%A %m/%d")}, #{event.start_date.strftime("%I:%M%p")} - #{event.end_date.strftime("%I:%M%p")}" %>
+        </div>
+        <div class="event-description">
+          <%= event.description %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

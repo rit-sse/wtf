@@ -54,6 +54,13 @@ gem 'sinatra', require: false
 gem 'redis', require: false
 gem 'sinatra-flash', require: false
 
+# Add support for eco templates 
+gem 'sprockets'
+gem 'eco'
+
+# Let's hit up Amazon S3
+gem 'carrierwave'
+gem 'fog'
+
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-

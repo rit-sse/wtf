@@ -6,4 +6,8 @@ class User
       self.send "#{k}=", options[k] if self.respond_to?("#{k}=")
     end
   end
+
+  def admin?
+    @role == "admin" || @role == "officer"
+  end
 end

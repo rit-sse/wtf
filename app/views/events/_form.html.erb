@@ -1,0 +1,79 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="none price_prototype">
+    <div class="input-prepend">
+      <span class="add-on">$</span>
+      <%= text_field_tag :price, nil, class: "span1" %>
+      <a class="small super red button destroy" href="#">Remove</a>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+   <div class="field">
+    <%= f.label :short_name %>
+    <%= f.text_field :short_name %>
+  </div>
+ <div class="field">
+    <%= f.label :start_date %>
+    <%= f.datetime_select :start_date, {:ampm => true, :minute_step => 5} %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %>
+    <%= f.datetime_select :end_date, {:ampm => true, :minute_step => 5} %>
+  </div>
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+  <!--
+  <div class="field">
+    <%= f.label :prices %>
+    <div class="input-prepend">
+      <span class="add-on">$</span>
+      <%= text_field_tag :price, nil, class: "span1" %>
+      <a id="add_event_price_button" class="small super button" href="#">Add Price</a>
+    </div>
+  </div>
+  -->
+  <div class="field">
+    <%= f.label :short_description %>
+    <%= f.text_field :short_description, class: "span5" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :committee %>
+    <%= f.collection_select :committee_id, Committee.find(:all), :id, :name, {:include_blank => false}  %>
+  </div>
+
+  <!-- Use this in order to display images -->
+  <div class="field">
+    <%= image_tag(@event.image_url) if @event.image? %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Cancel", events_path, class: "medium red super button" %>
+    <%= f.submit nil, class: "medium super button" %>
+  </div>
+<% end %>

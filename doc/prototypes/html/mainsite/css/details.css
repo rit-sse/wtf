@@ -1,0 +1,32 @@
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  color: #000;
+  text-shadow: none; }
+
+h1 {
+  font-size: 30pt; 
+  }
+
+h2 {
+  font-size: 20pt; }
+
+h3 {
+  font-size: 15pt; }
+
+.title
+{
+	padding-top: 10px;
+}
+
+ul
+{
+	list-style-type: none;
+}
+
+li
+{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
