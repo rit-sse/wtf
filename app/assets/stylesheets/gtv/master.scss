@@ -70,10 +70,20 @@ $event_part_h: $four_event_part_h;
 
   background-color: $white;
 
-  border-right: 1px solid $darkblue;
+  border-right: 5px solid $darkblue;
 }
 
-#wrapper2 {
+#wrapper0
+{
+}
+
+#wrapper1 .gtv-event-panel
+{
+  background-color: $lightblue;
+}
+
+#wrapper2
+{
   border: none;
 }
 
@@ -162,7 +172,7 @@ $cal_height_s: $header_height;
 
 thead
 {
-  background-color: $darkblue;
+  background-color: $darkgray;
 }
 
 table
@@ -213,6 +223,11 @@ ul.gtv-calendar-eventlist
 {
   width: $cal_width_s;
   max-width: $cal_width_s;
+}
+
+thead .gtv-calendar-weekcol h3 
+{
+  color: $white;
 }
 
 .gtv-calendar-weekcol h3
