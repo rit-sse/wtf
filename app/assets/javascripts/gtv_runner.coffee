@@ -96,7 +96,7 @@ class SSEController extends Backbone.Router
       when "event_panels" then @event_panels()
       when "black_view" then @black_view()
       when "white_view" then @white_view()
-      else @pause()
+      else @black_view()
 
   three_week: =>
     sundayStart = SSEHelpers.getLastSunday()
