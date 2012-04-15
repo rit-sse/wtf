@@ -29,11 +29,11 @@
   </div>
  <div class="field">
     <%= f.label :start_date %>
-    <%= f.datetime_select :start_date %>
+    <%= f.datetime_select :start_date, {:ampm => true, :minute_step => 5} %>
   </div>
   <div class="field">
     <%= f.label :end_date %>
-    <%= f.datetime_select :end_date %>
+    <%= f.datetime_select :end_date, {:ampm => true, :minute_step => 5} %>
   </div>
   <div class="field">
     <%= f.label :location %>
