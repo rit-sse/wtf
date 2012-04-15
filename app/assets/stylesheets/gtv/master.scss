@@ -55,7 +55,7 @@ h3
 // Specific to 15 event view
 //
 
-$three_panel_w: 590px;
+$three_panel_w: 636px;
 $four_panel_w: 430px;
 
 $five_event_h: 184px;
@@ -79,7 +79,7 @@ $event_part_h: $four_event_part_h;
   border-right: 5px solid $darkblue;
 }
 
-#wrapper0
+#wrapper0 .gtv-event-panel
 {
   background-color: $lightlightblue;
 }
@@ -88,10 +88,14 @@ $event_part_h: $four_event_part_h;
 {
 }
 
+#wrapper2 .gtv-event-panel
+{
+  background-color: $lightlightblue;
+}
+
 #wrapper2
 {
   border: none;
-  background-color: $lightlightblue;
 }
 
 .gtv-event-panel {
