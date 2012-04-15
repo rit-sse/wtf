@@ -81,16 +81,17 @@ $event_part_h: $four_event_part_h;
 
 #wrapper0
 {
+  background-color: $lightlightblue;
 }
 
 #wrapper1 .gtv-event-panel
 {
-  background-color: $lightlightblue;
 }
 
 #wrapper2
 {
   border: none;
+  background-color: $lightlightblue;
 }
 
 .gtv-event-panel {
@@ -143,6 +144,8 @@ $event_part_h: $four_event_part_h;
 
 .gtv-event-title {
   overflow: hidden;
+
+  margin-left: -10px;
 
   height: $event_title_h;
   max-height: $event_title_h;
