@@ -61,6 +61,10 @@ class SSEEventPanelsView extends Backbone.View
   initialize: ->
     $("body").html(JST["templates/15_event_view"]( events: @options.events ))
 
+class SSEColorView extends Backbone.View
+  initialize: ->
+    $("body").html(JST["templates/color_view"]( color: @options.color ))
+
 class SSEBlankView extends Backbone.View
   initialize: ->
     # alert("Blanking out screen.")
@@ -71,9 +75,15 @@ class SSEController extends Backbone.Router
     "three_week":
       # Refresh every three minutes
       "timeAlive": 30
-      "nextPage": "event_panels"
+      "nextPage": "black_view"
     "event_panels":
       "timeAlive": 30
+      "nextPage": "white_view"
+    "black_view":
+      "timeAlive": 5
+      "nextPage": "event_panels"
+    "white_view":
+      "timeAlive": 5
       "nextPage": "three_week"
     "month":
       "timeAlive": 0
@@ -109,6 +119,8 @@ class SSEController extends Backbone.Router
       when "two_week" then @two_week()
       when "three_week" then @three_week()
       when "event_panels" then @event_panels()
+      when "black_view" then @black_view()
+      when "white_view" then @white_view()
       else @pause()
 
   month: =>
@@ -158,6 +170,14 @@ class SSEController extends Backbone.Router
           events: allEvents
       else
         console.log("No events to load.");
+
+  white_view: =>
+    new SSEColorView
+      color: "white"
+
+  black_view: =>
+    new SSEColorView
+      color: "black"
 
   pause: ->
     new SSEBlankView
