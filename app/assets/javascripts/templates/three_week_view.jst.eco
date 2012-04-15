@@ -17,7 +17,7 @@
     <tbody>
       <% for week in [0..2]: %>
         <tr>
-          <td class="gtv-calendar-weekcol"><h3><%= @date.toString("M/d") %></h3></td>
+          <td class="gtv-calendar-weekcol"><h3><%= @date.toString("M/dd") %></h3></td>
           <% for day in [0..6]: %>
             <td <%= "class='today'" if Date.today().equals(@date) %>>
               <ul class="gtv-calendar-eventlist">

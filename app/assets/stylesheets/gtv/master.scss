@@ -5,6 +5,7 @@ $lightblue: #dae6ee;
 $faded: #9ab7c7;
 $darkgray: #808080;
 $lightgray: #cccccc;
+$lightlightblue: #ebf2f6;
 
 $header_height: 126px;
 
@@ -45,6 +46,11 @@ h3
   color: $darkgray;
 }
 
+.inline
+{
+  display: inline-block;
+}
+
 //
 // Specific to 15 event view
 //
@@ -79,7 +85,7 @@ $event_part_h: $four_event_part_h;
 
 #wrapper1 .gtv-event-panel
 {
-  background-color: $lightblue;
+  background-color: $lightlightblue;
 }
 
 #wrapper2
@@ -142,7 +148,15 @@ $event_part_h: $four_event_part_h;
   max-height: $event_title_h;
   line-height: $event_title_h;
 
+  font-weight: bold;
+
   font-size: 46px;
+}
+
+.event-desc {
+  min-width: 140px;
+  width: 140px;
+  max-width: 140px;
 }
 
 .gtv-event-data {
@@ -172,7 +186,7 @@ $cal_height_s: $header_height;
 
 thead
 {
-  background-color: $darkgray;
+  background-color: $darkblue;
 }
 
 table
