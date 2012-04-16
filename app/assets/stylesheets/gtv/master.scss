@@ -1,10 +1,12 @@
 $white: #f1f1f1;
 $darkblue: #146b9d;
+$darkblueoff: #237aac;
 $mediumblue: #c9dae5;
 $lightblue: #dae6ee;
 $faded: #9ab7c7;
 $darkgray: #808080;
 $lightgray: #cccccc;
+$lightlightblue: #ebf2f6;
 
 $header_height: 126px;
 
@@ -45,11 +47,16 @@ h3
   color: $darkgray;
 }
 
+.inline
+{
+  display: inline-block;
+}
+
 //
 // Specific to 15 event view
 //
 
-$three_panel_w: 590px;
+$three_panel_w: 606px;
 $four_panel_w: 430px;
 
 $five_event_h: 184px;
@@ -70,10 +77,25 @@ $event_part_h: $four_event_part_h;
 
   background-color: $white;
 
-  border-right: 1px solid $darkblue;
+  border-right: 5px solid $darkblueoff;
 }
 
-#wrapper2 {
+#wrapper0 .gtv-event-panel
+{
+  background-color: $lightlightblue;
+}
+
+#wrapper1 .gtv-event-panel
+{
+}
+
+#wrapper2 .gtv-event-panel
+{
+  background-color: $lightlightblue;
+}
+
+#wrapper2
+{
   border: none;
 }
 
@@ -98,7 +120,7 @@ $event_part_h: $four_event_part_h;
   max-height: $header_height;
   line-height: $header_height;
 
-  background-color: $darkblue;
+  background-color: $darkblueoff;
 }
 
 .gtv-event {
@@ -128,11 +150,21 @@ $event_part_h: $four_event_part_h;
 .gtv-event-title {
   overflow: hidden;
 
+  margin-left: -10px;
+
   height: $event_title_h;
   max-height: $event_title_h;
   line-height: $event_title_h;
 
+  font-weight: bold;
+
   font-size: 46px;
+}
+
+.event-desc {
+  min-width: 140px;
+  width: 140px;
+  max-width: 140px;
 }
 
 .gtv-event-data {
@@ -213,6 +245,11 @@ ul.gtv-calendar-eventlist
 {
   width: $cal_width_s;
   max-width: $cal_width_s;
+}
+
+thead .gtv-calendar-weekcol h3 
+{
+  color: $white;
 }
 
 .gtv-calendar-weekcol h3

@@ -44,46 +44,33 @@ class SSEEvent extends Backbone.Model
 
     return retDate
 
-
 class SSEThreeWeekView extends Backbone.View
   initialize: ->
     $("body").html(JST["templates/three_week_view"]( events: @options.events, date: @options.date ))
-
-class SSETwoWeekView extends Backbone.View
-  initialize: ->
-    $("body").html(JST["templates/two_week_view"]( events: @options.events, date: @options.date ))
-
-class SSEMonthView extends Backbone.View
-  initialize: ->
-    $("body").html(JST["templates/month_view"]( events: @options.events, date: @options.date ))
 
 class SSEEventPanelsView extends Backbone.View
   initialize: ->
     $("body").html(JST["templates/15_event_view"]( events: @options.events ))
 
-class SSEBlankView extends Backbone.View
+class SSEColorView extends Backbone.View
   initialize: ->
-    # alert("Blanking out screen.")
-    $("body").html("")
+    $("body").html(JST["templates/color_view"]( color: @options.color ))
 
 class SSEController extends Backbone.Router
   pageSettings =
     "three_week":
       # Refresh every three minutes
       "timeAlive": 30
-      "nextPage": "event_panels"
+      "nextPage": "black_view"
     "event_panels":
       "timeAlive": 30
+      "nextPage": "white_view"
+    "black_view":
+      "timeAlive": 5
+      "nextPage": "event_panels"
+    "white_view":
+      "timeAlive": 5
       "nextPage": "three_week"
-    "month":
-      "timeAlive": 0
-      "nextPage": "two_week"
-    "two_week":
-      "timeAlive": 20
-      "nextPage": "month"
-    "blank":
-      "timeAlive": 1
-      "nextPage": "blank"
   routes:
     "../events/:id": "month"
 
@@ -105,35 +92,11 @@ class SSEController extends Backbone.Router
 
   gotoPage: (page) =>
     switch page
-      when "month" then @month()
-      when "two_week" then @two_week()
       when "three_week" then @three_week()
       when "event_panels" then @event_panels()
-      else @pause()
-
-  month: =>
-    sundayStart = SSEHelpers.getLastSunday()
-    $.getJSON '../events', start_date: sundayStart.toISOString(), (data) ->
-      if data
-        allEvents = _(data).map (event) ->
-          new SSEEvent(event)
-        new SSEMonthView 
-          events: allEvents 
-          date: sundayStart 
-      else
-        alert("Warning: no events to load!")
-
-  two_week: =>
-    sundayStart = SSEHelpers.getLastSunday()
-    $.getJSON '../events', start_date: sundayStart.toISOString(), (data) ->
-      if data
-        allEvents = _(data).map (event) ->
-          new SSEEvent(event)
-        new SSETwoWeekView 
-          events: allEvents 
-          date: sundayStart
-      else
-        alert("Warning: no events to load!")
+      when "black_view" then @black_view()
+      when "white_view" then @white_view()
+      else @black_view()
 
   three_week: =>
     sundayStart = SSEHelpers.getLastSunday()
@@ -159,16 +122,13 @@ class SSEController extends Backbone.Router
       else
         console.log("No events to load.");
 
-  pause: ->
-    new SSEBlankView
+  white_view: =>
+    new SSEColorView
+      color: "white"
 
-# Make new controller with:
-# newCont = new SSEController
-# newCont.month()
-
-# Use this to create stuff from eco templates
-# $ ->
-#  $("body").html(JST["templates/month_view"]({name : "Sam"}))
+  black_view: =>
+    new SSEColorView
+      color: "black"
 
 app = new SSEController
 Backbone.history.start()
