@@ -1,4 +1,3 @@
-
 if FileTest.exists?(Rails.root.join('config/s3_credentials.rb'))
 
   puts "Using real credentials"
@@ -6,11 +5,7 @@ if FileTest.exists?(Rails.root.join('config/s3_credentials.rb'))
   credentials_path = Rails.root.join('config/s3_credentials.rb')
   require credentials_path
 
-elsif Rails.env.test? or 
-  Rails.env.cucumber? or 
-  Rails.env.development?
-
-  puts "Using filesystem for uploads"
+elsif !Rails.env.production?
   CarrierWave.configure do |config|
     config.storage = :file
   end
@@ -21,5 +16,5 @@ elsif Rails.env.test? or
   # connection = Fog::Storage.new(:provider => 'AWS')
   # connection.directories.create(:key => 'images')
 else
-  puts "Error!  No method to store files configured."
+  Rails.logger.error "No method to store files configured."
 end

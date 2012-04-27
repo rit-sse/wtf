@@ -1,3 +1,4 @@
+<% title @event.name %>
 <h1><%= @event.name %></h1>
 
 <div class="public_show_entry">
@@ -20,5 +21,5 @@
   <% if can? :update, @event %> 
     <%= link_to 'Edit', edit_event_path %> |
   <% end %>
-  <%= link_to 'Back', pub_events_path %>
+  <%= link_to 'Back', events_public_events_path %>
 </div>

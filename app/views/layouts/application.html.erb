@@ -18,7 +18,7 @@
         <div id="nav_links">
           <%= active_link_to "HOME", root_path %>
           <%= active_link_to "NEWS", "/news" %>
-          <%= active_link_to "EVENTS", pub_events_path %>
+          <%= active_link_to "EVENTS", events_public_events_path %>
           <%= active_link_to "PROJECTS", "/projects" %>
           <ul>
             <li class="dropdown" id="committees-menu">
@@ -52,6 +52,9 @@
                   <% end %>
                   <% if can? :manage, Event %>
                     <li><%= link_to "Events", events_path %></li>
+                  <% end %>
+                  <% if can? :manage, Upload %>
+                    <li><%= link_to "Uploads (not finished, gtfo)", uploads_path %></li>
                   <% end %>
                   <li class="divider"></li>
                   <li><%= link_to "Logout", auth_logout_path %></li>

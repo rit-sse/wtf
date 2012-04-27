@@ -1,13 +1,13 @@
 Wtf::Application.routes.draw do
 
-  resources :committees
 
   scope "/admin" do
     resources :pages
     resources :events
-    match '/events' => 'events#index', as: "admin_events"
+    resources :committees
+    resources :uploads
 
-    match '/uploads(/:action)', controller: 'uploads'
+    match '/events' => 'events#index', as: "admin_events"
 
     match '/diagnostics(/:action)', controller: 'diagnostics' if Rails.env.development?
 
@@ -18,9 +18,9 @@ Wtf::Application.routes.draw do
   match '/auth/logout', to: 'auth#logout'
   post '/auth(/:action)', controller: 'auth'
 
-  match '/events' => 'events#public_index', as: "pub_events"
+  match '/events' => 'events#public_index', as: "events_public_events"
   match '/events/gtv', to: 'events#gtv'
-  match '/events(/:id)' => 'events#public_show', as: "pub_show"
+  match '/events(/:id)' => 'events#public_show', as: "events_public_show"
 
   # static routes and redirects
   # ...

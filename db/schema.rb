@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120330144217) do
+ActiveRecord::Schema.define(:version => 20120427180131) do
 
   create_table "committees", :force => true do |t|
     t.string   "name"
@@ -53,5 +53,11 @@ ActiveRecord::Schema.define(:version => 20120330144217) do
   end
 
   add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"
+
+  create_table "uploads", :force => true do |t|
+    t.string   "file"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

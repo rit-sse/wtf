@@ -10,4 +10,8 @@ class User
   def admin?
     @role =~ /^(admin|officer)$/i
   end
+
+  def committee_head?
+    @role =~ /^committee head$/i
+  end
 end

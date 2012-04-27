@@ -9,5 +9,8 @@
   <% if can? :manage, Event %>
     <%= link_to "Events", events_path %><br />
   <% end %>
+  <% if can? :manage, Upload %>
+    <%= link_to "Uploads (not finished, gtfo)", uploads_path %><br />
+  <% end %>
   ...and more to come soon.
 </p>

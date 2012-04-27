@@ -6,8 +6,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :signed_in?
 
-  rescue_from Exception do |exc|
-    Rails.logger.info "Exception: #{exc}, backtrace:\n#{exc.backtrace}"
+  if Rails.env.production?
+    rescue_from Exception do |exc|
+      Rails.logger.error "Exception: #{exc}, backtrace:\n#{exc.backtrace}"
+      render file: "public/500.html", layout: nil
+    end
   end
 
   protected

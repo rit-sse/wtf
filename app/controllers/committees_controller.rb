@@ -1,9 +1,10 @@
 class CommitteesController < ApplicationController
+
+  load_and_authorize_resource
+
   # GET /committees
   # GET /committees.json
   def index
-    @committees = Committee.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @committees }
@@ -13,8 +14,6 @@ class CommitteesController < ApplicationController
   # GET /committees/1
   # GET /committees/1.json
   def show
-    @committee = Committee.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @committee }
@@ -34,7 +33,6 @@ class CommitteesController < ApplicationController
 
   # GET /committees/1/edit
   def edit
-    @committee = Committee.find(params[:id])
   end
 
   # POST /committees
@@ -56,8 +54,6 @@ class CommitteesController < ApplicationController
   # PUT /committees/1
   # PUT /committees/1.json
   def update
-    @committee = Committee.find(params[:id])
-
     respond_to do |format|
       if @committee.update_attributes(params[:committee])
         format.html { redirect_to @committee, notice: 'Committee was successfully updated.' }
@@ -72,7 +68,6 @@ class CommitteesController < ApplicationController
   # DELETE /committees/1
   # DELETE /committees/1.json
   def destroy
-    @committee = Committee.find(params[:id])
     @committee.destroy
 
     respond_to do |format|
