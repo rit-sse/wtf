@@ -9,6 +9,6 @@
 
 <br />
 
-<% if can? :update, @event %>
+<% if can? :create, Event %>
   <%= link_to 'New Event', new_event_path, class: "medium super button" %>
 <% end %>

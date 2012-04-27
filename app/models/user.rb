@@ -8,6 +8,6 @@ class User
   end
 
   def admin?
-    @role == "admin" || @role == "officer"
+    @role =~ /^(admin|officer)$/i
   end
 end
