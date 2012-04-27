@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+if Committee.count == 0
+  %w(Projects Events PR).each do |name|
+    Committee.create name: name
+  end
+end
+
