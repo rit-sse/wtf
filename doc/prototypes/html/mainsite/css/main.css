@@ -1,0 +1,115 @@
+*, html, body, div, p, table, img {
+  margin: 0;
+  padding: 0; }
+
+a img {
+  border: none; }
+
+body {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
+  font-size: 10pt; }
+
+a {
+  outline: none;
+  text-decoration: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  color: #000;
+  text-shadow: none; }
+
+h1 {
+  font-size: 30pt; 
+  }
+
+h2 {
+  font-size: 26pt; }
+
+h3 {
+  font-size: 20pt; }
+
+h4 {
+  font-size: 15pt; }
+
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
+  margin-top: 5px; }
+
+p {
+  line-height: 18px;
+  margin-bottom: 25px; }
+  p:last-child {
+    margin-bottom: 0; }
+
+#top_nav_wrapper {
+  height: 102px;
+  background: url(../images/nav-bg.png) repeat-x;
+  border-bottom: 1px solid #333; }
+  #top_nav_wrapper #top_nav {
+    width: 940px;
+    margin: 0 auto; }
+    #top_nav_wrapper #top_nav #logo {
+      float: left;
+      margin: 22px 0 0 0; }
+    #top_nav_wrapper #top_nav #nav_links {
+      float: right;
+      margin: 42px 0 0 0; }
+      #top_nav_wrapper #top_nav #nav_links a {
+        display: inline-block;
+        color: #9ab7c7;
+        font-size: 12px; }
+        #top_nav_wrapper #top_nav #nav_links a:hover, #top_nav_wrapper #top_nav #nav_links a.active {
+          color: #fff;
+          text-shadow: 1px 1px 0 #333; }
+        #top_nav_wrapper #top_nav #nav_links a + a {
+          margin-left: 30px; }
+
+#header_wrapper {
+  background: url(../images/header-bg.png) repeat-x; }
+  #header_wrapper #header {
+    width: 940px;
+    margin: 0 auto;
+    height: 246px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background: url(../images/header-bg-center.png) center center; }
+    #header_wrapper #header > h1, #header_wrapper #header > h2, #header_wrapper #header > h3, #header_wrapper #header > h4, #header_wrapper #header > h5, #header_wrapper #header > h6 {
+      color: #fff;
+      text-shadow: 1px 1px 2px #333; }
+    #header_wrapper #header img.big_image {
+      float: left;
+      margin-right: 25px; }
+    #header_wrapper #header .orbit-wrapper {
+      margin: 0 auto; }
+      #header_wrapper #header .orbit-wrapper .content {
+        background: #fff; }
+        #header_wrapper #header .orbit-wrapper .content.dark {
+          background: #555; }
+        #header_wrapper #header .orbit-wrapper .content h1, #header_wrapper #header .orbit-wrapper .content h2, #header_wrapper #header .orbit-wrapper .content h3, #header_wrapper #header .orbit-wrapper .content h4, #header_wrapper #header .orbit-wrapper .content h5, #header_wrapper #header .orbit-wrapper .content h6 {
+          text-align: center;
+          margin-top: 100px; }
+
+#content_wrapper {
+  width: 940px;
+  margin: 0 auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background: #fff;
+  color: #555; }
+  #content_wrapper #content_left {
+    float: left;
+    width: 680px;
+    padding-right: 25px;
+    border-right: 1px solid #ccc; }
+  #content_wrapper #content_right {
+    float: right;
+    width: 200px;
+    font-size: 9pt; }
+
+#footer {
+  width: 940px;
+  margin: 0 auto;
+  color: #aaa; }
+
+.clear {
+  clear: both; }

@@ -1,0 +1,14 @@
+<% title "Events" %>
+<h1>Events</h1>
+
+<div class="fat_list">
+  <% @events.each do |event| %>
+    <%= render partial: "list_item", locals: { event: event } %>
+  <% end %>
+</div>
+
+<br />
+
+<% if can? :update, @event %>
+  <%= link_to 'New Event', new_event_path, class: "medium super button" %>
+<% end %>

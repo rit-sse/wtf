@@ -11,15 +11,43 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111202165150) do
+ActiveRecord::Schema.define(:version => 20120330144217) do
+
+  create_table "committees", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "event_prices", :force => true do |t|
+    t.integer  "event_id",                                 :null => false
+    t.decimal  "price",      :precision => 8, :scale => 2, :null => false
+    t.string   "name"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text     "description"
+    t.string   "location"
+    t.string   "short_name"
+    t.string   "short_description"
+    t.integer  "committee_id"
+    t.string   "image"
+  end
 
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.string   "slug"
     t.datetime "published_at"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "ancestry"
     t.string   "content_type"
   end
