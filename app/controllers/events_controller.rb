@@ -56,7 +56,6 @@ class EventsController < AdminController
   # GET /events/1
   # GET /events/1.json
   def public_show
-    #@event = Event.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
@@ -76,7 +75,6 @@ class EventsController < AdminController
 
   # GET /admin/events/1/edit
   def edit
-    #@event = Event.find(params[:id])
   end
 
   # POST /admin/events
@@ -99,11 +97,9 @@ class EventsController < AdminController
   # PUT /admin/events/1
   # PUT /admin/events/1.json
   def update
-    #@event = Event.find(params[:id])
-
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to events_path, notice: 'Event was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -126,9 +122,7 @@ class EventsController < AdminController
 
   # No JSON
   def gtv
-
     render :layout => false
-
   end
 
 end
