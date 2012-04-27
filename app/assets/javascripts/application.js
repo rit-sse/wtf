@@ -9,6 +9,7 @@
 //= require ace
 //= require theme-textmate
 //= require mode-markdown
+//= require bootstrap.min
 //= require app
 //= require events
 //= require jquery.orbit-1.2.3.min
