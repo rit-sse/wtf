@@ -2,6 +2,9 @@ class PagesController < AdminController
   ssl_exceptions :dynamic_page
   skip_before_filter :authenticate!, only: [:dynamic_page]
 
+  load_and_authorize_resource
+  skip_authorize_resource only: [:dynamic_page]
+
   def dynamic_page
     # lowercase because mongo finds are case-sensitive, and we store slugs
     # in lowercase
@@ -34,7 +37,7 @@ class PagesController < AdminController
   # GET /pages
   # GET /pages.json
   def index
-    @pages = Page.roots.order("title")
+    @pages = @pages.roots.order("title")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,8 +48,6 @@ class PagesController < AdminController
   # GET /pages/1
   # GET /pages/1.json
   def show
-    @page = Page.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @page }
@@ -67,7 +68,6 @@ class PagesController < AdminController
 
   # GET /pages/1/edit
   def edit
-    @page = Page.find(params[:id])
   end
 
   # POST /pages
@@ -89,8 +89,6 @@ class PagesController < AdminController
   # PUT /pages/1
   # PUT /pages/1.json
   def update
-    @page = Page.find(params[:id])
-
     respond_to do |format|
       if @page.update_attributes(params[:page])
         format.html { redirect_to pages_path, notice: 'Page was successfully updated.' }
@@ -105,7 +103,6 @@ class PagesController < AdminController
   # DELETE /pages/1
   # DELETE /pages/1.json
   def destroy
-    @page = Page.find(params[:id])
     @page.destroy
 
     respond_to do |format|

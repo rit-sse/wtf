@@ -2,7 +2,7 @@ class EventsController < AdminController
   skip_before_filter :authenticate!, :only => [:public_index, :public_show, :gtv]
 
   load_and_authorize_resource
-  skip_authorize_resource :only => [:public_index, :public_show, :gtv ]
+  skip_authorize_resource only: [:public_index, :public_show, :gtv]
 
   # GET /admin/events
   # GET /admin/events.json
@@ -111,7 +111,6 @@ class EventsController < AdminController
   # DELETE /admin/events/1
   # DELETE /admin/events/1.json
   def destroy
-    #@event = Event.find(params[:id])
     @event.destroy
 
     respond_to do |format|

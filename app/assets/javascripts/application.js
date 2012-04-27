@@ -9,12 +9,7 @@
 //= require ace
 //= require theme-textmate
 //= require mode-markdown
-//= require admin
-//= require auth
-//= require backbone-min
-//= require bootstrap.min
-//= require diagnostics
+//= require app
 //= require events
 //= require jquery.orbit-1.2.3.min
-//= require pages
 //= require root
