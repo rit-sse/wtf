@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
+  
   <title><%= content_for?(:title) ? "#{yield(:title)} &mdash; Society of Software Engineers @ RIT".html_safe : "Society of Software Engineers @ RIT" %></title>
+  
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
