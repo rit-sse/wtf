@@ -1,13 +1,13 @@
 $ ->
   $("#featured").orbit(
-    timer: true,
-    advanceSpeed: 3000,
+    timer: false,
+    advanceSpeed: 5000,
     pauseOnHover: true,
     startClockOnMouseOut: true,
     # startClockOnMouseOutAfter: 500,
     # directionalNav: false,
     captionAnimation: 'slideOpen',
-    captionAnimationSpeed: 100,
+    captionAnimationSpeed: 150,
     bullets: true
   )
 

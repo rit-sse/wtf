@@ -52,9 +52,9 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: none;
 }
 
-h1 { font-size: 40px; }
-h2 { font-size: 35px; }
-h3 { font-size: 24px; }
+h1 { font-size: 40px; margin-bottom: 0.3em }
+h2 { font-size: 35px; margin-bottom: 0.2em }
+h3 { font-size: 24px; margin-bottom: 0.1em }
 h4 { font-size: 18px; }
 
 h1 + h2 { margin-top: $std-margin; }
@@ -156,9 +156,24 @@ ul, ol {
 
     background: url(image-path("header-bg-center.png")) center center;
 
-    & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 {
+    h1, h2, h3, h4, h5, h6 {
       color: #fff;
       text-shadow: 1px 1px 2px #333;
+    }
+
+    p  {
+      color: #fff;
+      text-shadow: 1px 1px 2px #333;
+    }
+
+    a {
+      color: #ffe;
+      text-shadow: 1px 1px 2px #111;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: #ffa;
     }
 
     img.big_image {
@@ -179,6 +194,26 @@ ul, ol {
         }
       }
     }
+
+    #fallwelcome {
+      .left {
+        width: 55%;
+        height: 50%;
+        float: left;
+        text-align: center;
+        padding-top: 16px;
+
+        img {
+          box-shadow: 0 0 5px #444;
+        }
+      }
+
+      .right {
+        width: 45%;
+        float: right;
+      }
+    }
+
   }
 }
 
@@ -210,6 +245,7 @@ ul, ol {
 
 #footer {
   @include horiz-center;
+  margin-top: 40px;
   margin-bottom: 40px;
   color: #aaa;
 }

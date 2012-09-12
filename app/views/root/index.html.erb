@@ -3,17 +3,16 @@
     <div id="header">
 
       <div id="featured">
-        <div class="content">
-          <h1>Hello, visitors.</h1>
-        </div>
-        <div class="content">
-          <h1>Thanks for visiting our fantastic new website.</h1>
-        </div>
-        <div class="content">
-          <h1>Stay tuned &mdash; there's lots of great stuff in the works.</h1>
-        </div>
-        <div class="content dark">
-          <h1><%= image_tag "logo-white.png", alt: "" %>
+        <div class="content" id="fallwelcome">
+					<div class="left">
+						<%= image_tag "fall_welcome.jpg", alt: "Welcome back" %>
+					</div>
+					<div class="right">
+						<h1>Welcome back!</h1>
+						<p>We have lots of <a href="/events">exciting events</a> coming this quarter.
+						If you are new to RIT, stop by our weekly Friday meetings
+						- all students welcome!
+					</div>
         </div>
       </div>
 
@@ -25,6 +24,7 @@
 
 
 <% content_for :sidebar do %>
+<% if false %>
   <h4>Upcoming Events</h4>
   <p>
     Hold the phone, we're updating our site.
@@ -34,6 +34,7 @@
   <p>
     See above explanation.
   </p>
+<% end %>
 <% end %>
 
 
