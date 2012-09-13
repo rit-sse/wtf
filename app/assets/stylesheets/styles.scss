@@ -31,6 +31,7 @@ a img {
 body {
   font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
   font-size: 14px;
+  background: #fafafa;
 }
 
 a {
@@ -222,7 +223,6 @@ ul, ol {
   margin-top: $std-margin;
   margin-bottom: $std-margin;
 
-  background: #fff;
   color: #555;
 
   div, p {
@@ -231,15 +231,19 @@ ul, ol {
 
   #content_left {
     float: left;
-    width: 680px;
+    width: 630px;
     padding-right: 25px;
     border-right: 1px solid #ccc;
   }
 
   #content_right {
     float: right;
-    width: 200px;
+    width: 250px;
     font-size: 12px;
+
+    #eventshighlight {
+      padding-top: 1.0em;
+    }
   }
 }
 

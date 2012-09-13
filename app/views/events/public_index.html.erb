@@ -3,10 +3,10 @@
 <div class="display-wrapper">
 
   <div class="filter">
-    <span class="inactive-entry">Filter by:</span> 
+    <span class="inactive-entry">Filter by:</span>
     <span class="inactive-entry"><%= link_to 'All' %></span>
-  
-  <% Committee.all.each do |tag| %> 
+
+  <% Committee.all.each do |tag| %>
     <%if params[:filter].eql?(tag.name)%>
         <span class="active-entry">
     <%else%>
@@ -20,7 +20,7 @@
   <% possible_views = Array.[]("List")%>
   <div class="view">
     <span class="inactive-entry">View:</span>
-    
+
   <% possible_views.each do |view| %>
     <% if params[:view].eql?(view) or (params[:view].nil? and view.eql?("List")) %>
       <% span_class = "active-entry" %>
@@ -45,7 +45,7 @@
       <div class="event-preview">
         <h3><%= link_to event.name, events_public_show_path(event) %></h3>
         <div class="event-info">
-          <%= "#{event.start_date.strftime("%A %m/%d")}, #{event.start_date.strftime("%I:%M%p")} - #{event.end_date.strftime("%I:%M%p")}" %>
+          <%= "#{event.start_date.strftime("%A %-m/%d")}, #{event.start_date.strftime("%l:%M %P")} - #{event.end_date.strftime("%l:%M %P")}" %>
         </div>
         <div class="event-description">
           <%= event.description %>

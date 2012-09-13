@@ -24,17 +24,25 @@
 
 
 <% content_for :sidebar do %>
-<% if false %>
-  <h4>Upcoming Events</h4>
-  <p>
-    Hold the phone, we're updating our site.
-  </p>
+  <h3>Upcoming Events</h3>
+  <div id="eventshighlight">
+    <% if @events.length > 0 %>
+      <% @events.each do |event| %>
+        <%= link_to event.name, events_public_show_path(event), :title => event.short_description %>
+        <p><%= format_datetime_short event %></p>
+      <% end %>
+    <% else %>
+      <p>There are no upcoming events at this time - stay tuned!</p>
+    <% end %>
+  </div>
 
-  <h4>SSE News</h4>
-  <p>
-    See above explanation.
-  </p>
-<% end %>
+  <% if false %>
+    <h4>SSE News</h4>
+    <p>
+      Hold the phone, we're updating our site.
+    </p>
+  <% end %>
+
 <% end %>
 
 
