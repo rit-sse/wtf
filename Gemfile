@@ -62,5 +62,8 @@ gem 'eco'
 gem 'carrierwave'
 gem 'fog'
 
+# iCal support
+gem 'ri_cal'
+
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'

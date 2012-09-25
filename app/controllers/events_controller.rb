@@ -41,6 +41,7 @@ class EventsController < AdminController
         end
       end
       format.json { render json: @events }
+      format.ics  { render :text => Event.to_ical }
     end
   end
 
