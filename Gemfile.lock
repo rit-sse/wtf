@@ -147,6 +147,7 @@ GEM
       json (~> 1.4)
     redcarpet (2.1.1)
     redis (3.0.1)
+    ri_cal (0.8.8)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
       rspec-expectations (~> 2.11.0)
@@ -227,6 +228,7 @@ DEPENDENCIES
   rails (= 3.2.8)
   redcarpet
   redis
+  ri_cal
   rspec-rails
   sass-rails (~> 3.2.3)
   settingslogic
