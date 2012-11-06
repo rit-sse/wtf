@@ -7,6 +7,17 @@ class EventsController < AdminController
   # GET /admin/events
   # GET /admin/events.json
   def index
+    if params[:when] and params[:when] == "past"
+      @events = Event.where("start_date <  ?", DateTime.now.to_date)
+      @when = :past
+    elsif params[:when] and params[:when] == "all"
+      @events = Event.all
+      @when = :all
+    else
+      @events = Event.where("start_date >= ?", DateTime.now.to_date)
+      @when = :future
+    end
+
     respond_to do |format|
       format.html
       format.json { render json: @events }
