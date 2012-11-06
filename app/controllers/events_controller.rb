@@ -8,13 +8,16 @@ class EventsController < AdminController
   # GET /admin/events.json
   def index
     if params[:when] and params[:when] == "past"
-      @events = Event.where("start_date <  ?", DateTime.now.to_date)
+      # Past events are sorted in "most recent -> oldest" order
+      @events = Event.where("start_date <  ?", DateTime.now.to_date).order("start_date DESC")
       @when = :past
     elsif params[:when] and params[:when] == "all"
-      @events = Event.all
+      # All events are ordered in "most in the future -> oldest" order
+      @events = Event.order("start_date DESC").all
       @when = :all
     else
-      @events = Event.where("start_date >= ?", DateTime.now.to_date)
+      # Future events are ordered in "soonest -> furthest away" order
+      @events = Event.where("start_date >= ?", DateTime.now.to_date).order("start_date ASC")
       @when = :future
     end
 
