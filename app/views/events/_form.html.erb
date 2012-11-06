@@ -76,4 +76,11 @@
     <%= link_to "Cancel", events_path, class: "medium red super button" %>
     <%= f.submit nil, class: "medium super button" %>
   </div>
+
+  <%# 
+    This passes along the :when paramater to the controllers.
+  %>
+  <% if params[:when] %>
+    <input type="hidden" name="when" value=<%=params[:when]%> />
+  <% end %>
 <% end %>

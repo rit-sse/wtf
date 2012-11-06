@@ -112,9 +112,22 @@ class EventsController < AdminController
   # PUT /admin/events/1
   # PUT /admin/events/1.json
   def update
+    # If there is a paramater named "when", it means we were
+    # previously in an edit view which we traveled to from 
+    # one of the tabs from the edit view home page.
+    # These tabs (and the values of when): future, past, all
+
+    # Example: I traveled from the past events view to edit an event
+    # when will be "past", and I should redirect the user back to the
+    # "past" event list
+    events_when_params = {}
+    if params[:when]
+      events_when_params[:when] = params[:when]
+    end
+
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to events_path, notice: 'Event was successfully updated.' }
+        format.html { redirect_to events_path(events_when_params), notice: 'Event was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
