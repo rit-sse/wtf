@@ -1,6 +1,18 @@
 <% title "Events" %>
 <h1>Events</h1>
 
+<ul class="nav nav-tabs">
+	<li <%= "class=active" if @when == :future%>>
+		<a href="?">Future</a>
+	</li>
+	<li <%= "class=active" if @when == :past%>>
+		<a href="?when=past">Past</a>
+	</li>
+	<li <%= "class=active" if @when == :all%>>
+		<a href="?when=all">All</a>
+	</li>
+</ul>
+
 <div class="fat_list">
   <% @events.each do |event| %>
     <%= render partial: "list_item", locals: { event: event } %>

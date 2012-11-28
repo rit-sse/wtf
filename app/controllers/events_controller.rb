@@ -7,6 +7,20 @@ class EventsController < AdminController
   # GET /admin/events
   # GET /admin/events.json
   def index
+    if params[:when] and params[:when] == "past"
+      # Past events are sorted in "most recent -> oldest" order
+      @events = Event.where("start_date <  ?", DateTime.now.to_date).order("start_date DESC")
+      @when = :past
+    elsif params[:when] and params[:when] == "all"
+      # All events are ordered in "most in the future -> oldest" order
+      @events = Event.order("start_date DESC").all
+      @when = :all
+    else
+      # Future events are ordered in "soonest -> furthest away" order
+      @events = Event.where("start_date >= ?", DateTime.now.to_date).order("start_date ASC")
+      @when = :future
+    end
+
     respond_to do |format|
       format.html
       format.json { render json: @events }
@@ -98,9 +112,22 @@ class EventsController < AdminController
   # PUT /admin/events/1
   # PUT /admin/events/1.json
   def update
+    # If there is a paramater named "when", it means we were
+    # previously in an edit view which we traveled to from 
+    # one of the tabs from the edit view home page.
+    # These tabs (and the values of when): future, past, all
+
+    # Example: I traveled from the past events view to edit an event
+    # when will be "past", and I should redirect the user back to the
+    # "past" event list
+    events_when_params = {}
+    if params[:when]
+      events_when_params[:when] = params[:when]
+    end
+
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to events_path, notice: 'Event was successfully updated.' }
+        format.html { redirect_to events_path(events_when_params), notice: 'Event was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
