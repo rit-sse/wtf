@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.9'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -11,7 +11,7 @@ gem 'pg', :group => [:production]
 # Auth
 gem 'cancan'
 gem "ssedap-client"
-gem "bartt-ssl_requirement", require: "ssl_requirement"
+gem "bartt-ssl_requirement", :require => "ssl_requirement"
 
 # Helper for nested pages
 gem 'ancestry'
@@ -27,6 +27,7 @@ group :assets do
   gem 'uglifier', ">= 1.0.3"
 end
 group :production do
+  gem 'libv8'
   gem 'therubyracer'
 end
 
@@ -50,9 +51,9 @@ gem 'factory_girl_rails', :group => [:development, :test]
 gem 'whiskey_disk', :group => [:development]
 
 # Pinocchio
-gem 'sinatra', require: false
-gem 'redis', require: false
-gem 'sinatra-flash', require: false
+gem 'sinatra', :require => false
+gem 'redis', :require => false
+gem 'sinatra-flash', :require => false
 
 # Add support for eco templates 
 gem 'sprockets'
