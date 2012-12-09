@@ -1,19 +1,24 @@
 <% title "Log In" %>
-<h1 class="centered">Log In</h1>
 
-<div class="centered">
-  <%= form_tag({ action: "authorize" }, class: "centered autofocus") do %>
+<div class="row-fluid well">
+  <div class="span4">
+    <h1>Log In</h1>
+    <div class="alert alert-info">
+      <p>Login with your RIT credentials or <a href="">register a new account</a></p>
+    </div>
+  </div>
+  <div class="span4 offset1">
+    <%= form_tag({ action: "authorize" }) do %>
 
-  <div class="field bigtext">
     <%= label_tag :username %>
     <%= text_field_tag :username %>
-  </div>
-  <div class="field bigtext">
+
     <%= label_tag :password %>
     <%= password_field_tag :password %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Submit", class: "medium super button" %>
+
+    <div>
+      <%= submit_tag "Submit", class: "btn btn-primary" %>
+    </div>
   </div>
 </div>
 
