@@ -16,7 +16,11 @@ $ ->
     MarkdownMode = require("ace/mode/markdown").Mode
     editor.getSession().setMode(new MarkdownMode())
     editor.getSession().setTabSize 2
-    editor.setHighlightActiveLine true
+    editor.getSession().setUseWrapMode true
+    editor.renderer.setShowGutter false
+    editor.setHighlightActiveLine false
+    editor.setShowPrintMargin false
+    $(this).css("font-size", '14px')
 
     # intentionally un-focus the ace editor...it seems to want to grab focus
     # when it's created
