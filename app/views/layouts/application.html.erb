@@ -19,27 +19,23 @@
         <% end %>
 
         <div id="nav_links">
-          <%= active_link_to "HOME", root_path %>
-          <%if false %>
-              <%= active_link_to "NEWS", "/news" %>
-          <% end %>
           <%= active_link_to "EVENTS", events_public_events_path %>
           <%= active_link_to "PROJECTS", "/projects" %>
           <ul>
             <li class="dropdown" id="committees-menu">
-              <%= link_to "ABOUT THE SSE <b class='caret'></b>".html_safe, "#", data: { toggle: "dropdown" }, class: "dropdown-toggle" %>
+              <%= link_to "ABOUT <b class='caret'></b>".html_safe, "#", data: { toggle: "dropdown" }, class: "dropdown-toggle" %>
               <ul class="dropdown-menu">
-                <li><%= link_to "About", "/about" %></li>
+                <li><%= link_to "About the SSE", "/about" %></li>
                 <li><%= link_to "Officers", "/about/officers" %></li>
                 <li class="divider"></li>
-                <li><%= link_to "Mentoring Committee", "/mentoring" %></li>
-                <li><%= link_to "Projects Committee", "/projects" %></li>
-                <li><%= link_to "Fundraising Committee", "/fundraising" %></li>
-                <li><%= link_to "Intramurals Committee", "/intramurals" %></li>
-                <li><%= link_to "PR Committee", "/pr" %></li>
-                <li><%= link_to "ViSE Committee", "/vise" %></li>
+                <li><%= link_to "Mentoring", "/mentoring" %></li>
+                <li><%= link_to "Projects", "/projects" %></li>
+                <li><%= link_to "Fundraising", "/fundraising" %></li>
+                <li><%= link_to "Intramurals", "/intramurals" %></li>
+                <li><%= link_to "Public Relations", "/pr" %></li>
+                <li><%= link_to "ViSE", "/vise" %></li>
                 <li class="divider"></li>
-                <li><%= link_to "Tech Talks", "/tech-talks" %></li>
+                <li><%= link_to "Talks", "/talks" %></li>
                 <li><%= link_to "Crash Courses", "/crash-courses" %></li>
               </ul>
             </li>
