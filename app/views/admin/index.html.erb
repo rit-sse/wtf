@@ -1,16 +1,24 @@
 <% title "Admin Dashboard" %>
 <h1>Admin Dashboard</h1>
 
-<p>Things you can administer:</p>
-<p>
+<div class="edit-list">
+
   <% if can? :manage, Page %>
-    <%= link_to "Pages", pages_path %><br />
+    <div class="list-item">
+      <div class="list-title"><%= link_to "Pages", pages_path %></div><br />
+    </div>
   <% end %>
+
   <% if can? :manage, Event %>
-    <%= link_to "Events", events_path %><br />
+    <div class="list-item">
+      <div class="list-title"><%= link_to "Events", events_path %></div><br />
+    </div>
   <% end %>
-  <% if can? :manage, Upload %>
-    <%= link_to "Uploads (not finished, gtfo)", uploads_path %><br />
+
+  <% if false #can? :manage, Upload %>
+    <div class="list-item">
+      <div class="list-title"><%= link_to "Uploads", uploads_path %></div><br />
+    </div>
   <% end %>
-  ...and more to come soon.
-</p>
+
+</div>

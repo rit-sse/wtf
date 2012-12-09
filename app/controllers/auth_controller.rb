@@ -24,12 +24,8 @@ class AuthController < ApplicationController
         username = auth_hash["data"]["user"]
         role = auth_hash["data"]["user_info"]["role"]
 
-        if role == "Committee Head" || role == "Admin" || role == "Officer"
-          set_current_user username, role
-          redirect_to admin_path, notice: "Logged in successfully."
-        else
-          error_notice = "Error: insufficient privileges."
-        end
+        set_current_user username, role
+        redirect_to root_path, notice: "Logged in successfully."
       else
         error_notice = "Error: #{auth_hash["data"]["error"]}"
       end

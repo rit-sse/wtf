@@ -44,9 +44,7 @@
               </ul>
             </li>
           </ul>
-          <% unless signed_in? %>
-            <%= link_to "LOG IN", auth_path, class: "login" %>
-          <% else %>
+          <% if signed_in? %>
             <ul>
               <li class="dropdown" id="committees-menu">
                 <%= link_to "<i class='icon-user icon-white'></i><i class='caret'></i>".html_safe,
@@ -60,11 +58,11 @@
                   <% if can? :manage, Event %>
                     <li><%= link_to "Events", events_path %></li>
                   <% end %>
-                  <% if can? :manage, Upload %>
+                  <% if false #can? :manage, Upload %>
                     <li><%= link_to "Uploads", uploads_path %></li>
                   <% end %>
                   <li class="divider"></li>
-                  <li><%= link_to "Logout", auth_logout_path %></li>
+                  <li><%= link_to "Logout", logout_path %></li>
                 </ul>
               </li>
             </ul>

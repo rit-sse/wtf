@@ -14,8 +14,8 @@ Wtf::Application.routes.draw do
     root to: 'admin#index', as: "admin"
   end
 
-  match '/auth', to: 'auth#index'
-  match '/auth/logout', to: 'auth#logout'
+  match '/login', to: 'auth#index'
+  match '/logout', to: 'auth#logout'
   post '/auth(/:action)', controller: 'auth'
 
   match '/events' => 'events#public_index', as: "events_public_events"

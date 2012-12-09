@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate!
     unless current_user
-      redirect_to auth_path
+      redirect_to login_path
     end
   end
 end
