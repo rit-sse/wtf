@@ -1,0 +1,15 @@
+<div class="list-item">
+
+  <div class="list-title">
+    <%= link_to upload.file, upload %>
+  </div>
+
+  <div class="edit-links">
+    <%= link_to raw("<i class=\"icon-pencil icon-white\"></i> Edit"),
+      edit_upload_path(upload), class: "btn btn-info" %>
+    <%= link_to raw("<i class=\"icon-trash icon-white\"></i> Delete"),
+      upload, class: "btn btn-danger", confirm: 'Are you sure?', method: :delete %>
+  </div>
+
+  <div class="clear"></div>
+</div>
