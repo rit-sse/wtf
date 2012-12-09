@@ -1,13 +1,21 @@
-<div class="list_item">
-  <div class="list_title"><%= raw("&mdash; " * page.depth) %><%= link_to page.title, edit_page_path(page) %></div>
-  <div class="edit_links">
-    <%= link_to 'View', page.path, target: "_blank" %>
-    <%= link_to 'New child', "#{new_page_path}?parent_id=#{page.id}", class: "super button" %>
-    <%= link_to 'Destroy', page, class: "red super button", confirm: 'Are you sure?', method: :delete %>
+<div class="list-item">
+
+  <div class="list-title">
+  	<%= raw("&mdash; " * page.depth) %><%= link_to page.title, page.path %>
   </div>
+
+  <div class="edit-links">
+    <%= link_to raw("<i class=\"icon-pencil icon-white\"></i> Edit"),
+    	edit_page_path(page), class: "btn btn-info" %>
+    <%= link_to raw("<i class=\"icon-plus icon-white\"></i> New Child"),
+    	"#{new_page_path}?parent_id=#{page.id}", class: "btn btn-primary" %>
+    <%= link_to raw("<i class=\"icon-trash icon-white\"></i> Delete"),
+    	page, class: "btn btn-danger", confirm: 'Are you sure?', method: :delete %>
+  </div>
+
   <div class="clear"></div>
 </div>
+
 <% page.children.order("title").each do |child| %>
   <%= render partial: "list_item", locals: { page: child } %>
 <% end %>
-

@@ -4,7 +4,7 @@ $ ->
       firstInput = $(this).children("div.field").children("input[type=text]").first()
       firstInput.focus() unless firstInput.val().length > 0
 
-  autofocus()
+  #autofocus()
 
   $(".ace").each ->
     # set up ace - currently we can only handle one editor at a time
@@ -18,10 +18,10 @@ $ ->
     editor.getSession().setTabSize 2
     editor.setHighlightActiveLine true
 
-    # intentionally un-focus the ace editor...it seems to want to grab focus 
+    # intentionally un-focus the ace editor...it seems to want to grab focus
     # when it's created
     editor.blur()
-    autofocus()
+    #autofocus()
 
     # resize parent container
     h = $(this).outerHeight(true)
