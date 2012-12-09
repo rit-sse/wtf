@@ -13,7 +13,7 @@
 	</li>
 </ul>
 
-<div class="fat_list">
+<div class="edit-list">
   <% @events.each do |event| %>
     <%= render partial: "list_item", locals: { event: event } %>
   <% end %>
@@ -22,5 +22,6 @@
 <br />
 
 <% if can? :create, Event %>
-  <%= link_to 'New Event', new_event_path, class: "medium super button" %>
+  <%= link_to raw("<i class=\"icon-plus icon-white\"></i> New Event"),
+	new_event_path, class: "btn btn-primary" %>
 <% end %>

@@ -1,13 +1,20 @@
-<div class="list_item">
-  <%# 
-    If we have a when paramater, that needs to get passed on to the
-    edit view.
-  %>
-  <div class="list_title"><%= link_to event.name, "#{edit_event_path(event)}#{params[:when]?'?when='+params[:when]:''}" %></div>
-  <div class="edit_links">
-    <%= link_to 'View', events_public_show_path(event), target: "_blank" %>
-    <%= link_to 'Destroy', event, class: "red super button", confirm: 'Are you sure?', method: :delete %>
+<div class="list-item">
+
+  <div class="list-title">
+    <%= link_to event.name, events_public_show_path(event) %>
   </div>
+
+  <div class="edit-links">
+    <%#
+      If we have a when paramater, that needs to get passed on to the
+      edit view.
+    %>
+    <%= link_to raw("<i class=\"icon-pencil icon-white\"></i> Edit"),
+      "#{edit_event_path(event)}#{params[:when]?'?when='+params[:when]:''}",
+      class: "btn btn-info" %>
+    <%= link_to raw("<i class=\"icon-trash icon-white\"></i> Delete"),
+      event, class: "btn btn-danger", confirm: 'Are you sure?', method: :delete %>
+  </div>
+
   <div class="clear"></div>
 </div>
-
