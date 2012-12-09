@@ -3,7 +3,10 @@
 <head>
   <meta charset="utf-8" />
 
-  <title><%= content_for?(:title) ? "#{yield(:title)} &mdash; Society of Software Engineers @ RIT".html_safe : "Society of Software Engineers @ RIT" %></title>
+  <title>
+    <%= content_for?(:title) ? "#{yield(:title)} &mdash; Society of Software Engineers".html_safe
+      : "Society of Software Engineers" %>
+  </title>
 
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
@@ -23,7 +26,8 @@
           <%= active_link_to "PROJECTS", "/projects" %>
           <ul>
             <li class="dropdown" id="committees-menu">
-              <%= link_to "ABOUT <b class='caret'></b>".html_safe, "#", data: { toggle: "dropdown" }, class: "dropdown-toggle" %>
+              <%= link_to "ABOUT <b class='caret'></b>".html_safe, "#",
+                data: { toggle: "dropdown" }, class: "dropdown-toggle" %>
               <ul class="dropdown-menu">
                 <li><%= link_to "About the SSE", "/about" %></li>
                 <li><%= link_to "Officers", "/about/officers" %></li>
@@ -92,7 +96,7 @@
     </div>
     <div id="footer">
 
-      All content is Copyright &copy; <%= Time.now.year %> RIT Society of Software Engineers.
+      All content is Copyright &copy; <%= Time.now.year %> Society of Software Engineers.
 
     </div>
   </div>
