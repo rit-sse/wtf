@@ -9,3 +9,4 @@ tmp/*.txt
 tmp/cache
 .sass-cache/
 *.swp
+.DS_Store
