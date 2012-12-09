@@ -64,7 +64,6 @@ h1, h2, h3, h4, h5, h6 {
         display: inline-block;
         color: #9ab7c7;
         padding: 7px;
-        @include border-radius(5px);
 
         &:hover, &.active {
           @include transition(300ms all);
@@ -214,10 +213,6 @@ h1, h2, h3, h4, h5, h6 {
   height: 325px;
   margin: 5px 0 15px;
   border: 1px solid #bbb;
-
-  &, & > div {
-    @include border-radius(5px);
-  }
 }
 
 .flash {
