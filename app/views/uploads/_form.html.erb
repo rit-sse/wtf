@@ -11,11 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :file %><br />
-    <%= f.text_field :file %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <%= f.label :file %>
+  <%= f.text_field :file %>
+
+  <div class="form-actions">
+    <%= f.submit nil, class: "btn btn-primary" %>
+    <%= link_to "Cancel", uploads_path, class: "btn" %>
   </div>
 <% end %>
