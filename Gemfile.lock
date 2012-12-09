@@ -34,6 +34,9 @@ GEM
       activerecord (>= 2.3.14)
     arel (3.0.2)
     bartt-ssl_requirement (1.4.2)
+    bootstrap-sass-rails (2.2.1.2)
+      railties (>= 3.1.0)
+      sass-rails (>= 3.1.0)
     builder (3.0.4)
     cancan (1.6.8)
     capybara (2.0.1)
@@ -217,6 +220,7 @@ DEPENDENCIES
   ace-rails-ap
   ancestry
   bartt-ssl_requirement
+  bootstrap-sass-rails
   cancan
   capybara
   carrierwave

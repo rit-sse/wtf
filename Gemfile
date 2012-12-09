@@ -25,6 +25,7 @@ group :assets do
   gem 'sass-rails', "  ~> 3.2.3"
   gem 'coffee-rails', "~> 3.2.1"
   gem 'uglifier', ">= 1.0.3"
+  gem 'bootstrap-sass-rails'
 end
 group :production do
   gem 'libv8'
@@ -55,7 +56,7 @@ gem 'sinatra', :require => false
 gem 'redis', :require => false
 gem 'sinatra-flash', :require => false
 
-# Add support for eco templates 
+# Add support for eco templates
 gem 'sprockets'
 gem 'eco'
 
