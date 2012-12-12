@@ -53,7 +53,7 @@
                 <ul class="dropdown-menu">
                   <li><%= link_to "Dashboard", admin_path %></li>
                   <% if can? :manage, Page %>
-                    <li><%= link_to "Pages", pages_path %></li>
+                    <li><%= link_to "Pages", admin_pages_path %></li>
                   <% end %>
                   <% if can? :manage, Event %>
                     <li><%= link_to "Events", events_path %></li>

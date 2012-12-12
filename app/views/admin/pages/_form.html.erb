@@ -1,4 +1,4 @@
-<%= form_for(@page, html: { class: "autofocus" }) do |f| %>
+<%= form_for([:admin, @page], html: { class: "autofocus" }) do |f| %>
   <% if @page.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
@@ -25,6 +25,8 @@
     </div>
   </div>
 
+  <%= f.hidden_field :layout, :value => "single_column" %>
+
   <%= f.label :published_at %>
   <%= f.date_select :published_at %>
 
@@ -36,6 +38,6 @@
 
   <div class="form-actions">
     <%= f.submit nil, class: "btn btn-primary" %>
-    <%= link_to "Cancel", pages_path, class: "btn" %>
+    <%= link_to "Cancel", admin_pages_path, class: "btn" %>
   </div>
 <% end %>

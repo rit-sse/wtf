@@ -18,7 +18,7 @@ module Admin
       @page = Page.new(params[:page])
 
       if @page.save
-        redirect_to pages_path, notice: 'Page was successfully created.'
+        redirect_to admin_pages_path, notice: 'Page was successfully created.'
       else
         render action: "new"
       end
@@ -37,7 +37,7 @@ module Admin
     def destroy
       @page.destroy
 
-      redirect_to pages_path, notice: "Page successfully destroyed."
+      redirect_to admin_pages_path, notice: "Page successfully destroyed."
     end
 
   end
