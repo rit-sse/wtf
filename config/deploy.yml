@@ -6,8 +6,10 @@ defaults: &defaults
 
 staging:
   <<: *defaults
-  deploy_to: "~/staging.wtf"
+  domain: "see-staging.se.rit.edu"
+  deploy_to: "~/wtf"
   post_setup_script: 'script/post-setup-staging.sh'
+  post_deploy_script: 'script/post-deploy.sh'
 
 production:
   <<: *defaults
