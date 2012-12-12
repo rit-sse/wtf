@@ -22,15 +22,7 @@ class PagesController < AdminController
       # 404!
       render template: "/pages/404", status: 404
     else
-      # @small_title = @page.small_title
-
-      # if @page.list_subpages == Page::SUBPAGES_LIST_SIDEBAR or 
-      #   (!@page.parent.nil? and @page.parent.list_subpages == Page::SUBPAGES_LIST_SIDEBAR)
-
-      #   @display_sidebar = true
-      #   @sidebar_page = @page.list_subpages == Page::SUBPAGES_LIST_SIDEBAR ? @page : @page.parent
-      #   @small_title ||= @sidebar_page.small_title
-      # end
+      render template: @page.layout.view
     end
   end
 
