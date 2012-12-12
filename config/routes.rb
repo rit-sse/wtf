@@ -2,7 +2,6 @@ Wtf::Application.routes.draw do
 
 
   scope "/admin" do
-    resources :pages
     resources :events
     resources :committees
     resources :uploads
@@ -12,6 +11,10 @@ Wtf::Application.routes.draw do
     match '/diagnostics(/:action)', controller: 'diagnostics' if Rails.env.development?
 
     root to: 'admin#index', as: "admin"
+  end
+
+  namespace "admin" do
+    resources :pages
   end
 
   match '/login', to: 'auth#index'
