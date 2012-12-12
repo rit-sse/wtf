@@ -21,4 +21,8 @@ class Block < ActiveRecord::Base
     end
   end
 
+  def self.partial_name
+    self.name.demodulize.underscore
+  end
+
 end
