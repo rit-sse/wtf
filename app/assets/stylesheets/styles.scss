@@ -6,6 +6,18 @@ $std-margin: 25px;
 @import "_variables";
 @import "twitter/bootstrap";
 
+// bootstrap radius overrides
+.btn-group {
+  .btn:first-child {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+  .btn:last-child, .dropdown-toggle {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+}
+
 // mixins
 
 @mixin horiz-center {
