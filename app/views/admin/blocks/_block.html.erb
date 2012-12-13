@@ -1,0 +1,9 @@
+<div class="block">
+  <%= f.fields_for :blocks, block, child_index: override_index ||= nil do |block_fields| %>
+    <%= block_fields.hidden_field :type %>
+    <%= block_fields.hidden_field :section_key, class: "section_key" %>
+    <%= render partial: "admin/blocks/#{block.class.partial_name}", locals: {f: block_fields, block: block} %>
+    <%= block_fields.check_box :_destroy, value: false %>
+    <%= block_fields.label :_destroy, "Remove Block" %>
+  <% end %>
+</div>

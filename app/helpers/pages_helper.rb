@@ -6,4 +6,8 @@ module PagesHelper
   def render_block(block)
     render partial: "blocks/block", locals: {block: block}
   end
+
+  def available_block_types
+  	[Markdown]
+  end
 end

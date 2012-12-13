@@ -15,6 +15,7 @@ Wtf::Application.routes.draw do
 
   namespace "admin" do
     resources :pages
+    resources :blocks
   end
 
   match '/login', to: 'auth#index'

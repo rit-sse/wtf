@@ -14,6 +14,8 @@ class Page < ActiveRecord::Base
   has_many :blocks
   has_ancestry
 
+  accepts_nested_attributes_for :blocks, :allow_destroy => true
+
   validates_presence_of :title, :slug, :layout
   validates_format_of :slug, :with => /^[a-zA-Z0-9\-_]+$/
   validates_with SlugUniquenessValidator

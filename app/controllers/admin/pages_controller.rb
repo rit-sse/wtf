@@ -16,9 +16,10 @@ module Admin
     # POST /admin/pages
     def create
       @page = Page.new(params[:page])
+      @page.layout ||= params[:layout]
 
       if @page.save
-        redirect_to admin_pages_path, notice: 'Page was successfully created.'
+        redirect_to edit_admin_page_path(@page)
       else
         render action: "new"
       end
@@ -27,7 +28,7 @@ module Admin
     # PUT /admin/pages/1
     def update
       if @page.update_attributes(params[:page])
-        redirect_to pages_path, notice: 'Page was successfully updated.'
+        redirect_to admin_pages_path, notice: 'Page was successfully updated.'
       else
         render action: "edit"
      end

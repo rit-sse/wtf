@@ -1,6 +1,8 @@
 class Block < ActiveRecord::Base
 
   attr_accessible :content
+  attr_accessible :section_key
+  attr_accessible :type
 
   belongs_to :page
 
