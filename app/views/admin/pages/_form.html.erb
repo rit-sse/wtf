@@ -26,10 +26,16 @@
       </div>
     </div>
 
-    <%= f.hidden_field :layout, :value => @page.layout ? @page.layout.to_s.underscore : "single_column" %>
-
     <%= f.label :published_at %>
     <%= f.date_select :published_at %>
+
+    <%= f.label :layout %>
+    <% if @page.new_record? %>
+      <%= f.select :layout, available_layout_types.map(&:option_for_select) %>
+    <% else %>
+      <p><%= @page.layout.title %></p>
+      <%= f.hidden_field :layout, :value => @page.layout.to_s.underscore %>
+    <% end %>
 
     <% unless @page.new_record? %>
       <% @page.sections.each do |section| %>

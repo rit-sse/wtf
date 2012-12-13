@@ -10,4 +10,8 @@ module PagesHelper
   def available_block_types
   	[Markdown]
   end
+
+  def available_layout_types
+  	[SingleColumn, TwoColumn]
+  end
 end

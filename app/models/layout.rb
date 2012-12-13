@@ -8,6 +8,10 @@ class Layout
       end
 	end
 
+	def self.option_for_select
+		[self.title, self]
+	end
+
 protected
 
 	def self.title(title=nil)
