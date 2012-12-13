@@ -11,7 +11,7 @@ end
 class Page < ActiveRecord::Base
   include ActiveSupport::Inflector
 
-  has_many :blocks
+  has_many :blocks, :dependent => :destroy
   has_ancestry
 
   accepts_nested_attributes_for :blocks, :allow_destroy => true
