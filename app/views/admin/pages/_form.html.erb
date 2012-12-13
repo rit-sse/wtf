@@ -24,18 +24,14 @@
         <%= f.label :parent_page %>
         <%= f.select :parent_id, Page.get_pages_tree, include_blank: "No parent" %>
       </div>
+      <div class="span4">
+        <%= f.label :layout %>
+        <%= f.select :layout, available_layout_types.map(&:option_for_select), {}, { :disabled => !@page.new_record? } %>
+      </div>
     </div>
 
     <%= f.label :published_at %>
     <%= f.date_select :published_at %>
-
-    <%= f.label :layout %>
-    <% if @page.new_record? %>
-      <%= f.select :layout, available_layout_types.map(&:option_for_select) %>
-    <% else %>
-      <p><%= @page.layout.title %></p>
-      <%= f.hidden_field :layout, :value => @page.layout.to_s.underscore %>
-    <% end %>
 
     <% unless @page.new_record? %>
       <% @page.sections.each do |section| %>
