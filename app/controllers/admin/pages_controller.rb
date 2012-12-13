@@ -3,6 +3,10 @@ module Admin
 
     load_and_authorize_resource
 
+    def index
+      @pages = Page.roots
+    end
+
     # GET /admin/pages/new
     def new
       @page = Page.new
