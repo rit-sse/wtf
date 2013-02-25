@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(:version => 20120427180131) do
     t.integer  "committee_id"
     t.string   "image"
   end
+  
+  create_table "orbiters", :force => true do |t|
+    t.integer  "id"
+    t.string   "content"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "pages", :force => true do |t|
     t.string   "title"

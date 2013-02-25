@@ -21,6 +21,10 @@ Wtf::Application.routes.draw do
   match '/events' => 'events#public_index', as: "events_public_events"
   match '/events/gtv', to: 'events#gtv'
   match '/events(/:id)' => 'events#public_show', as: "events_public_show"
+  
+  get '/orbiter/add'
+  get '/orbiter/destroy'
+  match '/orbiter/edit' => 'orbiter#edit', :via => [:post]
 
   # static routes and redirects
   # ...

@@ -6,11 +6,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require ace
-//= require theme-textmate
-//= require mode-markdown
 //= require bootstrap.min
+//= require ace/ace
+//= require ace/mode-markdown.js
+//= require ace/mode-html.js
 //= require app
 //= require events
-//= require jquery.orbit-1.2.3.min
 //= require root
