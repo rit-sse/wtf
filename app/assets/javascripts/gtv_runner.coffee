@@ -27,6 +27,9 @@ class SSEEvent extends Backbone.Model
 
   location: ->
     this.get("location")
+    
+  image: ->
+    this.get("image").url
 
   matchesStartDate: (datetime) ->
     otherDate = datetime.clearTime()
@@ -51,6 +54,10 @@ class SSEThreeWeekView extends Backbone.View
 class SSEEventPanelsView extends Backbone.View
   initialize: ->
     $("body").html(JST["templates/15_event_view"]( events: @options.events ))
+    
+class SSEEventHighlightView extends Backbone.View
+  initialize: ->
+    $("body").html(JST["templates/event_highlight"]( event: @options.event ))
 
 class SSEColorView extends Backbone.View
   initialize: ->
@@ -70,6 +77,9 @@ class SSEController extends Backbone.Router
       "nextPage": "event_panels"
     "white_view":
       "timeAlive": 5
+      "nextPage": "event_highlight"
+    "event_highlight":
+      "timeAlive": 15
       "nextPage": "three_week"
   routes:
     "../events/:id": "month"
@@ -78,9 +88,9 @@ class SSEController extends Backbone.Router
     #this.three_week()
     #@countdown = pageSettings.three_week.timeAlive
     #@page = "three_week"
-    this.event_panels()
-    @countdown = pageSettings.event_panels.timeAlive
-    @page = "event_panels"
+    this.event_highlight()
+    @countdown = pageSettings.event_highlight.timeAlive
+    @page = "event_highlight"
     @timerId = setInterval(this.flipPage, 1000)
 
   flipPage: =>
@@ -92,6 +102,7 @@ class SSEController extends Backbone.Router
 
   gotoPage: (page) =>
     switch page
+      when "event_highlight" then @event_highlight()
       when "three_week" then @three_week()
       when "event_panels" then @event_panels()
       when "black_view" then @black_view()
@@ -129,6 +140,23 @@ class SSEController extends Backbone.Router
   black_view: =>
     new SSEColorView
       color: "black"
+      
+  event_highlight: =>
+    req = 
+      limit: 12
+      can_feature: true
+    that_scope = @
+    $.getJSON '../events', req, (data) ->
+      if data
+        allEvents = _(data).map (event) ->
+          new SSEEvent(event)
+        if allEvents.length>0
+          new SSEEventHighlightView
+            event: allEvents[Math.floor(Math.random() * allEvents.length)]
+        else
+          that_scope.gotoPage(pageSettings["event_highlight"].nextPage)
+      else
+        console.log("No events to load.");
 
 app = new SSEController
 Backbone.history.start()
