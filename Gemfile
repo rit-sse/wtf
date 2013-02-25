@@ -67,8 +67,5 @@ gem 'fog'
 # iCal support
 gem 'ri_cal'
 
-#The ACE Text editor
-gem 'ace-rails-ap'
-
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
