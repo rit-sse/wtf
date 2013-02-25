@@ -149,10 +149,10 @@ class SSEController extends Backbone.Router
     $.getJSON '../events', req, (data) ->
       if data
         allEvents = _(data).map (event) ->
-          if event.image
+          if event.image and event.image.url and (event.image.url.length and event.image.url.length>0)
             new SSEEvent(event)
           else
-            return nil
+            return
         allEvents = $.grep(allEvents,(n) ->
             return(n)
         )
