@@ -101,4 +101,11 @@ $ ->
                 interval: null
             })
             $("#new_header").carousel('pause')
+            
+            $("#new_header").on('slid', (event) ->
+                $("#new_header").carousel({
+                    interval: null
+                })
+                $("#new_header").carousel('pause')
+            )
         )
