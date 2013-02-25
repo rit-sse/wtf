@@ -6,11 +6,11 @@
 
   <div class="edit-links">
     <%= link_to raw("<i class=\"icon-pencil icon-white\"></i> Edit"),
-    	edit_page_path(page), class: "btn btn-info" %>
+    	edit_admin_page_path(page), class: "btn btn-info" %>
     <%= link_to raw("<i class=\"icon-plus icon-white\"></i> New Child"),
-    	"#{new_page_path}?parent_id=#{page.id}", class: "btn btn-primary" %>
+    	"#{new_admin_page_path}?parent_id=#{page.id}", class: "btn btn-primary" %>
     <%= link_to raw("<i class=\"icon-trash icon-white\"></i> Delete"),
-    	page, class: "btn btn-danger", confirm: 'Are you sure?', method: :delete %>
+    	[:admin, page], class: "btn btn-danger", confirm: 'Are you sure?', method: :delete %>
   </div>
 
   <div class="clear"></div>

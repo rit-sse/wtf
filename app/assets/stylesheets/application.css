@@ -6,13 +6,7 @@
  *
  * Loading the CSS for all regular pages for the application below.
  *
- *= require root
- *= require admin
- *= require pages
  *= require events
  *= require styles
  *= require orbit-1.2.3
- *= require diagnostics
- *= require admin
- *= require auth
 */

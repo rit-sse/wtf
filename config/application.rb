@@ -50,5 +50,8 @@ module Wtf
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Recursively include directories in the app/models folder
+    config.autoload_paths += Dir["#{config.root}/app/models/**/"]
   end
 end
