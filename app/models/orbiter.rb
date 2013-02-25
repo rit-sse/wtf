@@ -4,8 +4,7 @@ class Orbiter < ActiveRecord::Base
   validates_presence_of :content
 
   def self.make(contents)
-    self.create!(:content => contents, :updated_at => Time.now, 
-:created_at => Time.now)
+    self.create!(:content => contents, :updated_at => Time.now, :created_at => Time.now)
   end
   
   def self.drop_page( sid )
