@@ -8,5 +8,5 @@
   
   <img src="<%=@event.image()%>" alt="Event Image" class="gtv-event-highlight" id="main_image"/>
   
-  <div class="gtv-highlight-footer"><center><h3><%=@event.startDay()%>, <%=@event.startHour()%></h3></center></div>
+  <div class="gtv-highlight-footer"><center><h3><%=@event.startDay()%>, <%=@event.startHour()%> @ <%=@event.location()%></h3></center></div>
 </section> 
