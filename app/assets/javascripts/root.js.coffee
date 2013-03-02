@@ -1,6 +1,15 @@
 $ ->
     $("#new_header").carousel('next')
     $("#new_header").carousel('cycle')
+    $(".carousel-control").hide()
+    
+    $("#carousel_wrapper").mouseover( (event) ->
+        $(".carousel-control").show()
+    )
+    
+    $("#carousel_wrapper").mouseout( (event) ->
+        $(".carousel-control").hide()
+    )
     
     already_editing = false
     
