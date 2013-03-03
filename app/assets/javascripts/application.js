@@ -11,6 +11,7 @@
 //= require ace/mode-markdown.js
 //= require ace/mode-html.js
 //= require ace/theme-textmate
+//= require marked
 //= require app
 //= require events
 //= require root

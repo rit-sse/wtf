@@ -226,10 +226,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .ace {
   @include box-sizing(border-box);
-  width: $width;
+  //width: $width;
   height: 325px;
   margin: 5px 0 15px;
   border: 1px solid #bbb;
+  position: relative !important;
 }
 
 .flash {
@@ -280,10 +281,16 @@ h1, h2, h3, h4, h5, h6 {
   background-color:#FAFAFA !important;
 }
 
-.ace {
-  width: 900px;
-  background-color: #FAFAFA;
+.markdown_preview {
+    padding-left: 12px;
+    padding-right: 12px;
+    border: 1px solid #ccc;
 }
+
+/* .ace {
+  width: $width;
+  background-color: #FAFAFA;
+} */
 
 /*These could look better... without the stupid background; so let's remove it*/
 .carousel-control {
