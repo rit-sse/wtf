@@ -31,6 +31,10 @@ group :production do
   gem 'libv8'
   gem 'therubyracer'
 end
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
 
 # More asset stuff
 gem 'jquery-rails'
