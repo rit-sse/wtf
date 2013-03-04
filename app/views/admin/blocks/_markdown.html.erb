@@ -1,4 +1,17 @@
-<div>
-  <%= f.text_area :content, class: "none", :size => "30x15" %>
-  <div class="ace aceinit"><%= block.content %></div>
+<div style="height: auto;">
+  <ul class="nav nav-tabs" id="nav_tab_<%= block.id %>">
+    <li class="active"><a href="#edit_<%= block.id %>">Edit</a></li>
+    <li><a href="#preview_<%= block.id %>">Preview</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="edit_<%= block.id %>">
+      <%= f.text_area :content, class: "none", :size => "30x15", :style => "330px" %>
+      <div class="ace aceinit"><%= block.content %></div>
+    </div>
+    <div class="tab-pane" id="preview_<%= block.id %>">
+      <div class="content markdown_preview">
+        <%= markdown block.content %>
+      </div>
+    </div>
+  </div>
 </div>

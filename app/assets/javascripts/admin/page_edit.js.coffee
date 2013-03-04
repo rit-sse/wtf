@@ -4,6 +4,20 @@ $ -> acesetup()
 editors = []
 MarkdownMode = require("ace/mode/markdown").Mode
 
+marked.setOptions({
+  gfm: true,
+  tables: true,
+  breaks: true,
+  pedantic: false,
+  sanitize: false,
+  smartLists: true,
+  langPrefix: 'language-',
+  highlight: (code, lang) -> 
+    #If we add syntax highlighting on the server, 
+    #put the client code to do so here
+    return code
+})
+
 acesetup = ->
   $(".aceinit").each ->
     $(this).removeClass("aceinit")
@@ -21,15 +35,21 @@ acesetup = ->
     $(this).css("font-size", '14px')
 
     # resize parent container
-    h = $(this).outerHeight(true)
-    h2 = $(this).parent().outerHeight(true)
-    $(this).parent().css height: h + h2
     editor.resize()
 
     # set up change handler for forms
     textarea = $(this).siblings("textarea")
+    content_id = "#preview_"+$(this).parent().attr("id").split("_")[1]
+    content_area = $(content_id+" .markdown_preview")
     editor.getSession().on 'change', (change) ->
       textarea.text editors[id].getSession().getValue()
+      content_area.html( marked(editors[id].getSession().getValue()) )
+    
+    proper_id = "#"+$(this).parent().parent().siblings().first().attr("id")
+    $(proper_id+' a').click((e) ->
+      e.preventDefault()
+      $(this).tab('show')
+    )
 
 
 pageedit =
