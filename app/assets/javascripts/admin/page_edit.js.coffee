@@ -39,12 +39,17 @@ acesetup = ->
 
     # set up change handler for forms
     textarea = $(this).siblings("textarea")
-    content_area = $(this).siblings(".content")
+    content_id = "#preview_"+$(this).parent().attr("id").split("_")[1]
+    content_area = $(content_id+" .markdown_preview")
     editor.getSession().on 'change', (change) ->
       textarea.text editors[id].getSession().getValue()
       content_area.html( marked(editors[id].getSession().getValue()) )
-      for elem in editors
-        elem.resize()
+    
+    proper_id = "#"+$(this).parent().parent().siblings().first().attr("id")
+    $(proper_id+' a').click((e) ->
+      e.preventDefault()
+      $(this).tab('show')
+    )
 
 
 pageedit =
