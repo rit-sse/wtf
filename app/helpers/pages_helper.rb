@@ -8,7 +8,7 @@ module PagesHelper
   end
 
   def available_block_types
-  	[Markdown, NavigationTree]
+  	[Markdown, NavigationTree, Youtube]
   end
 
   def available_layout_types
