@@ -22,7 +22,7 @@
       </div>
       <div class="span4">
         <%= f.label :parent_page %>
-        <%= f.select :parent_id, Page.get_pages_tree, include_blank: "No parent" %>
+        <%= f.select :parent_id, get_pages_tree, include_blank: "No parent" %>
       </div>
       <div class="span4">
         <%= f.label :layout %>

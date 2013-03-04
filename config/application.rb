@@ -53,5 +53,6 @@ module Wtf
 
     # Recursively include directories in the app/models folder
     config.autoload_paths += Dir["#{config.root}/app/models/**/"]
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end
 end
