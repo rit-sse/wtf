@@ -282,10 +282,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .markdown_preview {
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-bottom: 12px;
+    padding-left: $std-margin;
+    padding-right: $std-margin;
+    margin-bottom: $std-margin;
     border: 1px solid #ccc;
+    background-color: #FAFAFA;
 }
 
 /* .ace {
