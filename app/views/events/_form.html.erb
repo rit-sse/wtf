@@ -1,79 +1,86 @@
 <%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+  <div class="row">
+    <div class="span8">
+      <% if @event.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @event.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="none price_prototype">
-    <div class="input-prepend">
-      <span class="add-on">$</span>
-      <%= text_field_tag :price, nil, class: "span1" %>
-      <a class="btn btn-danger" href="#">Remove</a>
-    </div>
-  </div>
+      <div class="none price_prototype">
+        <div class="input-prepend">
+          <span class="add-on">$</span>
+          <%= text_field_tag :price, nil, class: "span1" %>
+          <a class="btn btn-danger" href="#">Remove</a>
+        </div>
+      </div>
 
-  <div class="row">
-    <div class="span7">
-      <%= f.label :name %>
-      <%= f.text_field :name, class: "input-xxlarge" %>
-    </div>
-    <div class="span2">
-      <%= f.label :short_name %>
-      <%= f.text_field :short_name, class: "input-large" %>
-    </div>
-  </div>
+      <div class="row">
+        <div class="span7">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "input-xxlarge" %>
+        </div>
+        <div class="span2">
+          <%= f.label :short_name %>
+          <%= f.text_field :short_name, class: "input-large" %>
+        </div>
+      </div>
 
-  <div class="row">
-    <div class="span7">
-      <%= f.label :location %>
-      <%= f.text_field :location, class: "input-xxlarge" %>
+      <div class="row">
+        <div class="span7">
+          <%= f.label :location %>
+          <%= f.text_field :location, class: "input-xxlarge" %>
+        </div>
+        <div class="span4">
+          <%= f.label :committee %>
+          <%= f.collection_select :committee_id, Committee.find(:all), :id, :name, {:include_blank => false}  %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span5">
+          <%= f.label :start_date %>
+          <%= f.datetime_select :start_date, {:ampm => true, :minute_step => 5}, class: "input-small" %>
+        </div>
+        <div class="span5">
+          <%= f.label :end_date %>
+          <%= f.datetime_select :end_date, {:ampm => true, :minute_step => 5}, class: "input-small" %>
+        </div>
+      </div>
+
+      <!--
+      <%= f.label :prices %>
+      <div class="input-prepend">
+        <span class="add-on">$</span>
+        <%= text_field_tag :price, nil, class: "span1" %>
+        <a id="add_event_price_button" class="small super button" href="#">Add Price</a>
+      </div>
+      -->
+
+      <%= f.label :short_description %>
+      <%= f.text_field :short_description, class: "input-xxlarge" %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "input-xxlarge" %>
+
+
+      <!-- Use this in order to display images -->
+      <%= image_tag(@event.image_url) if @event.image? %>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
     </div>
     <div class="span4">
-      <%= f.label :committee %>
-      <%= f.collection_select :committee_id, Committee.find(:all), :id, :name, {:include_blank => false}  %>
+      <h3> Other Events </h3>
+      <section id="other_events"/>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="span5">
-      <%= f.label :start_date %>
-      <%= f.datetime_select :start_date, {:ampm => true, :minute_step => 5}, class: "input-small" %>
-    </div>
-    <div class="span5">
-      <%= f.label :end_date %>
-      <%= f.datetime_select :end_date, {:ampm => true, :minute_step => 5}, class: "input-small" %>
-    </div>
-  </div>
-
-  <!--
-  <%= f.label :prices %>
-  <div class="input-prepend">
-    <span class="add-on">$</span>
-    <%= text_field_tag :price, nil, class: "span1" %>
-    <a id="add_event_price_button" class="small super button" href="#">Add Price</a>
-  </div>
-  -->
-
-  <%= f.label :short_description %>
-  <%= f.text_field :short_description, class: "input-xxlarge" %>
-
-  <%= f.label :description %>
-  <%= f.text_area :description, class: "input-xxlarge" %>
-
-
-  <!-- Use this in order to display images -->
-  <%= image_tag(@event.image_url) if @event.image? %>
-  <%= f.label :image %>
-  <%= f.file_field :image %>
-  <%= f.hidden_field :image_cache %>
-
+  </div> <%# End Row %>
   <div class="form-actions">
     <%= f.submit nil, class: "btn btn-primary" %>
     <%= link_to "Cancel", "#{events_path}#{params[:when]?'?when='+params[:when]:''}",
