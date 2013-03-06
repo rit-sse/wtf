@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	getConcurentEvents();
+	$(".date-select").change(getConcurentEvents);
 });
 
 function getConcurentEvents(){
