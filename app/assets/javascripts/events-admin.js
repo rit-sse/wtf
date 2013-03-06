@@ -10,16 +10,9 @@ function getConcurentEvents(){
 		url: "http://" + window.location.host + "/events.json?start_date=" + 
 			startDate + "&end_date=" + endDate
 	}).done(function(data){
-		event_dom = ""
-		for(event_index in data){
-			event_data = data[event_index];
-
-			event_dom += "<section>";
-			event_dom += event_data["name"];
-			event_dom += "</section>";
-		}
-		console.log(event_data);
-		$("#other_events")[0].innerHTML = event_dom;
+		console.log(data);
+		console.log(JST["templates/other_events"]({events :data}));
+		$("#other_events").html(JST["templates/other_events"]({events :data}));
 	})
 }
 
