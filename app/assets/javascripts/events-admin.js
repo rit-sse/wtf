@@ -1,3 +1,8 @@
+// This includes all the javascript needed to handle the admin page for events.
+
+//= require templates/other_events.jst.eco
+//= require date
+
 $(document).ready(function(){
 	getConcurentEvents();
 	$(".date-select").change(getConcurentEvents);

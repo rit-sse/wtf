@@ -1,3 +1,5 @@
+<%= javascript_include_tag "events-admin" %>
+
 <%= form_for(@event) do |f| %>
   <div class="row">
     <div class="span8">
@@ -85,7 +87,7 @@
             <div class="bar" style="width: 100%;"></div>
           </div>
         </span>
-        <div id="other-events-error" class="alert alert-error">
+        <div id="other-events-error" class="alert alert-error hide">
           Error loading relevant events.
         </div>
       </section>
