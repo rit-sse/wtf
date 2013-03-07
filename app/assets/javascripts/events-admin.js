@@ -7,13 +7,20 @@ function getConcurentEvents(){
 	var startDate = getStartDate();
 	var endDate = getEndDate();
 
+	$("#other-events-error").hide();
+	$("#other-events-loading").show();
+
 	$.ajax({
 		url: "http://" + window.location.host + "/events.json?start_date=" + 
 			startDate + "&end_date=" + endDate
 	}).done(function(data){
 		console.log(data);
 		$("#other_events").html(JST["templates/other_events"]({events :data}));
-	})
+		$("#other-events-loading").hide();
+	}).fail(function(jqXHR, textStatus){
+		$("#other-events-loading").hide();
+		$("#other-events-error").show();
+	});
 }
 
 function getStartDate(){

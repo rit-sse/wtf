@@ -78,7 +78,17 @@
     </div>
     <div class="span3">
       <h3> Other Events </h3>
-      <section id="other_events"/>
+      <section id="other_events">
+        <span id="other-events-loading" class="hide">
+          Loading relevant events...
+          <div class="progress progress-striped active">
+            <div class="bar" style="width: 100%;"></div>
+          </div>
+        </span>
+        <div id="other-events-error" class="alert alert-error">
+          Error loading relevant events.
+        </div>
+      </section>
     </div>
   </div> <%# End Row %>
   <div class="form-actions">
