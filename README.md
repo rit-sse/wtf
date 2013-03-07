@@ -27,3 +27,9 @@ See also [Momentum](/dorreneb/momentum) for the event tracking fork of this proj
 - RSpec ([link](https://www.relishapp.com/rspec))
 - Cucumber ([link](http://cukes.info/))
 
+# Windows development
+
+For developing on Windows, exclude production dependencies when installing
+Gems. Run this command after cloning the repository:
+
+    bundle install --without=production
