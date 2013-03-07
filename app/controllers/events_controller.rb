@@ -56,6 +56,7 @@ class EventsController < AdminController
       end
       format.json { render json: @events }
       format.ics  { render :text => Event.to_ical }
+      format.csv  { render :text => @events.to_csv}
     end
   end
 
