@@ -14,8 +14,10 @@
 //= require events
 //= require jquery.orbit-1.2.3.min
 //= require root
+
 //= require events-admin
 //= require templates/other_events.jst.eco
+//= require date
 
 
 String.prototype.format = String.prototype.f = function() {

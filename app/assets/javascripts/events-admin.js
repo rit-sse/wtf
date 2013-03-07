@@ -12,7 +12,6 @@ function getConcurentEvents(){
 			startDate + "&end_date=" + endDate
 	}).done(function(data){
 		console.log(data);
-		console.log(JST["templates/other_events"]({events :data}));
 		$("#other_events").html(JST["templates/other_events"]({events :data}));
 	})
 }
@@ -35,4 +34,17 @@ function getEndDate(){
 	var minute = $("#event_end_date_5i")[0].value;
 
 	return "{0}-{1}-{2}T{3}:00:00-05:00".format(year,month,day,hour,minute);	
+}
+
+function parseDateTime(datetime){
+    retDate = Date.parseExact(datetime, "yyyy-MM-ddTHH:mm:ss-05:00");
+    if(!retDate){
+      retDate = Date.parseExact(datetime, "yyyy-MM-ddTHH:mm:ss-04:00");
+  	}
+
+    if(!retDate){
+      console.log("ERROR: no known timezone for server.");
+  	}
+  
+    return retDate;
 }
