@@ -48,11 +48,21 @@
       <div class="row">
         <div class="span5">
           <%= f.label :start_date %>
-          <%= f.datetime_select :start_date, {:ampm => true, :minute_step => 5}, class: "input-small date-select" %>
+          <div class="datetimepicker input-append date">
+            <%= f.text_field :start_date, "data-format" => "MM/dd/yyyy hh:mm"%>
+            <span class="add-on">
+              <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+            </span>
+          </div>
         </div>
         <div class="span5">
           <%= f.label :end_date %>
-          <%= f.datetime_select :end_date, {:ampm => true, :minute_step => 5}, class: "input-small date-select" %>
+          <div class="datetimepicker input-append date">
+            <%= f.text_field :end_date, "data-format" => "MM/dd/yyyy hh:mm"%>
+            <span class="add-on">
+              <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+            </span>
+          </div>
         </div>
       </div>
 
