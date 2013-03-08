@@ -17,20 +17,27 @@
             <div class="gtv-event-title">
               <%= event.shortName() %>
             </div>
-            <!-- Where -->
-            <div class="gtv-event-data">
-              <div class="inline event-desc faded">Where:</div>
-              <span><%= event.location() %></span>
-            </div>
-            <!-- When -->
-            <div class="gtv-event-data">
-              <div class="inline event-desc faded">When:</div>
-              <span><%= event.startDay() %></span>
-            </div>
-            <div class="gtv-event-data">
-              <div class="inline event-desc faded">Time:</div>
-              <span><%= event.startHour() %></span>
-            </div>
+            <% if event.isOneDay(): %>
+              <div class="gtv-event-data">
+                <span><%= event.fullStartDay() %></span>
+              </div>
+              <div class="gtv-event-data">
+                <span><%= event.timeRange() %></span>
+              </div>
+              <div class="gtv-event-data faded">
+                <span><%= event.location() %></span>
+              </div>
+            <% else: %>
+              <div class="gtv-event-data">
+                <span><%= event.startDay() %>, <%= event.startHour() %> to</span>
+              </div>
+              <div class="gtv-event-data">
+                <span><%= event.endDay() %>, <%= event.endHour() %></span>
+              </div>
+              <div class="gtv-event-data faded">
+                <span><%= event.location() %></span>
+              </div>
+            <% end %>
           </div>
           <% eventIndex++ %>
           <% event_num++ %>

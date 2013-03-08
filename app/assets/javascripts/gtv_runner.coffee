@@ -17,13 +17,33 @@ class SSEEvent extends Backbone.Model
   startDate: ->
     this.get("start_date")
 
+  endDate: ->
+    this.get("end_date")
+
   startDay: ->
     dt = this.parseDateTime(this.startDate())
     dt.toString("MMMM d")
 
+  fullStartDay: ->
+    dt = this.parseDateTime(this.startDate())
+    dt.toString("dddd, MMMM d")
+
+  timeRange: ->
+    startDt = this.parseDateTime(this.startDate())
+    endDt = this.parseDateTime(this.endDate())
+    startDt.toString("h:mm tt") + " to " + endDt.toString("h:mm tt")
+
+  endDay: ->
+    dt = this.parseDateTime(this.endDate())
+    dt.toString("MMMM d")
+
   startHour: ->
     dt = this.parseDateTime(this.startDate())
-    dt.toString("htt")
+    dt.toString("h:mm tt")
+
+  endHour: ->
+    dt = this.parseDateTime(this.endDate())
+    dt.toString("h:mm tt")
 
   location: ->
     this.get("location")
@@ -43,6 +63,10 @@ class SSEEvent extends Backbone.Model
       console.log("ERROR: no known timezone for server.")
 
     return retDate
+
+  isOneDay: ->
+    this.startDay() == this.endDay()
+    
 
 class SSEThreeWeekView extends Backbone.View
   initialize: ->
