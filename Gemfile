@@ -10,7 +10,6 @@ gem 'pg', :group => [:production]
 
 # Auth
 gem 'cancan'
-gem "ssedap-client"
 gem "bartt-ssl_requirement", :require => "ssl_requirement"
 
 # Helper for nested pages
@@ -27,9 +26,12 @@ group :assets do
   gem 'uglifier', ">= 1.0.3"
   gem 'bootstrap-sass-rails'
 end
+
 group :production do
   gem 'libv8'
   gem 'therubyracer'
+  gem "ssedap-client"
+  gem 'unicorn'
 end
 group :development do
   gem 'better_errors'
@@ -42,9 +44,6 @@ gem 'ace-rails-ap'
 
 # Presentation
 gem 'redcarpet'
-
-# Use unicorn as the web server
-gem 'unicorn'
 
 # Testing
 gem 'cucumber-rails', :group => [:test]

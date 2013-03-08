@@ -17,16 +17,39 @@ class SSEEvent extends Backbone.Model
   startDate: ->
     this.get("start_date")
 
+  endDate: ->
+    this.get("end_date")
+
   startDay: ->
     dt = this.parseDateTime(this.startDate())
     dt.toString("MMMM d")
 
+  fullStartDay: ->
+    dt = this.parseDateTime(this.startDate())
+    dt.toString("dddd, MMMM d")
+
+  timeRange: ->
+    startDt = this.parseDateTime(this.startDate())
+    endDt = this.parseDateTime(this.endDate())
+    startDt.toString("h:mm tt") + " to " + endDt.toString("h:mm tt")
+
+  endDay: ->
+    dt = this.parseDateTime(this.endDate())
+    dt.toString("MMMM d")
+
   startHour: ->
     dt = this.parseDateTime(this.startDate())
-    dt.toString("htt")
+    dt.toString("h:mm tt")
+
+  endHour: ->
+    dt = this.parseDateTime(this.endDate())
+    dt.toString("h:mm tt")
 
   location: ->
     this.get("location")
+    
+  image: ->
+    this.get("image").url
 
   matchesStartDate: (datetime) ->
     otherDate = datetime.clearTime()
@@ -44,6 +67,10 @@ class SSEEvent extends Backbone.Model
 
     return retDate
 
+  isOneDay: ->
+    this.startDay() == this.endDay()
+    
+
 class SSEThreeWeekView extends Backbone.View
   initialize: ->
     $("body").html(JST["templates/three_week_view"]( events: @options.events, date: @options.date ))
@@ -51,6 +78,10 @@ class SSEThreeWeekView extends Backbone.View
 class SSEEventPanelsView extends Backbone.View
   initialize: ->
     $("body").html(JST["templates/15_event_view"]( events: @options.events ))
+    
+class SSEEventHighlightView extends Backbone.View
+  initialize: ->
+    $("body").html(JST["templates/event_highlight"]( event: @options.event ))
 
 class SSEColorView extends Backbone.View
   initialize: ->
@@ -70,6 +101,9 @@ class SSEController extends Backbone.Router
       "nextPage": "event_panels"
     "white_view":
       "timeAlive": 5
+      "nextPage": "event_highlight"
+    "event_highlight":
+      "timeAlive": 15
       "nextPage": "three_week"
   routes:
     "../events/:id": "month"
@@ -92,6 +126,7 @@ class SSEController extends Backbone.Router
 
   gotoPage: (page) =>
     switch page
+      when "event_highlight" then @event_highlight()
       when "three_week" then @three_week()
       when "event_panels" then @event_panels()
       when "black_view" then @black_view()
@@ -129,6 +164,29 @@ class SSEController extends Backbone.Router
   black_view: =>
     new SSEColorView
       color: "black"
+      
+  event_highlight: =>
+    req = 
+      limit: 12
+      can_feature: true
+    that_scope = @
+    $.getJSON '../events', req, (data) ->
+      if data
+        allEvents = _(data).map (event) ->
+          if event.image and event.image.url and (event.image.url.length and event.image.url.length>0)
+            new SSEEvent(event)
+          else
+            return
+        allEvents = $.grep(allEvents,(n) ->
+            return(n)
+        )
+        if allEvents.length>0
+          new SSEEventHighlightView
+            event: allEvents[Math.floor(Math.random() * allEvents.length)]
+        else
+          that_scope.gotoPage(pageSettings["event_highlight"].nextPage)
+      else
+        console.log("No events to load.");
 
 app = new SSEController
 Backbone.history.start()
