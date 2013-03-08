@@ -278,14 +278,20 @@ thead .gtv-calendar-weekcol h3
 
 .gtv-event-highlight {
     position: absolute;
+    max-width: 1920px;
+    max-height: 1080px-$header_height;
+    display: block;
+    width: 100%;
     margin: auto;
     top: 0;
+    bottom: $header_height;
     left: 0;
     right: 0;
-    bottom: 0;
-    width:100%;
-    height:auto;
-    max-width: 1920px;
+}
+
+.gtv_img_container {
+    width: 1920px;
+    height: 1080px-$header_height;
 }
 
 .gtv-highlight-footer {

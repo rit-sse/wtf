@@ -57,7 +57,7 @@ class SSEEventPanelsView extends Backbone.View
     
 class SSEEventHighlightView extends Backbone.View
   initialize: ->
-    $("body").html(JST["templates/event_highlight"]( event: @options.event ))
+    $("body").html(JST["templates/event_highlight"]( event: @options.event, onload: @options.onload ))
 
 class SSEColorView extends Backbone.View
   initialize: ->
@@ -88,9 +88,9 @@ class SSEController extends Backbone.Router
     #this.three_week()
     #@countdown = pageSettings.three_week.timeAlive
     #@page = "three_week"
-    this.event_panels()
-    @countdown = pageSettings.event_panels.timeAlive
-    @page = "event_panels"
+    this.event_highlight()
+    @countdown = pageSettings.event_highlight.timeAlive
+    @page = "event_highlight"
     @timerId = setInterval(this.flipPage, 1000)
 
   flipPage: =>
@@ -159,6 +159,17 @@ class SSEController extends Backbone.Router
         if allEvents.length>0
           new SSEEventHighlightView
             event: allEvents[Math.floor(Math.random() * allEvents.length)]
+            onload: """
+              (function onload() {
+                  img = $('#main_image')
+                  var theImage = new Image();
+                  theImage.src = img.attr("src");
+                  if (Math.abs((theImage.height/theImage.width)-(img.height()/img.width()))>=0.001) {
+                    img.css('width','auto');
+                    img.css('height','100%');
+                  }
+              }).call()
+            """
         else
           that_scope.gotoPage(pageSettings["event_highlight"].nextPage)
       else
