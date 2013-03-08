@@ -4,9 +4,6 @@
 //= require date
 
 $(document).ready(function(){
-	// getConcurentEvents();
-	// $(".date-select").change(getConcurentEvents);
-
 	start_date = $("#event_start_date").val();
 	end_date = $("#event_end_date").val();
 
@@ -15,7 +12,7 @@ $(document).ready(function(){
 	console.log(start_date);
 
 	if(start_date == ""){
-		start_date = Date.now();
+		start_date = Date.now().set({minute: 0, second:0});
 	}
 	else{
 		start_date = Date.parse(start_date.replace(".000000", "")).setTimezoneOffset(0);
@@ -23,7 +20,7 @@ $(document).ready(function(){
 	}
 
 	if(end_date == ""){
-		end_date = Date.now();
+		end_date = Date.now().set({minute: 0, second:0}).add(1).hour();
 	}
 	else{
 		end_date = Date.parse(end_date.replace(".000000", "")).setTimezoneOffset(0);
@@ -38,19 +35,13 @@ $(document).ready(function(){
 	var end_picker 	 = $("#end-date").datetimepicker(options).data("datetimepicker");
 
 	format = "yyyy-MM-dd HH:mm tt";
-	// start_date = start_date.toString(format);
-	// end_date = end_date.toString(format);
-
+	
 	start_picker.setLocalDate(start_date);
 	end_picker.setLocalDate(end_date);
 
-	
-	// $("#event_start_date").val(start_date);
-	// $("#event_end_date").val(end_date);
-	// // $("#event_start_date").change();
-	// // $("#event_end_date").change();
-
-	
+	getConcurentEvents();
+	$("#start-date").on("changeDate", getConcurentEvents);
+	$("#end-date").on("changeDate", getConcurentEvents);
 });
 
 function getConcurentEvents(){
