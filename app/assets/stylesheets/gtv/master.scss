@@ -271,3 +271,32 @@ thead .gtv-calendar-weekcol h3
 //
 // End three week view
 //
+
+//
+// Event Highlight View
+//
+
+.gtv-event-highlight {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width:100%;
+    height:auto;
+    max-width: 1920px;
+}
+
+.gtv-highlight-footer {
+  overflow: hidden;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: $header_height;
+  max-height: $header_height;
+  line-height: $header_height;
+
+  background-color: $darkblueoff;
+}
