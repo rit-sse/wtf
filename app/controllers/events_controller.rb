@@ -97,6 +97,13 @@ class EventsController < AdminController
   # POST /admin/events.json
   def create
     puts params[:event]
+
+    # start_date = params[:event].delete(:start_date)
+    # end_date   = params[:event].delete(:end_date)
+
+    # params[:start_date] = Time.zone.parse(start_date)
+    # params[:end_date] = Time.zone.parse(end_date)
+    
     @event = Event.new(params[:event])
 
     respond_to do |format|
@@ -125,6 +132,12 @@ class EventsController < AdminController
     if params[:when]
       events_when_params[:when] = params[:when]
     end
+
+    start_date = params[:event].delete(:start_date)
+    end_date   = params[:event].delete(:end_date)
+
+    params[:start_date] = Time.zone.parse(start_date)
+    params[:end_date] = Time.zone.parse(end_date)
 
     respond_to do |format|
       if @event.update_attributes(params[:event])

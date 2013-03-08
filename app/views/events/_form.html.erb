@@ -48,8 +48,8 @@
       <div class="row">
         <div class="span5">
           <%= f.label :start_date %>
-          <div class="datetimepicker input-append date">
-            <%= f.text_field :start_date, "data-format" => "MM/dd/yyyy hh:mm"%>
+          <div class="datetimepicker input-append date" id="start-date">
+            <%= f.text_field :start_date, "data-format" => "yyyy-MM-dd HH:mm PP"%>
             <span class="add-on">
               <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
             </span>
@@ -57,8 +57,8 @@
         </div>
         <div class="span5">
           <%= f.label :end_date %>
-          <div class="datetimepicker input-append date">
-            <%= f.text_field :end_date, "data-format" => "MM/dd/yyyy hh:mm"%>
+          <div class="datetimepicker input-append date" id="end-date">
+            <%= f.text_field :end_date, "data-format" => "yyyy-MM-dd HH:mm PP"%>
             <span class="add-on">
               <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
             </span>
