@@ -24,7 +24,7 @@
               <div class="gtv-event-data">
                 <span><%= event.timeRange() %></span>
               </div>
-              <div class="gtv-event-data">
+              <div class="gtv-event-data faded">
                 <span><%= event.location() %></span>
               </div>
             <% else: %>
@@ -34,7 +34,7 @@
               <div class="gtv-event-data">
                 <span><%= event.endDay() %>, <%= event.endHour() %></span>
               </div>
-              <div class="gtv-event-data">
+              <div class="gtv-event-data faded">
                 <span><%= event.location() %></span>
               </div>
             <% end %>
