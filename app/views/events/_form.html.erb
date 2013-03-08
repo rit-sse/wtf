@@ -44,14 +44,14 @@
         <div class="control-group">
             <%= f.label :location, class:"control-label" %>
             <div class="controls">
-              <%= f.text_field :location, class: "input-xlarge", required:true, placeholder: "Location for event" %>
+              <%= f.text_field :location, class: "input-xlarge", required:true, placeholder: "Location for event (required)" %>
             </div>
         </div>
 
         <div class="control-group">
             <%= f.label :committee, class:"control-label" %>
             <div class="controls">
-              <%= f.collection_select :committee_id, Committee.find(:all), :id, :name, {:include_blank => true} , required: true %>
+              <%= f.collection_select :committee_id, Committee.find(:all), :id, :name, {:prompt => "Committee (required)"} , required: true %>
             </div>
         </div>
       </fieldset>
