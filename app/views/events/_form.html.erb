@@ -37,7 +37,7 @@
             <%= f.label :short_name, class:"control-label" %>
             <div class="controls">
               <%= f.text_field :short_name, class: "input-xlarge", required:true, pattern: ".{1,25}", 
-                title: "25 character limit", placeholder: "What appears on GTV & iCal (required, ≤ 25 chars)" %>
+                title: "25 character limit", placeholder: "What appears on GTV & iCal (required, ≤ 25 chars)", maxlength: 25 %>
             </div>
         </div>
 
