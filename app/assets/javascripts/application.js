@@ -6,9 +6,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require ace
-//= require theme-textmate
-//= require mode-markdown
+//= require ace/ace
+//= require ace/theme-textmate
+//= require ace/mode-markdown
 //= require bootstrap.min
 //= require app
 //= require events
