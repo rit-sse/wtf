@@ -34,11 +34,15 @@ class EventsController < AdminController
     if params[:limit] == nil
       params[:limit] = 1000
     end
-
-    if params[:end_date] != nil
-      @events = Event.where(:start_date => params[:start_date].to_date..params[:end_date].to_date.next_day).order(:start_date).limit(params[:limit])
-    else
-      @events = Event.where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_month).order(:start_date).limit(params[:limit])
+    
+    if params[:can_feature]
+      @events = Event.where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_week).order(:start_date).limit(params[:limit])
+    else 
+        if params[:end_date] != nil
+            @events = Event.where(:start_date => params[:start_date].to_date..params[:end_date].to_date.next_day).order(:start_date).limit(params[:limit])
+        else
+            @events = Event.where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_month).order(:start_date).limit(params[:limit])
+        end
     end
 
     if params[:filter] != nil
