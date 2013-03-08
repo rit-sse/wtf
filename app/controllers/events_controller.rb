@@ -102,7 +102,15 @@ class EventsController < AdminController
   def create
     puts params[:event]
 
+    start_date = params[:event].delete(:start_date)
+    end_date   = params[:event].delete(:end_date)
+
     @event = Event.new(params[:event])
+    
+    @event.start_date = Time.zone.parse(start_date)
+    @event.end_date = Time.zone.parse(end_date)
+
+
 
     respond_to do |format|
       if @event.save
