@@ -60,6 +60,7 @@ class EventsController < AdminController
       end
       format.json { render json: @events }
       format.ics  { render :text => Event.to_ical }
+      format.csv  { render :text => @events.to_csv}
     end
   end
 
@@ -100,7 +101,16 @@ class EventsController < AdminController
   # POST /admin/events.json
   def create
     puts params[:event]
+
+    start_date = params[:event].delete(:start_date)
+    end_date   = params[:event].delete(:end_date)
+
     @event = Event.new(params[:event])
+    
+    @event.start_date = Time.zone.parse(start_date)
+    @event.end_date = Time.zone.parse(end_date)
+
+
 
     respond_to do |format|
       if @event.save
@@ -128,6 +138,13 @@ class EventsController < AdminController
     if params[:when]
       events_when_params[:when] = params[:when]
     end
+
+    start_date = params[:event].delete(:start_date)
+    end_date   = params[:event].delete(:end_date)
+
+    @event.start_date = Time.zone.parse(start_date)
+    @event.end_date = Time.zone.parse(end_date)
+    @event.save
 
     respond_to do |format|
       if @event.update_attributes(params[:event])

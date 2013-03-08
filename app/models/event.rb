@@ -1,4 +1,5 @@
 require 'ri_cal'
+require 'csv'
 
 class Event < ActiveRecord::Base
   validates_presence_of :name, :short_name
@@ -28,6 +29,27 @@ class Event < ActiveRecord::Base
           ical_event.dtend       = model_event.end_date
           ical_event.location    = model_event.location
         end
+      end
+    end
+  end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      line = []
+      line << "Short Name"
+      line << "Committee"
+      line << "Name"
+      line << "Start"
+      line << "End"
+      csv << line
+      all.each do |event|
+        line = []
+        line << event.short_name
+        line << event.committee.name
+        line << event.name
+        line << event.start_date.to_s
+        line << event.end_date.to_s
+        csv << line
       end
     end
   end

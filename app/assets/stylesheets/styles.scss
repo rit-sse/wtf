@@ -262,3 +262,20 @@ h1, h2, h3, h4, h5, h6 {
 .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
   background-color:#FAFAFA !important;
 }
+
+.form-horizontal{
+  .control-label{
+    width: 120px;
+  }
+
+  .controls{
+    margin-left: 140px;
+  }
+}
+
+.event_form{
+  .input-xlarge{
+    width:400px
+  }
+}
+

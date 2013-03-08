@@ -15,4 +15,5 @@
  *= require diagnostics
  *= require admin
  *= require auth
+ *= require bootstrap-datetimepicker.min
 */
