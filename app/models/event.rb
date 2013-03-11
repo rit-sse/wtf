@@ -11,6 +11,30 @@ class Event < ActiveRecord::Base
 
   before_validation :generate_short_name
 
+  ##
+  # Returns the week of the event in a hash of the format:
+  # {:start_day => <Sunday, 0:00:00 of the week>, 
+  #  :end_day   => <Saturday, 12:59:59 of the week>}
+  #
+  # Weeks are currently defined to start on sundays
+  #
+  # Can be used like: @events.group_by(&:week)
+  # (See the index for events controler/view)
+  def week
+    start_date = self.start_date.change({:hour => 0, :min => 0, :sec => 0})
+    end_date = self.end_date.change({:hour => 23, :min => 59, :sec => 59})
+
+    while !start_date.sunday?
+      start_date -= 1.day
+    end
+
+    while !end_date.saturday?
+      end_date += 1.day
+    end
+
+    return {start_day: start_date, end_day: end_date}
+  end
+
   private
 
   def generate_short_name
@@ -53,4 +77,6 @@ class Event < ActiveRecord::Base
       end
     end
   end
+
+
 end
