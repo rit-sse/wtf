@@ -15,14 +15,14 @@
 
 <div class="edit-list">
   <% @events.each do |week, events| %>
-  	<h4> 
+  	<div class="list-label"> 
   		<%= week[:start_day].strftime("%b %-d") %>
   		 to 
   		<%= week[:end_day].strftime("%b %-d") %>
-  	</h4>
+  	</div>
   	<% events.each do |event| %>
     	<%= render partial: "list_item", locals: { event: event } %>
-	<% end %>
+	  <% end %>
   <% end %>
 </div>
 
