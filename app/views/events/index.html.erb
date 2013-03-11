@@ -1,5 +1,9 @@
 <% title "Events" %>
 <h1>Events</h1>
+<% if can? :create, Event %>
+  <%= link_to raw("<i class=\"icon-plus icon-white\"></i> New Event"),
+  new_event_path, class: "btn btn-primary btn-small pull-right" %>
+<% end %>
 
 <ul class="nav nav-tabs">
 	<li <%= "class=active" if @when == :future%>>
@@ -14,8 +18,15 @@
 </ul>
 
 <div class="edit-list">
-  <% @events.each do |event| %>
-    <%= render partial: "list_item", locals: { event: event } %>
+  <% @events.each do |week, events| %>
+  	<div class="list-label"> 
+  		<%= week[:start_day].strftime("%b %-d") %>
+  		 to 
+  		<%= week[:end_day].strftime("%b %-d") %>
+  	</div>
+  	<% events.each do |event| %>
+    	<%= render partial: "list_item", locals: { event: event } %>
+	  <% end %>
   <% end %>
 </div>
 
