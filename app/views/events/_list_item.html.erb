@@ -11,9 +11,9 @@
     %>
     <%= link_to raw("<i class=\"icon-pencil icon-white\"></i> Edit"),
       "#{edit_event_path(event)}#{params[:when]?'?when='+params[:when]:''}",
-      class: "btn btn-info" %>
+      class: "btn btn-info btn-small" %>
     <%= link_to raw("<i class=\"icon-trash icon-white\"></i> Delete"),
-      event, class: "btn btn-danger", confirm: 'Are you sure?', method: :delete %>
+      event, class: "btn btn-danger btn-small", confirm: 'Are you sure?', method: :delete %>
   </div>
 
   <div class="clear"></div>

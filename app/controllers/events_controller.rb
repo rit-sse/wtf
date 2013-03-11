@@ -21,6 +21,8 @@ class EventsController < AdminController
       @when = :future
     end
 
+    @events = @events.group_by(&:week)
+
     respond_to do |format|
       format.html
       format.json { render json: @events }
