@@ -1,5 +1,9 @@
 <% title "Events" %>
 <h1>Events</h1>
+<% if can? :create, Event %>
+  <%= link_to raw("<i class=\"icon-plus icon-white\"></i> New Event"),
+  new_event_path, class: "btn btn-primary btn-small pull-right" %>
+<% end %>
 
 <ul class="nav nav-tabs">
 	<li <%= "class=active" if @when == :future%>>
