@@ -15,6 +15,7 @@
 //= require jquery.orbit-1.2.3.min
 //= require root
 //= require bootstrap-datetimepicker.min
+//= require events-admin.js
 
 
 String.prototype.format = String.prototype.f = function() {
