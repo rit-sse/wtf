@@ -52,7 +52,7 @@ function getConcurentEvents(){
 	$("#other-events-loading").show();
 
 	$.ajax({
-		url: "http://" + window.location.host + "/events.json?start_date=" + 
+		url: window.location.origin + "/events.json?start_date=" + 
 			startDate + "&end_date=" + endDate
 	}).done(function(data){
 		console.log(data);
