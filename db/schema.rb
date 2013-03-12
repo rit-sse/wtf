@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120427180131) do
+ActiveRecord::Schema.define(:version => 20130312151630) do
 
   create_table "committees", :force => true do |t|
     t.string   "name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20120427180131) do
     t.string   "short_description"
     t.integer  "committee_id"
     t.string   "image"
+    t.boolean  "featured"
   end
 
   create_table "pages", :force => true do |t|
