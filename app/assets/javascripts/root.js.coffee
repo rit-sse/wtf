@@ -117,4 +117,6 @@ $ ->
                 })
                 $("#new_header").carousel('pause')
             )
+            
+            window.makeUploader($("#edit_wrapper"))
         )

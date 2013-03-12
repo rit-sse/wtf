@@ -88,9 +88,9 @@ class SSEController extends Backbone.Router
     #this.three_week()
     #@countdown = pageSettings.three_week.timeAlive
     #@page = "three_week"
-    this.event_highlight()
-    @countdown = pageSettings.event_highlight.timeAlive
-    @page = "event_highlight"
+    this.event_panels()
+    @countdown = pageSettings.event_panels.timeAlive
+    @page = "event_panels"
     @timerId = setInterval(this.flipPage, 1000)
 
   flipPage: =>
@@ -146,6 +146,7 @@ class SSEController extends Backbone.Router
       limit: 12
       can_feature: true
     that_scope = @
+    that_scope.event_count = that_scope.event_count or 0
     $.getJSON '../events', req, (data) ->
       if data
         allEvents = _(data).map (event) ->
@@ -157,8 +158,11 @@ class SSEController extends Backbone.Router
             return(n)
         )
         if allEvents.length>0
+          if that_scope.event_count>=allEvents.length
+            that_scope.event_count=0
+            
           new SSEEventHighlightView
-            event: allEvents[Math.floor(Math.random() * allEvents.length)]
+            event: allEvents[that_scope.event_count]
             onload: """
               (function onload() {
                   img = $('#main_image')
@@ -170,6 +174,7 @@ class SSEController extends Backbone.Router
                   }
               }).call()
             """
+          that_scope.event_count = that_scope.event_count+1
         else
           that_scope.gotoPage(pageSettings["event_highlight"].nextPage)
       else

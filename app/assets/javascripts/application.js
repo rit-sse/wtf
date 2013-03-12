@@ -12,6 +12,7 @@
 //= require ace/mode-html.js
 //= require ace/theme-textmate
 //= require marked
+//= require dragnupload
 //= require app
 //= require events
 //= require root
