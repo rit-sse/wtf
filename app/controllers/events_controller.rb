@@ -46,6 +46,7 @@ class EventsController < AdminController
             @events = Event.where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_month).order(:start_date).limit(params[:limit])
         end
     end
+    @featured_events = @events.where(featured: true).limit(3)
 
     if params[:filter] != nil
       committee = Committee.where(:name => params[:filter]).first.id

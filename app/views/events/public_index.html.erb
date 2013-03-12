@@ -4,6 +4,23 @@
   <h1>Events</h1>
 </div>
 
+
+<% if @featured_events %>
+  <ul class="row-fluid thumbnails featured-events">
+    <% @featured_events.each do |event| %>
+      <li class="span4">
+        <div class="thumbnail">
+          <%= link_to image_tag(event.image_url), events_public_show_path(event) %>
+          <div class="caption">
+            <h4><%= link_to event.short_name, events_public_show_path(event) %></h4>
+            <p><%= event.short_description %></p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="display-wrapper">
 
   <div class="filter">
@@ -23,13 +40,6 @@
 
 </div>
 <br />
-
-<ul class="row-fluid">
-  <li class="span4">Next event</li>
-  <li class="span4">Next talk</li>
-  <li class="span4">Next review</li>
-</ul>
-
 <% @events.each do |event| %>
   <div class="event-preview-wrapper">
     <div class="gradient-test">
