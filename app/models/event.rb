@@ -2,14 +2,13 @@ require 'ri_cal'
 require 'csv'
 
 class Event < ActiveRecord::Base
-  validates_presence_of :name, :short_name
+  validates_presence_of :name, :short_name, :location, :committee
+  validates :short_name, :length => { minimum: 1,  maximum: 25 }
 
   has_many :event_prices
   belongs_to :committee
 
   mount_uploader :image, ImageUploader
-
-  before_validation :generate_short_name
 
   ##
   # Returns the week of the event in a hash of the format:
