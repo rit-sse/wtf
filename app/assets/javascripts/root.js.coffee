@@ -10,4 +10,3 @@ $ ->
     captionAnimationSpeed: 150,
     bullets: true
   )
-
