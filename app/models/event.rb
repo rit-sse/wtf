@@ -4,6 +4,7 @@ require 'csv'
 class Event < ActiveRecord::Base
   validates_presence_of :name, :short_name, :location, :committee
   validates :short_name, :length => { minimum: 1,  maximum: 25 }
+  validates_presence_of :image, if: :featured?
 
   has_many :event_prices
   belongs_to :committee
