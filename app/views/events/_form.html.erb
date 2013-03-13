@@ -85,10 +85,22 @@
       <hr/>
       
       <fieldset>
-        <div class="control-group">
+        <div class="control-group limited-chars">
             <%= f.label :short_description, class:"control-label" %>
             <div class="controls">
-              <%= f.text_area :short_description, class: "input-xlarge", rows: "2",  placeholder:"A short descrition"  %>
+              <%= f.text_area :short_description,
+                class: "input-xlarge",
+                rows: "2",
+                placeholder:"Enter at least #{Event::min_short_desc} characters",
+                maxlength: Event::max_short_desc,
+                :"data-minlength" => Event::min_short_desc,
+                pattern: ".{#{Event::min_short_desc},}",
+                title: "Field must include between #{Event::min_short_desc} and #{Event::max_short_desc} characters"
+              %>
+              <p class="length-message">
+                <span class="remaining"><%= Event::min_short_desc - @event.short_description.size %></span>
+                <span class="remaining-message">characters to go...</span>
+              <p>
             </div>
         </div>
 

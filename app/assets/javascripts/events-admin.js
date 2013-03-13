@@ -42,6 +42,8 @@ $(document).ready(function(){
 	getConcurentEvents();
 	$("#start-date").on("changeDate", getConcurentEvents);
 	$("#end-date").on("changeDate", getConcurentEvents);
+
+  attachKeyListener( $(".limited-chars") );
 });
 
 function getConcurentEvents(){
@@ -85,4 +87,48 @@ function parseDateTime(datetime){
   	}
   
     return retDate;
+}
+
+
+/* Attaches a listener to the container's keypress event */
+function attachKeyListener(elements){
+  for(var i = 0, len = elements.length; i < len; i++){
+    var e = $(elements[i]);
+    var textarea = e.find("textarea").first();
+    var remaining = e.find(".remaining").first();
+    var message = e.find(".remaining-message").first();
+    var max = parseInt(textarea.attr("maxlength"), 10);
+    var min = parseInt(textarea.data("minlength"), 10);
+    var message_wrapper = e.find(".length-message");
+  
+    var handler = function(){
+      var length = textarea.val().length;
+
+      message_wrapper.removeClass();
+      message_wrapper.addClass("length-message");
+
+      if(length < min){
+        remaining.text(min - length);
+        message.text( (min - length) == 1 ? "character to go..." : "characters to go..." );
+      } else if( length <= max ){
+        remaining.text(max - length);
+        message.text( (max - length) == 1 ? "character left" : "characters left" );
+      } else {
+        remaining.text(length - max);
+        message.text("too many characters!");
+      }
+
+      if( length >= max ){
+        message_wrapper.addClass("text-error");
+      } else if( max - length < 10 ){
+        message_wrapper.addClass("text-warning");
+      } else if( length >= min ){
+        message_wrapper.addClass("text-success");
+      }
+
+    };
+
+    handler();
+    textarea.keyup(handler);
+  }
 }

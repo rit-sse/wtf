@@ -2,10 +2,14 @@ require 'ri_cal'
 require 'csv'
 
 class Event < ActiveRecord::Base
+
+  MIN_SHORT_DESC = 40
+  MAX_SHORT_DESC = 70
+
   validates_presence_of :name, :short_name, :location, :committee
   validates :short_name, :length => { minimum: 1,  maximum: 25 }
   validates_presence_of :image, if: :featured?
-  validates :short_description, length: { in: 40..70 }, if: :featured?
+  validates :short_description, length: { in: MIN_SHORT_DESC..MAX_SHORT_DESC }, if: :featured?
 
   has_many :event_prices
   belongs_to :committee
@@ -71,6 +75,14 @@ class Event < ActiveRecord::Base
         csv << line
       end
     end
+  end
+
+  def self.max_short_desc
+    MAX_SHORT_DESC
+  end
+
+  def self.min_short_desc
+    MIN_SHORT_DESC
   end
 
 
