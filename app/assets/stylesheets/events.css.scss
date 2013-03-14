@@ -112,3 +112,14 @@ div.location
 .chars-remaining {
     width: 400px;
 }
+
+.featured-events img {
+    max-height: 180px;
+    max-width: 290px;
+    display: block;
+    margin: 0 auto;
+}
+
+.featured-events .thumbnail a {
+    display: block;
+}
