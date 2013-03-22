@@ -38,7 +38,7 @@ class EventsController < AdminController
     end
     
     if params[:can_feature]
-      @events = Event.where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_week).order(:start_date).limit(params[:limit])
+      @events = Event.where(:start_date => Time.now..(7.days.from_now)).order(:start_date).limit(params[:limit])
     else 
         if params[:end_date] != nil
             @events = Event.where(:start_date => params[:start_date].to_date..params[:end_date].to_date.next_day).order(:start_date).limit(params[:limit])
