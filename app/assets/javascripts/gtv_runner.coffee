@@ -27,7 +27,7 @@ class SSEGTVController extends SSEController
     this.event_panels()
     @countdown = this.pageSettings.event_panels.timeAlive
     @page = "event_panels"
-    @timerId = setInterval(this.flipPage, 250)
+    @timerId = setInterval(this.flipPage, 1000)
 
 
 app = new SSEGTVController
