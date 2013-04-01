@@ -10,4 +10,5 @@
 //= require templates/15_event_view
 //= require templates/color_view
 //= require templates/event_highlight
+//= require tv_runner
 //= require gtv_runner
