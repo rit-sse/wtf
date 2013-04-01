@@ -21,9 +21,6 @@ class SSEGTVController extends SSEController
       "event_highlight":
         "timeAlive": 15
         "nextPage": "three_week"
-    #this.three_week()
-    #@countdown = pageSettings.three_week.timeAlive
-    #@page = "three_week"
     this.event_panels()
     @countdown = this.pageSettings.event_panels.timeAlive
     @page = "event_panels"
