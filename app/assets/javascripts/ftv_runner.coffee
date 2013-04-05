@@ -27,15 +27,15 @@ class SSEFTVController extends SSEController
         "timeAlive": 5
         "nextPage": "sse_info"
 
-    this.mentoring_hours()
+    this.sse_info()
     @countdown = this.pageSettings.meeting_view.timeAlive
-    # @page = "sse_info"
+    @page = "sse_info"
     @page = "mentoring_hours"
-    @timerId = setInterval(this.flipPage, 100)
+    @timerId = setInterval(this.flipPage, 1000)
 
 
 app = new SSEFTVController
 Backbone.history.start()
 
 # app.navigate "month", trigger: true
-setTimeout(app.start, 500)
+setTimeout(app.start, 1000)
