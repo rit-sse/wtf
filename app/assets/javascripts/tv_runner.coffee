@@ -81,12 +81,24 @@ class SSEEventPanelsView extends Backbone.View
     $("body").html(JST["templates/15_event_view"]( events: @options.events ))
     
 class SSEEventHighlightView extends Backbone.View
-  initialize: ->
-    $("body").html(JST["templates/event_highlight"]( event: @options.event, onload: @options.onload ))
+  initialize: (header)->
+    $("body").html(JST["templates/event_highlight"]( event: @options.event, onload: @options.onload, header: header ))
 
 class SSEColorView extends Backbone.View
   initialize: ->
     $("body").html(JST["templates/color_view"]( color: @options.color ))
+
+class SSEInfoView extends Backbone.View
+  initialize: ->
+    $("body").html(JST["templates/sse_info_view"]())
+
+class SSEMeetingView extends Backbone.View
+  initialize: ->
+    $("body").html(JST["templates/sse_meeting_view"]())
+
+class SSEMentoringHoursView extends Backbone.View
+  initialize: ->
+    $("body").html(JST["templates/mentoring_hours_view"]())  
 
 class @SSEController extends Backbone.Router
   flipPage: =>
@@ -103,6 +115,9 @@ class @SSEController extends Backbone.Router
       when "event_panels" then @event_panels()
       when "black_view" then @black_view()
       when "white_view" then @white_view()
+      when "sse_info" then @sse_info()
+      when "meeting_view" then @meeting_view()
+      when "mentoring_hours" then @mentoring_hours()
       else @black_view()
 
   three_week: =>
@@ -170,8 +185,18 @@ class @SSEController extends Backbone.Router
                   }
               }).call()
             """
+            header:that_scope.pageSettings["event_highlight"].header
           that_scope.event_count = that_scope.event_count+1
         else
           that_scope.gotoPage(that_scope.pageSettings["event_highlight"].nextPage)
       else
         console.log("No events to load.");
+
+  sse_info: =>
+    new SSEInfoView
+
+  meeting_view: =>
+    new SSEMeetingView
+
+  mentoring_hours: =>
+    new SSEMentoringHoursView

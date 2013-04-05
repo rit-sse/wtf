@@ -10,4 +10,7 @@
 //= require templates/15_event_view
 //= require templates/color_view
 //= require templates/event_highlight
+//= require templates/sse_info_view
+//= require templates/sse_meeting_view
+//= require templates/mentoring_hours_view
 //= require tv_runner
