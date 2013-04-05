@@ -1,8 +1,8 @@
 class EventsController < AdminController
-  skip_before_filter :authenticate!, :only => [:public_index, :public_show, :gtv]
+  skip_before_filter :authenticate!, :only => [:public_index, :public_show, :gtv, :ftv]
 
   load_and_authorize_resource
-  skip_authorize_resource only: [:public_index, :public_show, :gtv]
+  skip_authorize_resource only: [:public_index, :public_show, :gtv, :ftv]
 
   # GET /admin/events
   # GET /admin/events.json
@@ -172,6 +172,10 @@ class EventsController < AdminController
 
   # No JSON
   def gtv
+    render :layout => false
+  end
+
+  def ftv
     render :layout => false
   end
 
