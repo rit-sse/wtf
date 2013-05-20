@@ -1,8 +1,8 @@
 class EventsController < AdminController
-  skip_before_filter :authenticate!, :only => [:public_index, :public_show, :gtv]
+  skip_before_filter :authenticate!, :only => [:public_index, :public_show, :gtv, :ftv, :current]
 
   load_and_authorize_resource
-  skip_authorize_resource only: [:public_index, :public_show, :gtv]
+  skip_authorize_resource only: [:public_index, :public_show, :gtv, :ftv, :current]
 
   # GET /admin/events
   # GET /admin/events.json
@@ -174,6 +174,18 @@ class EventsController < AdminController
   # No JSON
   def gtv
     render :layout => false
+  end
+
+  def ftv
+    render :layout => false
+  end
+
+  def current
+    @event = Event.where("start_date >= ?", DateTime.now.to_date).order("start_date ASC").limit(1).first
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @event }
+    end
   end
 
 end
