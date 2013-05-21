@@ -81,7 +81,7 @@ class SSEEventPanelsView extends Backbone.View
     
 class SSEEventHighlightView extends Backbone.View
   initialize: ->
-    $("body").html(JST["templates/event_highlight"]( event: @options.event ))
+    $("body").html(JST["templates/event_highlight"]( event: @options.event, onload: @options.onload ))
 
 class SSEColorView extends Backbone.View
   initialize: ->
@@ -170,6 +170,8 @@ class SSEController extends Backbone.Router
       limit: 12
       can_feature: true
     that_scope = @
+    that_scope.event_count = that_scope.event_count or 0
+	
     $.getJSON '../events', req, (data) ->
       if data
         allEvents = _(data).map (event) ->
@@ -181,8 +183,23 @@ class SSEController extends Backbone.Router
             return(n)
         )
         if allEvents.length>0
+          if that_scope.event_count>=allEvents.length
+            that_scope.event_count=0
+            
           new SSEEventHighlightView
-            event: allEvents[Math.floor(Math.random() * allEvents.length)]
+            event: allEvents[that_scope.event_count]
+            onload: """
+              (function onload() {
+                  img = $('#main_image')
+                  var theImage = new Image();
+                  theImage.src = img.attr("src");
+                  if (Math.abs((theImage.height/theImage.width)-(img.height()/img.width()))>=0.001) {
+                    img.css('width','auto');
+                    img.css('height','100%');
+                  }
+              }).call()
+            """
+          that_scope.event_count = that_scope.event_count+1
         else
           that_scope.gotoPage(pageSettings["event_highlight"].nextPage)
       else
