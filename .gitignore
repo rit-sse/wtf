@@ -10,3 +10,4 @@ tmp/cache
 .sass-cache/
 *.swp
 .DS_Store
+tmp/pids/server.pid

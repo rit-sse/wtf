@@ -244,6 +244,7 @@ h1, h2, h3, h4, h5, h6 {
 
   .list-item {
     padding: 7px;
+    height: 26px;
 
     &:nth-child(odd) {
       background: #eee;
@@ -273,6 +274,18 @@ h1, h2, h3, h4, h5, h6 {
 
         &:first-child { margin-left: 0; }
       }
+    }
+  }
+
+  .list-label{
+    font-weight:bold;
+    font-size:22px;
+    color:black;
+    padding-top:20px;
+    padding-bottom:5px;
+
+    &:first-child{
+      padding-top:0px;
     }
   }
 }
@@ -312,3 +325,20 @@ h1, h2, h3, h4, h5, h6 {
     top: 40%;
     width: 40px;
 }
+
+.form-horizontal{
+  .control-label{
+    width: 120px;
+  }
+
+  .controls{
+    margin-left: 140px;
+  }
+}
+
+.event_form{
+  .input-xlarge{
+    width:400px
+  }
+}
+

@@ -120,3 +120,4 @@ $ ->
             
             window.makeUploader($("#edit_wrapper"))
         )
+

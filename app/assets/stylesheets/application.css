@@ -9,6 +9,10 @@
  *= require events
  *= require styles
  *= require orbit-1.2.3
+ *= require diagnostics
+ *= require admin
+ *= require auth
+ *= require bootstrap-datetimepicker.min
 */
 
 

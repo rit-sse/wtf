@@ -1,8 +1,8 @@
 class EventsController < AdminController
-  skip_before_filter :authenticate!, :only => [:public_index, :public_show, :gtv]
+  skip_before_filter :authenticate!, :only => [:public_index, :public_show, :gtv, :ftv, :current]
 
   load_and_authorize_resource
-  skip_authorize_resource only: [:public_index, :public_show, :gtv]
+  skip_authorize_resource only: [:public_index, :public_show, :gtv, :ftv, :current]
 
   # GET /admin/events
   # GET /admin/events.json
@@ -21,6 +21,8 @@ class EventsController < AdminController
       @when = :future
     end
 
+    @events = @events.group_by(&:week)
+
     respond_to do |format|
       format.html
       format.json { render json: @events }
@@ -36,7 +38,7 @@ class EventsController < AdminController
     end
     
     if params[:can_feature]
-      @events = Event.where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_week).order(:start_date).limit(params[:limit])
+      @events = Event.where(:start_date => Time.now..(7.days.from_now)).order(:start_date).limit(params[:limit])
     else 
         if params[:end_date] != nil
             @events = Event.where(:start_date => params[:start_date].to_date..params[:end_date].to_date.next_day).order(:start_date).limit(params[:limit])
@@ -60,6 +62,7 @@ class EventsController < AdminController
       end
       format.json { render json: @events }
       format.ics  { render :text => Event.to_ical }
+      format.csv  { render :text => @events.to_csv}
     end
   end
 
@@ -100,7 +103,16 @@ class EventsController < AdminController
   # POST /admin/events.json
   def create
     puts params[:event]
+
+    start_date = params[:event].delete(:start_date)
+    end_date   = params[:event].delete(:end_date)
+
     @event = Event.new(params[:event])
+    
+    @event.start_date = Time.zone.parse(start_date)
+    @event.end_date = Time.zone.parse(end_date)
+
+
 
     respond_to do |format|
       if @event.save
@@ -129,6 +141,13 @@ class EventsController < AdminController
       events_when_params[:when] = params[:when]
     end
 
+    start_date = params[:event].delete(:start_date)
+    end_date   = params[:event].delete(:end_date)
+
+    @event.start_date = Time.zone.parse(start_date)
+    @event.end_date = Time.zone.parse(end_date)
+    @event.save
+
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to events_path(events_when_params), notice: 'Event was successfully updated.' }
@@ -154,6 +173,18 @@ class EventsController < AdminController
   # No JSON
   def gtv
     render :layout => false
+  end
+
+  def ftv
+    render :layout => false
+  end
+
+  def current
+    @event = Event.where("start_date >= ?", DateTime.now.to_date).order("start_date ASC").limit(1).first
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @event }
+    end
   end
 
 end
