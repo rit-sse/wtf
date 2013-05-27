@@ -4,11 +4,12 @@
 #
 # we used to use --deployment, but it's sloooowww and can cause problems with
 # deploying, oddly enough...
+##
 bundle install --quiet --binstubs --shebang ruby-local-exec
 
 cp ~/wtf-shared/config/database.yml config/database.yml
 
-RAILS_ENV=production rake db:create
+RAILS_ENV=production bundle exec rake db:create
 
 # make our directories and symlinks
 rm -rf "$APP_DIR/tmp/pids" "$APP_DIR/log"
