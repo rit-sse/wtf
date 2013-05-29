@@ -59,7 +59,7 @@ production:
   database: wtf_production
   pool: 5
   min_messages: warning #magic sauce
-  username: wtf
+  username: deploy
   password:
 
 cucumber:
