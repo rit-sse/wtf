@@ -29,7 +29,7 @@ end
 
 group :production do
   gem 'libv8'
-  gem 'therubyracer'
+  gem 'therubyracer', '>= 0.11.1', :require => 'v8'
   gem "ssedap-client"
   gem 'unicorn'
 end
