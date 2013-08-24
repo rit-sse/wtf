@@ -15,5 +15,7 @@
  *= require diagnostics
  *= require admin
  *= require auth
+ *= require font-awesome
+ *= require social
  *= require bootstrap-datetimepicker.min
 */
