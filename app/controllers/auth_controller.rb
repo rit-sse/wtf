@@ -6,32 +6,42 @@ class AuthController < ApplicationController
   end
 
   def authorize
-    if Rails.env.development? and
-      params[:username] == "admin" and
-      params[:password] == "admin"
+    # if Rails.env.development? and
+    #   params[:username] == "admin" and
+    #   params[:password] == "admin"
 
-      set_current_user "admin", "admin"
+    #   set_current_user "admin", "admin"
 
-      redirect_to root_path, notice:"Logged in successfully."
-    else
-      client = SSEDAP::Client.new Settings.ssedap_location
-      auth_hash = client.authorize params[:username], params[:password]
-      logger.debug auth_hash
+    #   redirect_to root_path, notice:"Logged in successfully."
+    # else
+    if true
+      user = params[:username] + "@ad.sofse.org"
+      psw = params[:password]
+
+      ldap = Net::LDAP.new
+      ldap.host = 'dc1.ad.sofse.org'
+
+      result = ldap.bind(:method => :simple, :username => user, :password => psw)
+
+      p "="*80
+      p result
+      p "="*80
 
       error_notice = nil
 
-      if auth_hash["data"]["success"]
-        username = auth_hash["data"]["user"]
-        role = auth_hash["data"]["user_info"]["role"]
+      if result
+
+        username = user
+        role = "admin"
 
         set_current_user username, role
         redirect_to root_path, notice: "Logged in successfully."
       else
-        error_notice = "Error: #{auth_hash["data"]["error"]}"
+        error_notice = "Error: #{ldap.get_operation_result}"
       end
 
       if error_notice
-        flash[:notice] = "Error: #{auth_hash["data"]["error"]}"
+        flash[:error] = error_notice
         render :index
       end
     end

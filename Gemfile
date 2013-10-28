@@ -18,6 +18,8 @@ gem 'ancestry'
 # Settings
 gem 'settingslogic'
 
+gem 'net-ldap'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -29,7 +31,6 @@ end
 
 group :production do
   gem 'therubyracer', :require => 'v8'
-  gem "ssedap-client"
   gem 'unicorn'
 end
 group :development do
