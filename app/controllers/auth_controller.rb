@@ -6,26 +6,44 @@ class AuthController < ApplicationController
   end
 
   def authorize
-    # if Rails.env.development? and
-    #   params[:username] == "admin" and
-    #   params[:password] == "admin"
+    if Rails.env.development? and
+      params[:username] == "admin" and
+      params[:password] == "admin"
 
-    #   set_current_user "admin", "admin"
+      set_current_user "admin", "admin"
 
-    #   redirect_to root_path, notice:"Logged in successfully."
-    # else
-    if true
-      user = params[:username] + "@ad.sofse.org"
+      redirect_to root_path, notice:"Logged in successfully."
+    else
+      user = params[:username]
+      user = user[/\A\w+/].downcase
+      user << "@ad.sofse.org"
       psw = params[:password]
 
-      ldap = Net::LDAP.new
-      ldap.host = 'dc1.ad.sofse.org'
+      ldap = Net::LDAP.new(
+        host: Settings.ldap_location,
+#        port: 636
+        auth: { method: :simple, username: user, password: psw }
+      )
 
-      result = ldap.bind(:method => :simple, :username => user, :password => psw)
+      result = ldap.bind
 
-      p "="*80
-      p result
-      p "="*80
+      if result
+        ldap.search(
+          base:         "DC=ad,DC=sofse,DC=org",
+          filter:       Net::LDAP::Filter.eq( "mail", user ),
+          attributes:   %w[ displayName ],
+          return_result:true
+        ) do | entry |
+          p "="*80
+          entry.each do |attribute, values|
+            puts "   #{attribute}:"
+            values.each do |value|
+              puts "      --->#{value}"
+            end
+          end
+          p "="*80
+        end
+      end
 
       error_notice = nil
 
@@ -37,7 +55,7 @@ class AuthController < ApplicationController
         set_current_user username, role
         redirect_to root_path, notice: "Logged in successfully."
       else
-        error_notice = "Error: #{ldap.get_operation_result}"
+        error_notice = "Error: #{ldap.get_operation_result.message}"
       end
 
       if error_notice
