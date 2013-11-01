@@ -18,6 +18,8 @@ gem 'ancestry'
 # Settings
 gem 'settingslogic'
 
+gem 'net-ldap'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -26,13 +28,18 @@ group :assets do
   gem 'uglifier', ">= 1.0.3"
   gem 'bootstrap-sass-rails'
   gem "font-awesome-rails"
+  gem 'bootstrap-sass-rails', "~>2.3"
 end
 
 group :production do
+<<<<<<< HEAD
   gem 'libv8'
   gem 'therubyracer', '>= 0.11.1', :require => 'v8'
-  gem "ssedap-client"
   gem 'unicorn'
+end
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 # More asset stuff

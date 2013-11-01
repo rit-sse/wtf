@@ -7,13 +7,13 @@ defaults: &defaults
 staging:
   <<: *defaults
   domain: "web.sofse.org"
-  deploy_to: "~/wtf"
+  deploy_to: "/web"
   post_setup_script: 'script/post-setup-staging.sh'
   post_deploy_script: 'script/post-deploy.sh'
 
 production:
   <<: *defaults
-  deploy_to: "~/wtf"
+  deploy_to: "/web"
   post_setup_script: 'script/post-setup-production.sh'
   post_deploy_script: 'script/post-deploy.sh'
 
