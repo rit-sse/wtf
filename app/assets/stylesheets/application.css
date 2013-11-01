@@ -7,12 +7,8 @@
  * Loading the CSS for all regular pages for the application below.
  *
  *= require events
- *= require twitter/bootstrap
  *= require styles
  *= require orbit-1.2.3
- *= require diagnostics
- *= require admin
- *= require auth
  *= require font-awesome
  *= require social
  *= require bootstrap-datetimepicker.min
