@@ -15,41 +15,36 @@ class AuthController < ApplicationController
     #   redirect_to root_path, notice:"Logged in successfully."
     # else
     if true
-      user = params[:username]
-      user = user[/\A\w+/].downcase
-      user << "@ad.sofse.org"
+
+      username = params[:username]
+      username = username[/\A\w+/].downcase
+      user = username + "@ad.sofse.org"
       psw = params[:password]
+      authorized = false
 
-      ldap = Net::LDAP.new(
-        host: Settings.ldap_location,         
-        auth: { username: user, password: psw }
-      )
-      ldap.port = 636
-      ldap.encryption(:simple_tls)
+      ldap = Net::LDAP.new :host => Settings.ldap_location,
+           :port => 389,
+           :auth => {
+                 :method => :simple,
+                 :username => user,
+                 :password => psw
+           }
 
-      result = ldap.bind
+      filter = Net::LDAP::Filter.eq("mail", "*")
+      treebase = "OU=Officers,OU=Users,OU=SOFSE,DC=ad,DC=sofse,DC=org"
 
-      if result
-        ldap.search(
-          base:         "DC=ad,DC=sofse,DC=org",
-          filter:       Net::LDAP::Filter.eq( "mail", user ),
-          attributes:   %w[ displayName ],
-          return_result:true
-        ) do | entry |
-          p "="*80
-          entry.each do |attribute, values|
-            puts "   #{attribute}:"
-            values.each do |value|
-              puts "      --->#{value}"
-            end
-          end
-          p "="*80
-        end
+      officers = []
+      ldap.search(:base => treebase, :filter => filter) do |entry|
+        officers << entry.mail.first.split("@").first
+      end
+
+      if officers.include?(username)
+        authorized = true
       end
 
       error_notice = nil
 
-      if result
+      if authorized
 
         username = user
         role = "admin"
@@ -57,7 +52,11 @@ class AuthController < ApplicationController
         set_current_user username, role
         redirect_to root_path, notice: "Logged in successfully."
       else
-        error_notice = "Error: #{ldap.get_operation_result.message}"
+        if ldap
+          error_notice = "Insufficient Privileges"
+        else
+          error_notice = "Error: #{ldap.get_operation_result.message}"
+        end
       end
 
       if error_notice

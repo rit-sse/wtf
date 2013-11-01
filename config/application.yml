@@ -9,5 +9,4 @@ test:
 
 production:
   <<: *defaults
-  ldap_location: "dc1.ad.sofse.org"
 
