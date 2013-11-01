@@ -32,7 +32,6 @@ group :assets do
 end
 
 group :production do
-<<<<<<< HEAD
   gem 'libv8'
   gem 'therubyracer', '>= 0.11.1', :require => 'v8'
   gem 'unicorn'
