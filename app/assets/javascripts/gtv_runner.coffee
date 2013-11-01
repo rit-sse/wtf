@@ -1,5 +1,5 @@
 class SSEGTVController extends SSEController
-  
+
   routes:
     "../events/:id": "month"
 
@@ -25,7 +25,6 @@ class SSEGTVController extends SSEController
     @countdown = this.pageSettings.event_panels.timeAlive
     @page = "event_panels"
     @timerId = setInterval(this.flipPage, 1000)
-
 
 app = new SSEGTVController
 Backbone.history.start()

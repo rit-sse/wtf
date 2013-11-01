@@ -2,7 +2,6 @@ Wtf::Application.routes.draw do
 
 
   scope "/admin" do
-    resources :pages
     resources :events
     resources :committees
     resources :uploads
@@ -14,6 +13,11 @@ Wtf::Application.routes.draw do
     root to: 'admin#index', as: "admin"
   end
 
+  namespace "admin" do
+    resources :pages
+    resources :blocks
+  end
+
   match '/login', to: 'auth#index'
   match '/logout', to: 'auth#logout'
   post '/auth(/:action)', controller: 'auth'
@@ -23,6 +27,10 @@ Wtf::Application.routes.draw do
   match '/events/gtv', to: 'events#gtv'
   match '/events/ftv', to: 'events#ftv'
   match '/events(/:id)' => 'events#public_show', as: "events_public_show"
+  
+  get '/orbiter/add'
+  get '/orbiter/destroy'
+  match '/orbiter/edit' => 'orbiter#edit', :via => [:post]
 
   # static routes and redirects
   # ...

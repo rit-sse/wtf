@@ -14,24 +14,52 @@ class AuthController < ApplicationController
 
       redirect_to root_path, notice:"Logged in successfully."
     else
-      client = SSEDAP::Client.new Settings.ssedap_location
-      auth_hash = client.authorize params[:username], params[:password]
-      logger.debug auth_hash
+      user = params[:username]
+      user = user[/\A\w+/].downcase
+      user << "@ad.sofse.org"
+      psw = params[:password]
+
+      ldap = Net::LDAP.new(
+        host: Settings.ldap_location,
+#        port: 636
+        auth: { method: :simple, username: user, password: psw }
+      )
+
+      result = ldap.bind
+
+      if result
+        ldap.search(
+          base:         "DC=ad,DC=sofse,DC=org",
+          filter:       Net::LDAP::Filter.eq( "mail", user ),
+          attributes:   %w[ displayName ],
+          return_result:true
+        ) do | entry |
+          p "="*80
+          entry.each do |attribute, values|
+            puts "   #{attribute}:"
+            values.each do |value|
+              puts "      --->#{value}"
+            end
+          end
+          p "="*80
+        end
+      end
 
       error_notice = nil
 
-      if auth_hash["data"]["success"]
-        username = auth_hash["data"]["user"]
-        role = auth_hash["data"]["user_info"]["role"]
+      if result
+
+        username = user
+        role = "admin"
 
         set_current_user username, role
         redirect_to root_path, notice: "Logged in successfully."
       else
-        error_notice = "Error: #{auth_hash["data"]["error"]}"
+        error_notice = "Error: #{ldap.get_operation_result.message}"
       end
 
       if error_notice
-        flash[:notice] = "Error: #{auth_hash["data"]["error"]}"
+        flash[:error] = error_notice
         render :index
       end
     end

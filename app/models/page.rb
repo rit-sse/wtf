@@ -11,11 +11,15 @@ end
 class Page < ActiveRecord::Base
   include ActiveSupport::Inflector
 
+  has_many :blocks, :dependent => :destroy
   has_ancestry
 
-  validates_presence_of :title, :slug
+  accepts_nested_attributes_for :blocks, :allow_destroy => true
+
+  validates_presence_of :title, :slug, :layout
   validates_format_of :slug, :with => /^[a-zA-Z0-9\-_]+$/
   validates_with SlugUniquenessValidator
+  validates_associated :blocks
 
   # callbacks
   before_validation :generate_slug
@@ -24,18 +28,18 @@ class Page < ActiveRecord::Base
     '/' + (self.ancestors + [self]).collect(&:slug).join('/').to_s
   end
 
-  def self.get_pages_tree(parent_id=nil, level=0)
-    pages_tree = []
+  def layout
+    layout_class = read_attribute(:layout)
+    layout_class.is_a?(String) ? Kernel.const_get(layout_class.classify) : layout_class
+  end
 
-    pages = (parent_id.nil? ? Page.roots : Page.children_of(parent_id)).order("title")
+  def sections
+    @sections ||= layout ? layout.build_sections(self) : []
+  end
 
-    pages.each do |page|
-      spacer = (("-" * level) + " " || "")
-      pages_tree << [spacer + page.title, page.id]
-      pages_tree += Page.get_pages_tree(page.id, level+1)
-    end
-
-    pages_tree
+  def section(key)
+    sections.find { |s| s.key == key } ||
+      raise(Error.new("#{layout.title} pages do not have a section called '#{key}'"))
   end
 
 protected

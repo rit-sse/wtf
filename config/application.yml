@@ -1,5 +1,5 @@
 defaults: &defaults
-  ssedap_location: "http://ssedap.dev"
+  ldap_location: "dc1.ad.sofse.org"
 
 development:
   <<: *defaults
@@ -9,5 +9,5 @@ test:
 
 production:
   <<: *defaults
-  ssedap_location: "https://ssedap"
+  ldap_location: "dc1.ad.sofse.org"
 

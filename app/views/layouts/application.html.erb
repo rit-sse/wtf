@@ -49,13 +49,13 @@
           <% if signed_in? %>
             <ul>
               <li class="dropdown" id="committees-menu">
-                <%= link_to "<i class='icon-user icon-white'></i><i class='caret'></i>".html_safe,
-                  "#", data: { toggle: "dropdown" }, class: "dropdown-toggle login",
+                <%= link_to "ADMIN <b class='caret'></b>".html_safe,
+                  "#", data: { toggle: "dropdown" }, class: "dropdown-toggle",
                   alt: "My Account" %>
                 <ul class="dropdown-menu">
                   <li><%= link_to "Dashboard", admin_path %></li>
                   <% if can? :manage, Page %>
-                    <li><%= link_to "Pages", pages_path %></li>
+                    <li><%= link_to "Pages", admin_pages_path %></li>
                   <% end %>
                   <% if can? :manage, Event %>
                     <li><%= link_to "Events", events_path %></li>

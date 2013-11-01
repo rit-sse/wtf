@@ -11,6 +11,8 @@ preload_app true
 timeout 30
 
 listen "#{APP_ROOT}/tmp/sockets/unicorn.sock", backlog: 64
+listen 1234, :tcp_nopush => false # Make the sock file nginx is looking for but with out handling request
+
 pid "#{APP_ROOT}/tmp/pids/unicorn.pid"
 
 stderr_path "#{APP_ROOT}/log/unicorn.stderr.log"
@@ -42,22 +44,19 @@ after_fork do |server, worker|
   ActiveRecord::Base.establish_connection
 
   # let's run the workers as the deploy user instead of as root
-  begin
-    uid, gid = Process.euid, Process.egid
-    user, group = 'deploy', 'deploy'
-    target_uid = Etc.getpwnam(user).uid
-    target_gid = Etc.getgrnam(group).gid
-    worker.tmp.chown(target_uid, target_gid)
-    if uid != target_uid || gid != target_gid
-      Process.initgroups(user, target_gid)
-      Process::GID.change_privilege(target_gid)
-      Process::UID.change_privilege(target_uid)
-    end
-  rescue => e
-    if RAILS_ENV == 'development'
-      STDERR.puts "couldn't change user, oh well"
-    else
-      raise e
-    end
-  end
+  # begin
+  #   uid, gid = Process.euid, Process.egid
+  #   user, group = 'deploy', 'deploy'
+  #   target_uid = Etc.getpwnam(user).uid
+  #   target_gid = Etc.getgrnam(group).gid
+  #   worker.tmp.chown(target_uid, target_gid)
+  #   if uid != target_uid || gid != target_gid
+  #     Process.initgroups(user, target_gid)
+  #     Process::GID.change_privilege(target_gid)
+  #     Process::UID.change_privilege(target_uid)
+  #   end
+  # rescue => e
+  #   STDERR.puts "couldn't change user, oh well"
+  #   raise e
+  # end
 end
