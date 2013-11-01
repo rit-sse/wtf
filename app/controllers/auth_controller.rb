@@ -6,24 +6,26 @@ class AuthController < ApplicationController
   end
 
   def authorize
-    if Rails.env.development? and
-      params[:username] == "admin" and
-      params[:password] == "admin"
+    # if Rails.env.development? and
+    #   params[:username] == "admin" and
+    #   params[:password] == "admin"
 
-      set_current_user "admin", "admin"
+    #   set_current_user "admin", "admin"
 
-      redirect_to root_path, notice:"Logged in successfully."
-    else
+    #   redirect_to root_path, notice:"Logged in successfully."
+    # else
+    if true
       user = params[:username]
       user = user[/\A\w+/].downcase
       user << "@ad.sofse.org"
       psw = params[:password]
 
       ldap = Net::LDAP.new(
-        host: Settings.ldap_location,
-#        port: 636
-        auth: { method: :simple, username: user, password: psw }
+        host: Settings.ldap_location,         
+        auth: { username: user, password: psw }
       )
+      ldap.port = 636
+      ldap.encryption(:simple_tls)
 
       result = ldap.bind
 
