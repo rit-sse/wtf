@@ -17,6 +17,9 @@ module ApplicationHelper
   end
 
   def markdown(text)
+    if text == nil
+      return ""
+    end
     options = {
       autolink: true,
       fenced_code_blocks: true,
