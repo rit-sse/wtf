@@ -6,16 +6,14 @@ class AuthController < ApplicationController
   end
 
   def authorize
-    # if Rails.env.development? and
-    #   params[:username] == "admin" and
-    #   params[:password] == "admin"
+    if Rails.env.development? and
+      params[:username] == "admin" and
+      params[:password] == "admin"
 
-    #   set_current_user "admin", "admin"
+      set_current_user "admin", "admin"
 
-    #   redirect_to root_path, notice:"Logged in successfully."
-    # else
-    if true
-
+      redirect_to root_path, notice:"Logged in successfully."
+    else
       username = params[:username]
       username = username[/\A\w+/].downcase
       user = username + "@ad.sofse.org"
