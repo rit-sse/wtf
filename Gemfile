@@ -18,7 +18,12 @@ gem 'ancestry'
 # Settings
 gem 'settingslogic'
 
+# Auth
 gem 'net-ldap'
+
+# Deploy
+gem 'highline'
+gem 'sshkit'
 
 # Gems used only for assets and not required
 # in production environments by default.

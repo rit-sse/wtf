@@ -102,6 +102,7 @@ GEM
     formatador (0.2.4)
     gherkin (2.12.2)
       multi_json (~> 1.3)
+    highline (1.6.20)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -188,11 +189,18 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.8)
+    sshkit (1.1.0)
+      net-scp
+      net-ssh
+      term-ansicolor
+    term-ansicolor (1.2.2)
+      tins (~> 0.8)
     therubyracer (0.12.0)
       libv8 (~> 3.16.14.0)
       ref
     thor (0.18.1)
     tilt (1.4.1)
+    tins (0.12.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -228,6 +236,7 @@ DEPENDENCIES
   factory_girl_rails
   fog
   font-awesome-rails
+  highline
   jquery-rails
   libv8
   net-ldap
@@ -243,6 +252,7 @@ DEPENDENCIES
   sinatra-flash
   sprockets
   sqlite3
+  sshkit
   therubyracer (>= 0.11.1)
   uglifier (>= 1.0.3)
   unicorn
