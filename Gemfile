@@ -24,6 +24,7 @@ gem 'net-ldap'
 # Deploy
 gem 'highline'
 gem 'sshkit'
+gem 'sunspot'
 
 # Gems used only for assets and not required
 # in production environments by default.
