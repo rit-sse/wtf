@@ -8,18 +8,20 @@ require 'highline/import'
 
 Wtf::Application.load_tasks
 
-# SSHKit.config.command_map[:bundle] = "/home/mptsse/.rvm/gems/ruby-1.9.3-p385@global/bin/bundle"
-# SSHKit.config.command_map[:rake] = "/home/mptsse/.rvm/gems/ruby-1.9.3-p385/bin/rake"
 SSHKit.config.output_verbosity = Logger::DEBUG
 
+host = "web.ad.sofse.org"
+
 task :deploy do |t, args|
-  user = ask('Enter username:')
-  on %W{#{user}@web.ad.sofse.org} do
+  user = ask("Enter username for #{host}:")
+  on %W{#{user}@#{host}} do
     within "/web" do
       with rails_env: :production do
+
         execute :git, 'pull'
         execute 'bundle', '--without development:test', 'install'      
-        # rake 'db:migrate assets:precompile'        
+        rake 'db:migrate'     
+        rake 'assets:precompile'     
         if File.exists?('/web/tmp/pids/unicorn.pid')
           pid = File.open('/web/tmp/pids/unicorn.pid').read.to_i
           Process.kill("HUP", pid)
@@ -40,4 +42,3 @@ task :test do
   Rake::Task['spec'].execute
   # Rake::Task['cucumber:all'].execute
 end
-
