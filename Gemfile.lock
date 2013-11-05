@@ -127,7 +127,6 @@ GEM
       mini_portile (~> 0.5.0)
     pg (0.17.0)
     polyglot (0.3.3)
-    pr_geohash (1.0.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -160,8 +159,6 @@ GEM
     redis (3.0.5)
     ref (1.0.5)
     ri_cal (0.8.8)
-    rsolr (1.0.9)
-      builder (>= 2.1.2)
     rspec-core (2.14.7)
     rspec-expectations (2.14.3)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -196,9 +193,6 @@ GEM
       net-scp
       net-ssh
       term-ansicolor
-    sunspot (2.1.0)
-      pr_geohash (~> 1.0)
-      rsolr (~> 1.0.7)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
     therubyracer (0.12.0)
@@ -259,7 +253,6 @@ DEPENDENCIES
   sprockets
   sqlite3
   sshkit
-  sunspot
   therubyracer (>= 0.11.1)
   uglifier (>= 1.0.3)
   unicorn

@@ -15,8 +15,8 @@ listen 1234, :tcp_nopush => false # Make the sock file nginx is looking for but 
 
 pid "#{APP_ROOT}/tmp/pids/unicorn.pid"
 
-stderr_path "#{APP_ROOT}/log/unicorn.stderr.log"
-stdout_path "#{APP_ROOT}/log/unicorn.stdout.log"
+# stderr_path "#{APP_ROOT}/log/unicorn.stderr.log"
+# stdout_path "#{APP_ROOT}/log/unicorn.stdout.log"
 
 before_fork do |server, worker|
   old_pid = "#{APP_ROOT}/tmp/pids/unicorn.pid.oldbin"
@@ -43,20 +43,4 @@ after_fork do |server, worker|
 
   ActiveRecord::Base.establish_connection
 
-  # let's run the workers as the deploy user instead of as root
-  # begin
-  #   uid, gid = Process.euid, Process.egid
-  #   user, group = 'deploy', 'deploy'
-  #   target_uid = Etc.getpwnam(user).uid
-  #   target_gid = Etc.getgrnam(group).gid
-  #   worker.tmp.chown(target_uid, target_gid)
-  #   if uid != target_uid || gid != target_gid
-  #     Process.initgroups(user, target_gid)
-  #     Process::GID.change_privilege(target_gid)
-  #     Process::UID.change_privilege(target_uid)
-  #   end
-  # rescue => e
-  #   STDERR.puts "couldn't change user, oh well"
-  #   raise e
-  # end
 end
