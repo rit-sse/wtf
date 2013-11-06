@@ -35,7 +35,7 @@ task :start_server do
     puts 'Restarted the server'
   else
     puts 'Not running, starting the server...'
-    sh 'bundle exec unicorn -c config/unicorn.rb'
+    sh 'bundle exec unicorn -c config/unicorn.rb -D'
   end
 end
 
