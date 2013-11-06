@@ -8,16 +8,16 @@ require 'highline/import'
 
 Wtf::Application.load_tasks
 
+SSHKit.config.command_map[:bundle] = "/.rbenv/shims/bundle"
 SSHKit.config.output_verbosity = Logger::DEBUG
 
-host = "web.ad.sofse.org"
+host = "webtest.ad.sofse.org"
 
 task :deploy do |t, args|
   user = ask("Enter username for #{host}:")
   on %W{#{user}@#{host}} do
     within "/web" do
       with rails_env: :production do
-
         execute :git, 'pull'
         execute 'bundle', '--without development:test', 'install'      
         rake 'db:migrate'     
