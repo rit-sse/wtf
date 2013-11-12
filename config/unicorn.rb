@@ -15,8 +15,8 @@ listen 1234, :tcp_nopush => false # Make the sock file nginx is looking for but 
 
 pid "#{APP_ROOT}/tmp/pids/unicorn.pid"
 
-# stderr_path "#{APP_ROOT}/log/unicorn.stderr.log"
-# stdout_path "#{APP_ROOT}/log/unicorn.stdout.log"
+stderr_path "#{APP_ROOT}/log/unicorn.stderr.log"
+stdout_path "#{APP_ROOT}/log/unicorn.stdout.log"
 
 before_fork do |server, worker|
   old_pid = "#{APP_ROOT}/tmp/pids/unicorn.pid.oldbin"
