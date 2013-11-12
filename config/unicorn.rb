@@ -11,7 +11,6 @@ preload_app true
 timeout 30
 
 listen "#{APP_ROOT}/tmp/sockets/unicorn.sock", backlog: 64
-listen 4321, :tcp_nopush => false # Make the sock file nginx is looking for but with out handling request
 
 pid "#{APP_ROOT}/tmp/pids/unicorn.pid"
 
