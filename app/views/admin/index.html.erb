@@ -15,6 +15,12 @@
     </div>
   <% end %>
 
+  <% if can? :manage, Membership %>
+    <div class="list-item">
+      <div class="list-title"><%= link_to "Membership", memberships_path %></div><br />
+    </div>
+  <% end %>
+  
   <% if false #can? :manage, Upload %>
     <div class="list-item">
       <div class="list-title"><%= link_to "Uploads", uploads_path %></div><br />

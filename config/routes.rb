@@ -31,6 +31,10 @@ Wtf::Application.routes.draw do
   get '/orbiter/add'
   get '/orbiter/destroy'
   match '/orbiter/edit' => 'orbiter#edit', :via => [:post]
+  
+  get '/membership', to: 'membership#index', as: 'memberships'
+  get '/membership/new', to: 'membership#new'
+  post '/membership/new', to: 'membership#create'
 
   # static routes and redirects
   # ...

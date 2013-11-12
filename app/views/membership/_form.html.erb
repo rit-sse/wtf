@@ -1,0 +1,15 @@
+<%= form_tag("/membership", method: "get") do %>
+  <%= label_tag(:q, "Check DCE:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Check") %>
+<% end %>
+
+<% if @results %>
+    <% @results.each do |result| %>
+        <p>This DCE earned a membership on <%= result.date %>.
+        <% if result.reason %>
+        The reason was "<%= result.reason %>."
+        <% end %>
+        </p>
+    <% end %>
+<% end %>

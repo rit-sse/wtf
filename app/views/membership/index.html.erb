@@ -1,0 +1,14 @@
+<h1>Membership</h1>
+
+<% if signed_in? %>
+    <% if can? :manage, Membership %>
+        <p>You have permissions on the site, perhaps you'd like to <%= link_to 'add a membership?', membership_new_path %></p>
+        
+    <% else %>
+        <!-- How did this even happen? :manage is universal to all users as of now? --!>
+        <p>You don't seem to have the rights to grant memberships.</p>
+    <% end %>
+    <hr></hr>
+<% end %>
+    <p>Enter your RIT DCE into the field below to see if you're currently a member!</p>
+    <%= render 'form' %>

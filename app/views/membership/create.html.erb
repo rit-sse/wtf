@@ -1,0 +1,21 @@
+<h1>Membership</h1>
+
+<% if @membership.errors.any? %>
+<div id="error_explanation" class="alert alert-block alert-error">
+  <h2><%= pluralize(@membership.errors.count, "error") %> prohibited this membership from being saved:</h2>
+
+  <ul>
+  <% @membership.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+<p>
+    First Name: <%= @membership[:first_name] %><br />
+    Last Name: <%= @membership[:last_name] %><br />
+    DCE: <%= @membership[:dce] %><br />
+    Reason: <%= @membership[:reason] %><br />
+    Date: <%= @membership[:date] %><br />
+</p>
