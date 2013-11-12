@@ -1,7 +1,17 @@
-<%= form_tag("/membership", method: "get") do %>
-  <%= label_tag(:q, "Check DCE:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Check") %>
+<style>
+.acenter {
+    text-align: center;
+    margin-left: auto;
+    width: 100%;
+    margin-right: auto;
+    display: block;
+}
+</style>
+<%= form_tag "/membership", method: "get" do %>
+    <div style="margin-left: auto; margin-right: auto; width: 35%;">
+  <%= text_field_tag :q, nil, :placeholder => 'Enter your username', :class => 'acenter'%></br>
+  <%= submit_tag "Am I a member?", :class =>'btn btn-submit acenter'%>
+    </div>
 <% end %>
 
 <% if @results %>

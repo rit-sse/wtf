@@ -16,7 +16,7 @@
     <%= f.text_field :first_name, required: true %>
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name, required: true %>
-    <%= f.label :dce %><br />
+    <%= f.label :dce, 'RIT Username' %><br />
     <%= f.text_field :dce, required: true %>
     <%= f.label :reason %><br />
     <%= f.text_field :reason %>
@@ -26,6 +26,6 @@
 
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Membership", :class =>'btn btn-submit' %>
   </div>
 <% end %>
