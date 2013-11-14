@@ -7,6 +7,10 @@ Wtf::Application.routes.draw do
     resources :uploads
 
     match '/events' => 'events#index', as: "admin_events"
+    
+    get '/orbiter/add'
+    get '/orbiter/destroy'
+    match '/orbiter/edit' => 'orbiter#edit', :via => [:post]
 
     match '/diagnostics(/:action)', controller: 'diagnostics' if Rails.env.development?
 
@@ -27,10 +31,6 @@ Wtf::Application.routes.draw do
   match '/events/gtv', to: 'events#gtv'
   match '/events/ftv', to: 'events#ftv'
   match '/events(/:id)' => 'events#public_show', as: "events_public_show"
-  
-  get '/orbiter/add'
-  get '/orbiter/destroy'
-  match '/orbiter/edit' => 'orbiter#edit', :via => [:post]
 
   # static routes and redirects
   # ...

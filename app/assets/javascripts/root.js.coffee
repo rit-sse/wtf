@@ -38,7 +38,7 @@ $ ->
         $("#orbit_delete").click( (event) ->
             event.preventDefault()
             if confirm("Are you sure you want to trash this page?")
-                $.get("/orbiter/destroy",{id: current_slide_uuid()},(status, result, XHR) -> 
+                $.get("/admin/orbiter/destroy",{id: current_slide_uuid()},(status, result, XHR) -> 
                     if not status 
                         alert(result) 
                     else 
@@ -92,7 +92,7 @@ $ ->
                     #POST REQUEST
                     event.preventDefault()
                     $.post(
-                        "/orbiter/edit",
+                        "/admin/orbiter/edit",
                         {
                             id: current_slide_uuid(),
                             content: String(current_slide_content())
