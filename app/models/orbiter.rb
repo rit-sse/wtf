@@ -8,12 +8,16 @@ class Orbiter < ActiveRecord::Base
   end
   
   def self.drop_page( sid )
-    o = self.where( sid ).first
+    o = self.where( id: sid ).first
     if o then o.destroy end
   end
   
   def self.update_content(id, contents)
-    orbit = self.where( id ).first
+    if id=="new" then
+        self.make(contents)
+        return
+    end
+    orbit = self.where( id: id ).first
     if orbit then
       orbit[:content] = contents
       orbit[:updated_at] = Time.now

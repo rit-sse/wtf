@@ -29,7 +29,7 @@ $ ->
         $("#orbit_new").click( (event) ->
             event.preventDefault()
             $(".carousel-inner").append(
-                "<div class=\"item\" id=\"new_page\"></div>"
+                "<div class=\"item\" id=\"new_page_new\"></div>"
             )
             $("#new_header").carousel(last_slide_id())
             $("#orbit_edit").trigger('click')
@@ -38,11 +38,20 @@ $ ->
         $("#orbit_delete").click( (event) ->
             event.preventDefault()
             if confirm("Are you sure you want to trash this page?")
-                $.get("/admin/orbiter/destroy",{id: current_slide_uuid()},(status, result, XHR) -> 
+                curid = current_slide_uuid()
+                $.get("/admin/orbiter/destroy",{id: curid},(status, result, XHR) -> 
                     if not status 
                         alert(result) 
                     else 
-                        location.reload(true)
+                        if XHR.statusCode()==302
+                            $.get(XHR.getResponseHeader("Location"), {id: curid},(status, result, XHR) -> 
+                                if not status 
+                                    alert(result) 
+                                else 
+                                    location.reload(true)
+                            )
+                        else
+                            location.reload(true)
                 )
         )
         
@@ -91,13 +100,22 @@ $ ->
                 if confirm("Save the current page to the server?")
                     #POST REQUEST
                     event.preventDefault()
-                    $.post(
-                        "/admin/orbiter/edit",
-                        {
+                    hash =  {
                             id: current_slide_uuid(),
                             content: String(current_slide_content())
-                        },
+                            }
+                    $.post(
+                        "/admin/orbiter/edit",
+                        hash,
                         (data, status, XHR) ->
+                            if XHR.statusCode()==302
+                                $.post(XHR.getResponseHeader("Location"), hash, (data, status, XHR) ->
+                                    if status == "success"
+                                        location.reload(true)
+                                    else
+                                        alert("There was a problem processing your request.")
+                                )
+                                return
                             if status == "success"
                                 location.reload(true)
                             else
