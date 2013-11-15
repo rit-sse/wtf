@@ -10,7 +10,7 @@ Wtf::Application.configure do
   config.whiny_nils = true
 
   config.serve_static_assets = true
-  config.assets.compile = false
+  config.assets.compile = true
   
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true

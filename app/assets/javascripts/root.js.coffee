@@ -43,15 +43,7 @@ $ ->
                     if not status 
                         alert(result) 
                     else 
-                        if XHR.statusCode()==302
-                            $.get(XHR.getResponseHeader("Location"), {id: curid},(status, result, XHR) -> 
-                                if not status 
-                                    alert(result) 
-                                else 
-                                    location.reload(true)
-                            )
-                        else
-                            location.reload(true)
+                        location.reload(true)
                 )
         )
         
@@ -108,14 +100,6 @@ $ ->
                         "/admin/orbiter/edit",
                         hash,
                         (data, status, XHR) ->
-                            if XHR.statusCode()==302
-                                $.post(XHR.getResponseHeader("Location"), hash, (data, status, XHR) ->
-                                    if status == "success"
-                                        location.reload(true)
-                                    else
-                                        alert("There was a problem processing your request.")
-                                )
-                                return
                             if status == "success"
                                 location.reload(true)
                             else
