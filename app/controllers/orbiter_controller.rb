@@ -1,5 +1,7 @@
 class OrbiterController < AdminController
 
+  force_ssl
+
   def edit
     if Orbiter.update_content( params[:id], params[:content] ) then
         redirect_to root_path
