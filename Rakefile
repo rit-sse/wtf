@@ -37,7 +37,7 @@ namespace :server do
       puts 'Restarted the server'
     else
       puts 'Not running, starting the server...'
-      sh 'bundle exec unicorn -c config/unicorn.rb -E production -D'
+      sh 'sudo -u deploy bundle exec unicorn -c config/unicorn.rb -E production -D'
     end
   end
 
