@@ -1,5 +1,6 @@
 class RootController < ApplicationController
-  ssl_exceptions
+
+  ssl_required :index
 
   def index
 
