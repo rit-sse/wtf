@@ -1,8 +1,14 @@
 class RootController < ApplicationController
 
-  ssl_required :index if signed_in?
+  ssl_allowed :index
 
   def index
+
+    if signed_in? and Rails.env.production?
+      redirect_to :protocol => 'https://', 
+                  :controller => 'root', 
+                  :action => 'index'
+    end
 
     # Just grabs the first block and it better be markdown...
     pages = Page.where(slug: "home").first
