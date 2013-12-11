@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225184850) do
+ActiveRecord::Schema.define(:version => 20131211005316) do
 
   create_table "blocks", :force => true do |t|
     t.integer  "page_id",          :null => false
     t.string   "section_key",      :null => false
     t.string   "type",             :null => false
-    t.string   "content"
+    t.text     "content"
     t.string   "extra_attributes"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(:version => 20130225184850) do
   end
 
   create_table "orbiters", :force => true do |t|
-    t.string   "content"
+    t.text     "content"
     t.datetime "updated_at", :null => false
     t.datetime "created_at", :null => false
   end
