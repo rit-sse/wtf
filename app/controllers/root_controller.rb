@@ -1,6 +1,6 @@
 class RootController < ApplicationController
 
-  ssl_required :index
+  ssl_required :index if signed_in?
 
   def index
 
