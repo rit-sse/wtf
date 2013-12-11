@@ -1,4 +1,6 @@
 class RootController < ApplicationController
+  ssl_exceptions
+
   def index
 
     # Just grabs the first block and it better be markdown...
