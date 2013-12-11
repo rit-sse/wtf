@@ -5,9 +5,11 @@ class RootController < ApplicationController
   def index
 
     if signed_in? and Rails.env.production?
-      redirect_to :protocol => 'https://', 
-                  :controller => 'root', 
-                  :action => 'index'
+	if not request.ssl?
+          redirect_to :protocol => 'https://', 
+                      :controller => 'root', 
+                      :action => 'index'
+	end
     end
 
     # Just grabs the first block and it better be markdown...
