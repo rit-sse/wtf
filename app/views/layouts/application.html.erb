@@ -8,6 +8,12 @@
       : "Society of Software Engineers" %>
   </title>
 
+  <link rel="icon" href="<%= image_path "icon.png" %>" />
+
+  <!-- IE11 pinning and live tiles -->
+  <meta name="msapplication-TileImage" content="<%= image_path "windows-tile.png" %>" />
+  <meta name="msapplication-TileColor" content="#035887" />
+
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
