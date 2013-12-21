@@ -85,17 +85,37 @@
       <hr/>
       
       <fieldset>
-        <div class="control-group">
+        <div class="control-group limited-chars">
             <%= f.label :short_description, class:"control-label" %>
             <div class="controls">
-              <%= f.text_area :short_description, class: "input-xlarge", rows: "2",  placeholder:"A short descrition"  %>
+              <%= f.text_area :short_description,
+                class: "input-xlarge",
+                rows: "2",
+                placeholder:"Enter at least #{Event::min_short_desc} characters",
+                maxlength: Event::max_short_desc,
+                :"data-minlength" => Event::min_short_desc,
+                pattern: ".{#{Event::min_short_desc},}",
+                title: "Field must include between #{Event::min_short_desc} and #{Event::max_short_desc} characters"
+              %>
+              <p class="length-message">
+                <% msg_length = @event.short_description ? @event.short_description.size : 0 %>
+                <span class="remaining"><%= Event::min_short_desc - msg_length %></span>
+                <span class="remaining-message">characters to go...</span>
+              <p>
             </div>
         </div>
 
         <div class="control-group">
             <%= f.label :description, class:"control-label" %>
             <div class="controls">
-              <%= f.text_area :description, class: "input-xlarge", placeholder:"Used in on the site and on the iCal" %>
+              <%= f.text_area :description, class: "input-xlarge", placeholder:"Used in on the site and on the iCal", rows: 10 %>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <%= f.label :featured, class: "control-label" %>
+            <div class="controls">
+                <%= f.check_box :featured %>
             </div>
         </div>
 
