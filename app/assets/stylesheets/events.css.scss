@@ -113,10 +113,18 @@ div.location
     width: 400px;
 }
 
+.featured-events .teaser {
+    height: 180px;
+    width: 290px;
+    vertical-align: middle;
+    text-align: center;
+    display: table-cell;
+}
+
 .featured-events img {
     max-height: 180px;
     max-width: 290px;
-    display: block;
+    display: inline;
     margin: 0 auto;
 }
 

@@ -10,7 +10,9 @@
     <% @featured_events.each do |event| %>
       <li class="span4">
         <div class="thumbnail">
-          <%= link_to image_tag(event.image_url), events_public_show_path(event) %>
+          <div class="teaser">
+            <%= link_to image_tag(event.image_url), events_public_show_path(event) %>
+          </div>
           <div class="caption">
             <h4><%= link_to event.short_name, events_public_show_path(event) %></h4>
             <p><%= event.short_description %></p>
