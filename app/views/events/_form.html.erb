@@ -98,7 +98,8 @@
                 title: "Field must include between #{Event::min_short_desc} and #{Event::max_short_desc} characters"
               %>
               <p class="length-message">
-                <span class="remaining"><%= Event::min_short_desc - @event.short_description.size %></span>
+                <% msg_length = @event.short_description ? @event.short_description.size : 0 %>
+                <span class="remaining"><%= Event::min_short_desc - msg_length %></span>
                 <span class="remaining-message">characters to go...</span>
               <p>
             </div>
