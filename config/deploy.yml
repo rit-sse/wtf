@@ -1,19 +1,19 @@
 defaults: &defaults
-  domain: "sse.se.rit.edu"
-  repository: "git@github.com:rit-sse/wtf.git"
+  domain: "sofse.org"
+  repository: "https://github.com/rit-sse/wtf.git"
   rake_env:
     RAILS_ENV: 'production'
 
 staging:
   <<: *defaults
-  domain: "see-staging.se.rit.edu"
-  deploy_to: "~/wtf"
+  domain: "web.sofse.org"
+  deploy_to: "/web"
   post_setup_script: 'script/post-setup-staging.sh'
   post_deploy_script: 'script/post-deploy.sh'
 
 production:
   <<: *defaults
-  deploy_to: "~/wtf"
+  deploy_to: "/web"
   post_setup_script: 'script/post-setup-production.sh'
   post_deploy_script: 'script/post-deploy.sh'
 

@@ -17,18 +17,20 @@ module ApplicationHelper
   end
 
   def markdown(text)
+    if text == nil
+      return ""
+    end
     options = {
       autolink: true,
       fenced_code_blocks: true,
       no_intra_emphasis: true,
       strikethrough: true,
-      space_after_headers: true
+      tables: true,
+      strikethrough: true,
+      lax_spacing: true
     }
-    renderer_options = {
-      # hard_wrap: true,
-      with_toc_data: true
-    }
-    mdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, options)
+    renderer = Redcarpet::Render::HTML.new(:with_toc_data => true, :hard_wrap => true)
+    mdown = Redcarpet::Markdown.new(renderer, options)
     mdown.render(text).html_safe
   end
 end

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312151630) do
+ActiveRecord::Schema.define(:version => 20131220103600) do
+
+  create_table "blocks", :force => true do |t|
+    t.integer  "page_id",          :null => false
+    t.string   "section_key",      :null => false
+    t.string   "type",             :null => false
+    t.text     "content"
+    t.string   "extra_attributes"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "committees", :force => true do |t|
     t.string   "name"
@@ -42,15 +52,20 @@ ActiveRecord::Schema.define(:version => 20130312151630) do
     t.boolean  "featured"
   end
 
+  create_table "orbiters", :force => true do |t|
+    t.text     "content"
+    t.datetime "updated_at", :null => false
+    t.datetime "created_at", :null => false
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.string   "slug"
     t.datetime "published_at"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "ancestry"
-    t.string   "content_type"
+    t.string   "layout",       :null => false
   end
 
   add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"

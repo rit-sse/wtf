@@ -20,7 +20,7 @@ cp $APP_SHARED/config/database.yml config/database.yml
 cp $APP_SHARED/session_key $APP_DIR
 
 RAILS_ENV=production bundle exec rake assets:precompile # --trace
-RAILS_ENV=production rake db:migrate
+RAILS_ENV=production bundle exec rake db:migrate
 
 # bring in git submodules
 git submodule update --init

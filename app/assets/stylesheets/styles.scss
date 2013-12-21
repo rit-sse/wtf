@@ -1,3 +1,4 @@
+
 // site vars
 
 $width: 940px;
@@ -5,6 +6,18 @@ $std-margin: 25px;
 
 @import "_variables";
 @import "twitter/bootstrap";
+
+// bootstrap radius overrides
+.btn-group {
+  .btn:first-child {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+  .btn:last-child, .dropdown-toggle {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+}
 
 // mixins
 
@@ -139,7 +152,12 @@ h1, h2, h3, h4, h5, h6 {
         }
       }
     }
-
+    
+    .item {
+      width: 940px;
+      height: 300px;
+    }
+      
     #fallwelcome {
       .left {
         width: 55%;
@@ -209,10 +227,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .ace {
   @include box-sizing(border-box);
-  width: $width;
+  //width: $width;
   height: 325px;
   margin: 5px 0 15px;
   border: 1px solid #bbb;
+  position: relative !important;
 }
 
 .flash {
@@ -274,6 +293,38 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
   background-color:#FAFAFA !important;
+}
+
+.markdown_preview {
+    padding-left: $std-margin;
+    padding-right: $std-margin;
+    margin-bottom: $std-margin;
+    border: 1px solid #ccc;
+    background-color: #FAFAFA;
+}
+
+/* .ace {
+  width: $width;
+  background-color: #FAFAFA;
+} */
+
+/*These could look better... without the stupid background; so let's remove it*/
+.carousel-control {
+    background: none !important;
+    border: none !important;
+    border-radius: none !important;
+    color: white;
+    font-size: 60px;
+    font-weight: 100;
+    height: 40px;
+    left: 15px;
+    line-height: 30px;
+    margin-top: -20px;
+    opacity: 0.5;
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    width: 40px;
 }
 
 .form-horizontal{

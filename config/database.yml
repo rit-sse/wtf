@@ -60,7 +60,7 @@ production:
   pool: 5
   min_messages: warning #magic sauce
   username: wtf
-  password:
+  password: 
 
 cucumber:
   <<: *test

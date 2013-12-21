@@ -1,0 +1,23 @@
+<h3><%= section.title %></h3>
+<div class="section well">
+  <div class="blocks">
+    <% section.blocks.each do |block| %>
+      <%= render partial: "admin/blocks/block", locals: {f: f, block: block} %>
+    <% end %>
+  </div>
+
+  <div class="btn-group">
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+      New Block
+      <span class="caret"></span>
+    </a>
+    <ul class="available_blocks dropdown-menu">
+      <% available_block_types.each do |block_type| %>
+        <li class="<%= block_type.partial_name %>">
+          <%= link_to block_type.name, new_admin_block_path(page_id: @page.id,
+            section_key: section.key, type: block_type) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
