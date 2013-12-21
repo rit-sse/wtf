@@ -43,7 +43,18 @@ $(document).ready(function(){
 	$("#start-date").on("changeDate", getConcurentEvents);
 	$("#end-date").on("changeDate", getConcurentEvents);
 
-  attachKeyListener( $(".limited-chars") );
+    attachKeyListener( $(".limited-chars") );
+
+    // Add conditionally required fields
+    $("#event_featured").click(function(event){
+        if( $(this).is(":checked") ) {
+            $("#event_short_description").attr("required", "required");
+            $("#event_image").attr("required", "required");
+        } else {
+            $("#event_short_description").removeAttr("required");
+            $("#event_image").removeAttr("required");
+        }
+    });
 });
 
 function getConcurentEvents(){
