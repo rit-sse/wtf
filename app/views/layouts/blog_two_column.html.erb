@@ -1,5 +1,9 @@
 <div id="content_left">
   <%= render_section(@page.section(:header)) %>
+  <% @page.children.each do |child| %>
+    <%= render "layouts/blog_post", page: child %>
+    <hr>
+  <% end %>
 </div>
 <div id="content_right">
   <%= render_section(@page.section(:sidebar)) %>
