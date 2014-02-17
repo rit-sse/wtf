@@ -3,7 +3,6 @@ Wtf::Application.routes.draw do
 
   scope "/admin" do
     resources :events
-    resources :committees
     resources :uploads
 
     match '/events' => 'events#index', as: "admin_events"
@@ -20,6 +19,7 @@ Wtf::Application.routes.draw do
   namespace "admin" do
     resources :pages
     resources :blocks
+    resources :committees
   end
 
   match '/login', to: 'auth#index'
