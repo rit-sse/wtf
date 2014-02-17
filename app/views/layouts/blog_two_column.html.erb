@@ -8,8 +8,10 @@
 <% end %>
 <div id="content_left">
   <% @page.children.reverse_each do |child| %>
-    <%= render "layouts/blog_post", page: child %>
-    <hr>
+    <% if child.layout ==  BlogPost %>
+      <%= render "layouts/blog_post", page: child %>
+      <hr>
+    <% end %>
   <% end %>
 </div>
 <div id="content_right">
