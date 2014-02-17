@@ -48,6 +48,7 @@ end
 # More asset stuff
 gem 'jquery-rails'
 gem 'ace-rails-ap'
+gem 'bootstrap-will_paginate'
 
 # Presentation
 gem 'redcarpet'

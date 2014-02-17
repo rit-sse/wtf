@@ -7,7 +7,7 @@
   </div>
 <% end %>
 <div id="content_left">
-  <% @page.children.reverse_each do |child| %>
+  <% paginated_children(@page).each do |child| %>
     <% if child.layout ==  BlogPost %>
       <%= render "layouts/blog_post", page: child %>
       <p class="text-right">
@@ -16,6 +16,9 @@
       <hr>
     <% end %>
   <% end %>
+  <div class="text-center">
+    <%= will_paginate paginated_children(@page), page_links: false%>
+  </div>
 </div>
 <div id="content_right">
   <%= render_section(@page.section(:sidebar)) %>

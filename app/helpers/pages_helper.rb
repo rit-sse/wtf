@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 module PagesHelper
   def render_section(section)
     render partial: "pages/section", locals: {section: section}
@@ -5,6 +6,10 @@ module PagesHelper
 
   def render_block(block)
     render partial: "blocks/block", locals: {block: block}
+  end
+
+  def paginated_children(page)
+    page.children.reverse.paginate(:page => params[:page], per_page: 10)
   end
 
   def available_block_types
