@@ -1,15 +1,18 @@
 <% content_for :second_header do %>
   <div class="blue" id="top_nav_wrapper">
       <div id="top_nav" class="second_header">
-          <%= render_section(@page.section(:header)) %>
-        </div>
+        <%= render_section(@page.section(:header)) %>
       </div>
+    </div>
   </div>
 <% end %>
 <div id="content_left">
   <% @page.children.reverse_each do |child| %>
     <% if child.layout ==  BlogPost %>
       <%= render "layouts/blog_post", page: child %>
+      <p class="text-right">
+        <%= link_to 'Read More', "#{@page.slug}/#{child.slug}"%>
+      </p>
       <hr>
     <% end %>
   <% end %>
@@ -17,3 +20,23 @@
 <div id="content_right">
   <%= render_section(@page.section(:sidebar)) %>
 </div>
+
+<script>
+  $('article').each(function(index){
+    var lines = 1000;
+    if($(this).text().length > lines){
+      $(this).children().each(function(index){
+        console.log(lines);
+        if(lines == 0){
+          $(this).text("");
+        } else if($(this).text().length > lines){
+          console.log('double here')
+          $(this).text($(this).text().substr(0, lines) + "...");
+          lines = 0;
+        }else {
+          lines -= $(this).text().length;
+        }
+      });
+    }
+  });
+</script>
