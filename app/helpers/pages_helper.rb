@@ -17,7 +17,7 @@ module PagesHelper
   end
 
   def available_layout_types
-  	[SingleColumn, TwoColumn, BlogTwoColumn, BlogPost]
+  	[SingleColumn, TwoColumn, BlogTwoColumn, BlogSingleColumn, BlogPost]
   end
 
   def get_pages_tree(parent_id=nil, level=0)

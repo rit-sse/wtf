@@ -1,6 +1,7 @@
 class Layout
 
 	def self.build_sections(page)
+		@section_builders ||= []
 		@section_builders.map do |builder|
 			section = builder.call
 			section.blocks = page.blocks.select { |b| b.section_key == section.key }

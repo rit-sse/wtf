@@ -1,0 +1,23 @@
+<% content_for :second_header do %>
+  <div class="blue" id="top_nav_wrapper">
+      <div id="top_nav" class="second_header">
+        <h1><%= @page.title %></h1>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% paginated_children(@page).each do |child| %>
+  <% if child.layout ==  BlogPost %>
+    <%= render "layouts/blog_post", page: child %>
+    <p class="text-right">
+      <%= link_to 'Read More', "#{@page.slug}/#{child.slug}"%>
+    </p>
+    <hr>
+  <% end %>
+<% end %>
+<div class="text-center">
+  <%= will_paginate paginated_children(@page), page_links: false%>
+</div>
+
+<script>truncate();</script>
