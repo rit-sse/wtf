@@ -82,7 +82,9 @@
     </div>
 
     <%= yield :header %>
-
+    <% if content_for? :second_header %>
+      <%= yield :second_header %>
+    <% end %>
     <div id="content_wrapper">
       <% if content_for? :sidebar %>
         <div id="content_left">

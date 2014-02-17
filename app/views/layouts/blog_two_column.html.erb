@@ -1,6 +1,13 @@
+<% content_for :second_header do %>
+  <div class="blue" id="top_nav_wrapper">
+      <div id="top_nav" class="second_header">
+          <%= render_section(@page.section(:header)) %>
+        </div>
+      </div>
+  </div>
+<% end %>
 <div id="content_left">
-  <%= render_section(@page.section(:header)) %>
-  <% @page.children.each do |child| %>
+  <% @page.children.reverse_each do |child| %>
     <%= render "layouts/blog_post", page: child %>
     <hr>
   <% end %>
