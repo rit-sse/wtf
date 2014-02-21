@@ -17,7 +17,7 @@ Wtf::Application.routes.draw do
   end
 
   # namespace "admin" do
-     resources :pages
+  #   resources :pages
   #   resources :blocks
   # end
 
