@@ -3,37 +3,17 @@ Wtf::Application.routes.draw do
 
   scope "/admin" do
     resources :events
-    # resources :committees
-    # resources :uploads
 
     match '/events' => 'events#index', as: "admin_events"
-    # get '/orbiter/add'
-    # get '/orbiter/destroy'
-    # match '/orbiter/edit' => 'orbiter#edit', :via => [:post]
 
     match '/diagnostics(/:action)', controller: 'diagnostics' if Rails.env.development?
-
-    # root to: 'admin#index', as: "admin"
   end
-
-  # namespace "admin" do
-  #   resources :pages
-  #   resources :blocks
-  # end
 
   match '/login', to: 'auth#index'
   match '/logout', to: 'auth#logout'
   post '/auth(/:action)', controller: 'auth'
 
   match '/events' => 'events#public_index', as: "events_public_events"
-  # match '/events/current', to: 'events#current'
-  # match '/events/gtv', to: 'events#gtv'
-  # match '/events/ftv', to: 'events#ftv'
-  # match '/events(/:id)' => 'events#public_show', as: "events_public_show"
-
-  # static routes and redirects
-  # ...
-
   # root
   root :to => 'root#index'
 
