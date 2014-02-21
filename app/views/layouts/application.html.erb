@@ -28,30 +28,7 @@
         <% end %>
 
         <div id="nav_links">
-          <%= active_link_to "EVENTS", events_public_events_path %>
-          <%= active_link_to "PROJECTS", "/projects" %>
-          <ul>
-            <li class="dropdown" id="committees-menu">
-              <%= link_to "ABOUT <b class='caret'></b>".html_safe, "#",
-                data: { toggle: "dropdown" }, class: "dropdown-toggle" %>
-              <ul class="dropdown-menu">
-                <li><%= link_to "About the SSE", "/about" %></li>
-                <li><%= link_to "Officers", "/about/officers" %></li>
-                <li class="divider"></li>
-                <li><%= link_to "Mentoring", "/mentoring" %></li>
-                <li><%= link_to "Projects", "/projects" %></li>
-                <li><%= link_to "Fundraising", "/fundraising" %></li>
-                <li><%= link_to "Intramurals", "/intramurals" %></li>
-                <li><%= link_to "Public Relations", "/pr" %></li>
-                <li><%= link_to "ViSE", "/vise" %></li>
-                <li class="divider"></li>
-                <li><%= link_to "Talks", "/talks" %></li>
-                <li><%= link_to "Crash Courses", "/crash-courses" %></li>
-		<li class="divider"></li>
-		<li><%= link_to "Sponsors", "/about/sponsors" %></li>
-              </ul>
-            </li>
-          </ul>
+          <%= active_link_to "LOGIN", '/login' %>
           <% if signed_in? %>
             <ul>
               <li class="dropdown" id="committees-menu">
@@ -59,10 +36,6 @@
                   "#", data: { toggle: "dropdown" }, class: "dropdown-toggle",
                   alt: "My Account" %>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "Dashboard", admin_path %></li>
-                  <% if can? :manage, Page %>
-                    <li><%= link_to "Pages", admin_pages_path %></li>
-                  <% end %>
                   <% if can? :manage, Event %>
                     <li><%= link_to "Events", events_path %></li>
                   <% end %>
