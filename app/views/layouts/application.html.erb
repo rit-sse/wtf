@@ -28,7 +28,6 @@
         <% end %>
 
         <div id="nav_links">
-          <%= active_link_to "LOGIN", '/login' %>
           <% if signed_in? %>
             <ul>
               <li class="dropdown" id="committees-menu">
@@ -47,6 +46,8 @@
                 </ul>
               </li>
             </ul>
+          <% else %>
+            <%= active_link_to "LOGIN", '/login' %>
           <% end %>
         </div>
 
