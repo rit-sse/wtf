@@ -58,13 +58,6 @@ class EventsController < AdminController
     end
 
     respond_to do |format|
-      format.html do # index.html.erb
-        if params[:view] == "calendar"
-          render :index_calendar
-        else
-          render :public_index
-        end
-      end
       format.json { render json: @events }
       format.ics  { render :text => Event.to_ical }
       format.csv  { render :text => @events.to_csv}

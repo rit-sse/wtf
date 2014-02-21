@@ -25,7 +25,7 @@ Wtf::Application.routes.draw do
   match '/logout', to: 'auth#logout'
   post '/auth(/:action)', controller: 'auth'
 
-  # match '/events' => 'events#public_index', as: "events_public_events"
+  match '/events' => 'events#public_index', as: "events_public_events"
   # match '/events/current', to: 'events#current'
   # match '/events/gtv', to: 'events#gtv'
   # match '/events/ftv', to: 'events#ftv'
