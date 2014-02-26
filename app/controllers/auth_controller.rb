@@ -12,7 +12,7 @@ class AuthController < ApplicationController
 
       set_current_user "admin", "admin"
 
-      redirect_to root_path, notice:"Logged in successfully."
+      redirect_to admin_events_path, notice:"Logged in successfully."
     else
       username = params[:username]
       username = username[/\A\w+/].downcase
