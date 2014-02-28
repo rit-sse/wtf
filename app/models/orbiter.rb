@@ -1,10 +1,11 @@
+
 class Orbiter < ActiveRecord::Base
   attr_accessible :content, :created_at, :updated_at
 
-  validates_presence_of :content
+  validates :content, presence: true
 
   def self.make(contents)
-    self.create!(:content => contents, :updated_at => Time.now, :created_at => Time.now)
+    self.create!(content: contents, updated_at: Time.now, created_at: Time.now)
   end
   
   def self.drop_page( sid )

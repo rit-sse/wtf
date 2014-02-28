@@ -6,10 +6,11 @@ class Event < ActiveRecord::Base
   MIN_SHORT_DESC = 40
   MAX_SHORT_DESC = 70
 
-  validates_presence_of :name, :short_name, :location, :committee
+  validates :name, :short_name, :location, :committee, presence: true
   validates :short_name, :length => { minimum: 1,  maximum: 25 }
-  validates_presence_of :image, if: :featured?
+  validates :image, presence: {if: :featured?}
   validates :short_description, length: { in: MIN_SHORT_DESC..MAX_SHORT_DESC }, if: :featured?
+  validate :start_date_before_end_date
 
   has_many :event_prices
   belongs_to :committee
@@ -85,5 +86,8 @@ class Event < ActiveRecord::Base
     MIN_SHORT_DESC
   end
 
+  def start_date_before_end_date
+    errors.add :start_date, "is after the end date" if(start_date > end_date)
+  end
 
 end

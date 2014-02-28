@@ -40,7 +40,14 @@ $(document).ready(function(){
 	end_picker.setLocalDate(end_date);
 
 	getConcurentEvents();
-	$("#start-date").on("changeDate", getConcurentEvents);
+	$("#start-date").on("changeDate", function(ev){
+    if(ev.date.valueOf() > end_picker._date.valueOf()){
+      var newDate = new Date(ev.date)
+      newDate.setHours(newDate.getHours()+1);
+      end_picker.setValue(newDate);
+    }
+    getConcurentEvents();
+  });
 	$("#end-date").on("changeDate", getConcurentEvents);
 
     attachKeyListener( $(".limited-chars") );

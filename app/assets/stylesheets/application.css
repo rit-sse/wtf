@@ -35,3 +35,5 @@
       box-shadow: 0 0 5px #444;
     }
 }
+
+.field_with_errors{ display: inline; }
