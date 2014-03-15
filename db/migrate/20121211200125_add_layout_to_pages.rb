@@ -3,11 +3,11 @@ class AddLayoutToPages < ActiveRecord::Migration
   	add_column :pages, :layout, :string
 
   	# Make all current pages use the single column layout
-  	Page.reset_column_information
-  	Page.all.each do |page|
-  		page.update_attributes!(:layout => 'single_column')
-  		page.save!
-  	end
+  	# Page.reset_column_information
+  	# Page.all.each do |page|
+  	# 	page.update_attributes!(:layout => 'single_column')
+  	# 	page.save!
+  	# end
 
   	# Make the layout column a required field
   	change_column :pages, :layout, :string, :null => false
