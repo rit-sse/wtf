@@ -1,19 +1,16 @@
 Wtf::Application.routes.draw do
 
+  resources :events
 
-  scope "/admin" do
-    resources :events
+  match '/events' => 'events#index', as: "admin_events"
 
-    match '/events' => 'events#index', as: "admin_events"
-
-    match '/diagnostics(/:action)', controller: 'diagnostics' if Rails.env.development?
-  end
+  match '/diagnostics(/:action)', controller: 'diagnostics' if Rails.env.development?
 
   match '/login', to: 'auth#index'
   match '/logout', to: 'auth#logout'
   post '/auth(/:action)', controller: 'auth'
 
-  match '/events' => 'events#public_index', as: "events_public_events"
+  match '/events_public' => 'events#public_index', as: "events_public_events"
   # root
   root :to => 'root#index'
 

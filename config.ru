@@ -2,7 +2,7 @@
 
 require ::File.expand_path('../config/environment',  __FILE__)
 
-map "/" do
+map "/admin" do
   run Wtf::Application
 end
 
