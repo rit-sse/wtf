@@ -2,7 +2,7 @@ class AuthController < ApplicationController
   ssl_exceptions
 
   def index
-    redirect_to root_path if signed_in?
+    redirect_to admin_events_path if signed_in?
   end
 
   def authorize
