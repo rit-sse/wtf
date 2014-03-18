@@ -48,7 +48,7 @@ class AuthController < ApplicationController
         role = "admin"
 
         set_current_user username, role
-        redirect_to root_path, notice: "Logged in successfully."
+        redirect_to admin_events_path, notice: "Logged in successfully."
       else
         if ldap
           error_notice = "Insufficient Privileges"
