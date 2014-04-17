@@ -1,6 +1,9 @@
 class EventsController < AdminController
   skip_before_filter :authenticate!, only: [:public_show, :gtv, :ftv, :current]
-  skip_before_filter :authenticate!, only: [:index], if: :not_html
+
+  # This is dumb. Rails bugs are great
+  skip_before_filter :authenticate!, only: [:index]
+  before_filter :authenticate! only: [:index], unless: proc { request.format.csv? or request.format.ics? or request.format.json? }
 
   load_and_authorize_resource
   skip_authorize_resource only: [:public_show, :gtv, :ftv, :current]
@@ -180,9 +183,5 @@ class EventsController < AdminController
       format.html # new.html.erb
       format.json { render json: @event }
     end
-  end
-
-  def not_html
-    ['applcation/json', 'text/csv', 'text/calendar'].include?(request.format)
   end
 end
