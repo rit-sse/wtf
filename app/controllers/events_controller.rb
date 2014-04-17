@@ -25,7 +25,6 @@ class EventsController < AdminController
 
     respond_to do |format|
       format.html
-      format.json { render json: @events }
     end
   end
 
@@ -36,7 +35,7 @@ class EventsController < AdminController
     if params[:limit] == nil
       params[:limit] = 1000
     end
-    
+
     if params[:can_feature]
       @events = Event
         .where(:start_date => Time.now..(7.days.from_now))
@@ -59,8 +58,8 @@ class EventsController < AdminController
 
     respond_to do |format|
       format.json { render json: @events }
-      format.ics  { render :text => Event.to_ical }
-      format.csv  { render :text => @events.to_csv}
+      format.ics  { render text: @events.to_ical }
+      format.csv  { render text: @events.to_csv }
     end
   end
 

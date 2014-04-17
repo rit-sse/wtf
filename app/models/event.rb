@@ -43,9 +43,9 @@ class Event < ActiveRecord::Base
 
   private
 
-  def Event.to_ical
+  def self.to_ical
     RiCal.Calendar do |cal|
-      Event.all.each do |model_event|
+      all.each do |model_event|
         cal.event do |ical_event|
           ical_event.summary     = model_event.short_name
           ical_event.description = model_event.description
