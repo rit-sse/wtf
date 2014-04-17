@@ -3,7 +3,7 @@ class EventsController < AdminController
 
   # This is dumb. Rails bugs are great
   skip_before_filter :authenticate!, only: [:index]
-  before_filter :authenticate! only: [:index], unless: proc { request.format.csv? or request.format.ics? or request.format.json? }
+  before_filter :authenticate!, only: [:index], unless: proc { request.format.csv? or request.format.ics? or request.format.json? }
 
   load_and_authorize_resource
   skip_authorize_resource only: [:public_show, :gtv, :ftv, :current]
