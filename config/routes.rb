@@ -1,6 +1,7 @@
 Wtf::Application.routes.draw do
 
   resources :events
+  resources :committees
 
   match '/events' => 'events#index', as: "admin_events"
 
