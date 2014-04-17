@@ -22,13 +22,16 @@ class EventsController < AdminController
     end
 
     @events = @events.group_by(&:week)
-
+    events_helper
     respond_to do |format|
       format.html
+      format.json { render json: @other_events }
+      format.ics  { render text: @other_events.to_ical }
+      format.csv  { render text: @other_events.to_csv }
     end
   end
 
-  def public_index
+  def events_helper
     if params[:start_date] == nil or params[:start_date] == 'now'
       params[:start_date] = DateTime.now
     end
@@ -37,29 +40,23 @@ class EventsController < AdminController
     end
 
     if params[:can_feature]
-      @events = Event
+      @other_events = Event
         .where(:start_date => Time.now..(7.days.from_now))
         .where(featured: true)
         .order(:start_date)
         .limit(params[:limit])
-    else 
+    else
         if params[:end_date] != nil
-            @events = Event.where(:start_date => params[:start_date].to_date..params[:end_date].to_date.next_day).order(:start_date).limit(params[:limit])
+            @other_events = Event.where(:start_date => params[:start_date].to_date..params[:end_date].to_date.next_day).order(:start_date).limit(params[:limit])
         else
-            @events = Event.where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_month).order(:start_date).limit(params[:limit])
+            @other_events = Event.where(:start_date => params[:start_date].to_date..params[:start_date].to_date.next_month).order(:start_date).limit(params[:limit])
         end
     end
-    @featured_events = @events.where(featured: true).limit(3)
+    @featured_events = @other_events.where(featured: true).limit(3)
 
     if params[:filter] != nil
       committee = Committee.where(:name => params[:filter]).first.id
-      @events = @events.where(:committee_id => committee)
-    end
-
-    respond_to do |format|
-      format.json { render json: @events }
-      format.ics  { render text: @events.to_ical }
-      format.csv  { render text: @events.to_csv }
+      @other_events = @other_events.where(:committee_id => committee)
     end
   end
 
