@@ -1,8 +1,9 @@
 class EventsController < AdminController
-  skip_before_filter :authenticate!, :only => [:public_index, :public_show, :gtv, :ftv, :current]
+  skip_before_filter :authenticate!, only: [:public_show, :gtv, :ftv, :current]
+  skip_before_filter :authenticate!, only: [:index], if: proc { request.json? or request.ics? or request.csv? }
 
   load_and_authorize_resource
-  skip_authorize_resource only: [:public_index, :public_show, :gtv, :ftv, :current]
+  skip_authorize_resource only: [:public_show, :gtv, :ftv, :current]
 
   # GET /admin/events
   # GET /admin/events.json
