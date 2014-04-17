@@ -1,6 +1,6 @@
 class EventsController < AdminController
   skip_before_filter :authenticate!, only: [:public_show, :gtv, :ftv, :current]
-  skip_before_filter :authenticate!, only: [:index], if: proc { request.json? or request.ics? or request.csv? }
+  skip_before_filter :authenticate!, only: [:index], if: proc { request.format.json? or request.format.ics? or request.format.csv? }
 
   load_and_authorize_resource
   skip_authorize_resource only: [:public_show, :gtv, :ftv, :current]
