@@ -7,15 +7,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
-//= require ace/ace
-//= require ace/mode-markdown.js
-//= require ace/mode-html.js
-//= require ace/theme-textmate
-//= require marked
 //= require app
 //= require events
-//= require root
-//= require admin/page_edit
 //= require bootstrap-datetimepicker.min
 //= require events-admin.js
 

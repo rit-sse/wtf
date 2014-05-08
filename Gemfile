@@ -47,32 +47,15 @@ end
 
 # More asset stuff
 gem 'jquery-rails'
-gem 'ace-rails-ap'
-
-# Presentation
-gem 'redcarpet'
-
-# Testing
-gem 'cucumber-rails', :group => [:test]
-gem 'capybara', :group => [:development, :test]
-gem 'rspec-rails', :group => [:development, :test]
-gem 'factory_girl_rails', :group => [:development, :test]
-
-# Deployment
-gem 'whiskey_disk', :group => [:development]
-
-# Pinocchio
-gem 'sinatra', :require => false
-gem 'redis', :require => false
-gem 'sinatra-flash', :require => false
 
 # Add support for eco templates
 gem 'sprockets'
 gem 'eco'
 
-# Let's hit up Amazon S3
+# app/uploaders/image_uploader.rb depends on carrierwave 
+# TODO: See if we still allow image uploads on events submission page
+# And if we do, do they still work?
 gem 'carrierwave'
-gem 'fog'
 
 # iCal support
 gem 'ri_cal'
