@@ -29,3 +29,21 @@ String.prototype.format = String.prototype.f = function() {
     }
     return s;
 };
+
+function truncate(){
+  $('article').each(function(index){
+    var lines = 1000;
+    if($(this).text().length > lines){
+      $(this).children().each(function(index){
+        if(lines == 0){
+          $(this).text("");
+        } else if($(this).text().length > lines){
+          $(this).text($(this).text().substr(0, lines) + "...");
+          lines = 0;
+        }else {
+          lines -= $(this).text().length;
+        }
+      });
+    }
+  });
+}

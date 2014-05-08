@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20131220103600) do
     t.integer  "page_id",          :null => false
     t.string   "section_key",      :null => false
     t.string   "type",             :null => false
-    t.text     "content"
+    t.string   "content"
     t.string   "extra_attributes"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
@@ -53,9 +53,9 @@ ActiveRecord::Schema.define(:version => 20131220103600) do
   end
 
   create_table "orbiters", :force => true do |t|
-    t.text     "content"
-    t.datetime "updated_at", :null => false
-    t.datetime "created_at", :null => false
+    t.text     "content",    :limit => 255
+    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                :null => false
   end
 
   create_table "pages", :force => true do |t|
