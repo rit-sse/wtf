@@ -1,9 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.13'
-
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+gem 'rails', '3.2.15'
 
 gem 'sqlite3'
 gem 'pg', :group => [:production]
@@ -20,10 +17,6 @@ gem 'settingslogic'
 
 # Auth
 gem 'net-ldap'
-
-# Deploy
-gem 'highline'
-gem 'sshkit'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -43,6 +36,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'whiskey_disk'
 end
 
 # More asset stuff
@@ -58,24 +52,15 @@ gem 'capybara', :group => [:development, :test]
 gem 'rspec-rails', :group => [:development, :test]
 gem 'factory_girl_rails', :group => [:development, :test]
 
-# Deployment
-gem 'whiskey_disk', :group => [:development]
-
-# Pinocchio
-gem 'sinatra', :require => false
-gem 'redis', :require => false
-gem 'sinatra-flash', :require => false
-
-# Add support for eco templates
-gem 'sprockets'
-gem 'eco'
-
 # Let's hit up Amazon S3
 gem 'carrierwave'
 gem 'fog'
 
 # iCal support
 gem 'ri_cal'
+
+# session
+gem 'redis-session-store'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
