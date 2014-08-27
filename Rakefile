@@ -3,31 +3,8 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require File.expand_path('../config/application', __FILE__)
-require 'sshkit/dsl'
-require 'highline/import'
 
 Wtf::Application.load_tasks
-
-SSHKit.config.command_map[:bundle] = "/.rbenv/shims/bundle"
-SSHKit.config.command_map[:rake] = "/.rbenv/shims/rake"
-
-host = "web.ad.sofse.org"
-
-task :deploy do
-  user = ask("Enter username for #{host}:")
-  on %W{#{user}@#{host}} do
-    within "/web" do
-      with rails_env: 'production' do
-        execute :git, 'pull'
-        execute 'bundle', '--without development:test', 'install'      
-        rake 'db:migrate'     
-        rake 'assets:precompile'     
-        rake 'server:start'
-      end
-    end
-  end
-end
-  
 namespace :server do
 
   task :start do
